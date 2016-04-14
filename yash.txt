@@ -52,3 +52,16 @@ Groupinterviewresult varchar(50),
 FOREIGN KEY (applicantid)
 REFERENCES HR_Applicant(applicantid)
 );
+
+
+Populating data for Role table
+
+insert into HR_Role (roleid,rolename)values(1,'HR Manager');
+insert into HR_Role (roleid,rolename)values(2,'HR Specialist');
+insert into HR_Role (roleid,rolename)values(3,'HR Assistant');
+insert into HR_Role (roleid,rolename)values(4,'Healthcare Professional');
+insert into HR_Role (roleid,rolename)values(5,'Compliance Officer');
+insert into HR_Role (roleid,rolename)values(6,'Hiring Manager');
+insert into HR_Role (roleid,rolename)values(7,'Group Interview Manager');
+
+select * from HR_Role;
