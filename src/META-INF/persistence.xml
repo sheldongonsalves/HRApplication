@@ -1,21 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
-<<<<<<< HEAD
-	<persistence-unit name="HRApplication">
-=======
-	<persistence-unit name="HRApplication" transaction-type="RESOURCE_LOCAL">
+	<persistence-unit name="HRApplication"
+		transaction-type="RESOURCE_LOCAL">
 		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
 		<class>model.HrApplicant</class>
 		<class>model.HrDrugtest</class>
 		<class>model.HrInterviewtable</class>
 		<class>model.HrLogin</class>
 		<class>model.HrRole</class>
+
+
+		<exclude-unlisted-classes>false</exclude-unlisted-classes>
 		<properties>
-			<property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@localhost:1521:orcl"/>
-			<property name="javax.persistence.jdbc.user" value="ora1"/>
-			<property name="javax.persistence.jdbc.password" value="ora1"/>
-			<property name="javax.persistence.jdbc.driver" value="oracle.jdbc.OracleDriver"/>
+			<property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@localhost:1521:orcl" />
+			<property name="javax.persistence.jdbc.user" value="ora1" />
+			<property name="javax.persistence.jdbc.password" value="ora1" />
+			<property name="javax.persistence.jdbc.driver" value="oracle.jdbc.OracleDriver" />
+			<property name="eclipselink.exclude-eclipselink-orm" value="false" />
 		</properties>
->>>>>>> 27ff83f9216681143f57bcd4725aab8bbf454f94
+
 	</persistence-unit>
 </persistence>
