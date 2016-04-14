@@ -1,0 +1,80 @@
+yash here
+
+Final Project DB scripts
+
+
+create table HR_Login (
+loginid int primary key,
+username varchar(50),
+password varchar(50),
+roleid int, FOREIGN KEY (roleid)
+REFERENCES HR_Role(roleid)
+);
+
+
+create table HR_Role (
+roleid int primary key,
+rolename varchar(50)
+);
+
+create table HR_Applicant (
+applicantid int primary key,
+applicantname varchar(50),
+address varchar(50),
+birthdate date,
+education varchar(50),
+jobhistory varchar(50),
+jobreference varchar(50),
+drugtestresult varchar(50),
+veteranstatus varchar(50),
+citizenstatus varchar(50)
+);
+
+create table HR_Drugtest (
+drugtestid int primary key,
+applicantid int,
+standardpaneltest varchar(50),
+DOTtest varchar(50),
+Alcoholtest varchar(50),
+FOREIGN KEY (applicantid)
+REFERENCES HR_Applicant(applicantid)
+);
+
+create table HR_Interviewtable (
+interviewid int primary key,
+applicantid int,
+HRinterviewscheduled varchar(50),
+HRinterviewresult varchar(50),
+HMinterviewscheduled varchar(50),
+HMinterviewresult varchar(50),
+Groupinterviewscheduled varchar(50),
+Groupinterviewresult varchar(50),
+FOREIGN KEY (applicantid)
+REFERENCES HR_Applicant(applicantid)
+);
+
+---------------------------------
+Populating data for Role table
+---------------------------------
+insert into HR_Role (roleid,rolename)values(1,'HR Manager');
+insert into HR_Role (roleid,rolename)values(2,'HR Specialist');
+insert into HR_Role (roleid,rolename)values(3,'HR Assistant');
+insert into HR_Role (roleid,rolename)values(4,'Healthcare Professional');
+insert into HR_Role (roleid,rolename)values(5,'Compliance Officer');
+insert into HR_Role (roleid,rolename)values(6,'Hiring Manager');
+insert into HR_Role (roleid,rolename)values(7,'Group Interview Manager');
+
+select * from HR_Role;
+
+-------------------------------------
+Populating Data for Login id
+----------------------------------------
+insert into HR_Login (loginid,username, password,roleid)values(1,'Sheela', 'password1','1');
+insert into HR_Login (loginid,username, password,roleid)values(2,'Dawn', 'password1','2');
+insert into HR_Login (loginid,username, password,roleid)values(3,'Felicia', 'password1','3');
+insert into HR_Login (loginid,username, password,roleid)values(4,'Balaji', 'password1','4');
+insert into HR_Login (loginid,username, password,roleid)values(5,'Kuldeep', 'password1','5');
+insert into HR_Login (loginid,username, password,roleid)values(6,'Jayanta', 'password1','6');
+insert into HR_Login (loginid,username, password,roleid)values(7,'Neeraj', 'password1','7');
+
+select * from HR_Login;
