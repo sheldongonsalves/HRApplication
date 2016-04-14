@@ -53,9 +53,9 @@ FOREIGN KEY (applicantid)
 REFERENCES HR_Applicant(applicantid)
 );
 
-
+---------------------------------
 Populating data for Role table
-
+---------------------------------
 insert into HR_Role (roleid,rolename)values(1,'HR Manager');
 insert into HR_Role (roleid,rolename)values(2,'HR Specialist');
 insert into HR_Role (roleid,rolename)values(3,'HR Assistant');
@@ -65,3 +65,16 @@ insert into HR_Role (roleid,rolename)values(6,'Hiring Manager');
 insert into HR_Role (roleid,rolename)values(7,'Group Interview Manager');
 
 select * from HR_Role;
+
+-------------------------------------
+Populating Data for Login id
+----------------------------------------
+insert into HR_Login (loginid,username, password,roleid)values(1,'Sheela', 'password1','1');
+insert into HR_Login (loginid,username, password,roleid)values(2,'Dawn', 'password1','2');
+insert into HR_Login (loginid,username, password,roleid)values(3,'Felicia', 'password1','3');
+insert into HR_Login (loginid,username, password,roleid)values(4,'Balaji', 'password1','4');
+insert into HR_Login (loginid,username, password,roleid)values(5,'Kuldeep', 'password1','5');
+insert into HR_Login (loginid,username, password,roleid)values(6,'Jayanta', 'password1','6');
+insert into HR_Login (loginid,username, password,roleid)values(7,'Neeraj', 'password1','7');
+
+select * from HR_Login;
