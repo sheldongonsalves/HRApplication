@@ -78,3 +78,14 @@ insert into HR_Login (loginid,username, password,roleid)values(6,'Jayanta', 'pas
 insert into HR_Login (loginid,username, password,roleid)values(7,'Neeraj', 'password1','7');
 
 select * from HR_Login;
+
+
+-----------------------------------
+Populating Data for Applicant
+-----------------------------------
+
+insert into HR_Applicant(applicantid,applicantname,address,birthdate,education,jobhistory,jobreference,
+drugtestresult,veteranstatus,citizenstatus)
+values(1,'Yash','Fairfax',TO_DATE('02/29/2016','mm/dd/yyyy'),'Master of Science','3 Years Experience','Raoul Gabiam', 'Pass', 'No', 'No');
+
+select * from HR_Applicant;
