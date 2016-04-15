@@ -15,7 +15,8 @@
 
 <form action="Education" method="post">
 
-Name:  Chintan <!-- ${name} -->
+Name:  
+${name} 
 <br>
 <!--  Address: ${address}
 <br>
@@ -30,27 +31,63 @@ Veteran Status: ${veteran}
 -->
 </form>
 
+ 
 
 Education: ${education}
+
+<!-- Visible only if HR Specialist logs in -->
+
 <form action="Education" method="post">
 <c:if test="${rolename.equals('HR Specialist')}" >
-<!-- add part to enter degree information -->
+	<input type="text" name="education"><br>
+	<br> <input type="submit" value="education">
 </c:if>
 </form>
+
+
+
 
 Drug User: ${druguser}
+
+<!-- Visible only if Health care professional logs in -->
+
 <form action="DrugUser" method="post">
 <c:if test="${rolename.equals('Health Care Professional')}" >
-<!-- add part to enter degree information -->
+Standard Panel Test:
+ <input type="checkbox" name="drug" value="StandardPanelTest"> Pass<br>
+  <input type="checkbox" name="drug" value="StandardPanelTest"> Fail<br>
+
+Dot Test:
+ <input type="checkbox" name="drug" value="DotTest"> Pass <br>
+  <input type="checkbox" name="drug" value="DotTest"> Fail <br>
+
+Alcohol Test:
+ <input type="checkbox" name="drug" value="AlcoholTest"> Pass <br>
+ <input type="checkbox" name="drug" value="AlcoholTest"> Fail <br>   
+ 
+ <input type="submit" value="submit">
 </c:if>
 </form>
 
+
+
+
+
 Citizenship: ${citizenship}
+
+<!-- Visible only if Compliance Officer logs in -->
+
 <form action="Citizenship" method="post">
 <c:if test="${rolename.equals('Health Care Professional')}" >
-<!-- add part to enter degree information -->
+<input type="radio" name="citizenship" value="IsCitizen"> Citizen <br>
+ <input type="radio" name="citizenship" value="IsNotACitizen"> Not a citizen <br>
+  <input type="submit" value="submit">  
 </c:if>
 </form>
+
+
+
+<!-- Visible only if HR Manager logs in -->
 
 <form action="HRManager" method="post">
 <c:if test="${rolename.equals('HR Manager')}" >
@@ -59,6 +96,8 @@ Citizenship: ${citizenship}
  <input type="submit" value="schedule">
 </c:if>
 </form>
+
+
 
 
 </body>
