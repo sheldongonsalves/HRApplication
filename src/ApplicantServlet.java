@@ -1,4 +1,4 @@
-
+/*yash*/
 
 import java.io.IOException;
 import java.util.Date;
@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import customTools.DBConnect;
-import model.HcUser;
+
 import model.HrApplicant;
 
 
@@ -41,9 +41,10 @@ public class ApplicantServlet extends HttpServlet {
 HttpSession session = request.getSession();
 		
 		session.getAttribute("Applicantid");
+
 		DBConnect Applicant = new DBConnect();
 		
-		long applicant_id = 0;
+		long applicant_id = 1;
 		List<HrApplicant> candidate= Applicant.getApplicantDetails(applicant_id).getResultList();
 		
 		{
