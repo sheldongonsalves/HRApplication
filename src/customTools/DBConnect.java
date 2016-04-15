@@ -51,9 +51,44 @@ public class DBConnect {
 	
 	public void insertNewApplicant(String name ,String address ,Date bday ,String job_history ,String job_refrernce ,String veteran)
 	{
-		EntityManager em1=DBUtil.getEmFactory().createEntityManager();
-		EntityTransaction trans = em1.getTransaction();
-		
-		
+		HrApplicant hra =new HrApplicant();
+		hra.setApplicantid(getNextApplicantid()+1);
+		hra.setApplicantname(name);
+		hra.setAddress(address);
+		hra.setBirthdate(bday);
+		hra.setJobhistory(job_history);
+	    hra.setJobreference(job_refrernce);	
+		hra.setVeteranstatus(veteran);
+		insert(hra);
+	}
+	
+	//generic code to update
+	public static <T> void update(Object T) {
+		EntityManager em = DBUtil.getEmFactory().createEntityManager();
+		EntityTransaction trans = em.getTransaction();
+		trans.begin();
+		try {
+			em.merge(T);
+			trans.commit();
+		} catch (Exception e) {
+			System.out.println(e);
+			trans.rollback();
+		} finally {
+			em.close();
+		}
+	}
+	public static <T> void insert(Object T) {// generics 
+		EntityManager em = DBUtil.getEmFactory().createEntityManager();
+		EntityTransaction trans = em.getTransaction();
+		trans.begin();
+		try {
+			em.persist(T);
+			trans.commit();
+		} catch (Exception e) {
+			System.out.println(e);
+			trans.rollback();
+		} finally {
+			em.close();
+		}
 	}
 }
