@@ -24,20 +24,27 @@ public class j_loginServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String userName = request.getParameter("username");
-		String password = request.getParameter("password");
 		
 		HrLogin record = null;
-		DBLogin.getLogin("username", "password");
-		
-		HttpSession session = request.getSession();
-		
-		
-		
-		session.setAttribute("username", "Matt");
-		session.setAttribute("password", "MattChuang");
-		request.getRequestDispatcher("j_login.jsp").forward(request, response);
+		//HttpSession session = request.getSession();
 
+		record = DBLogin.getLogin(request.getParameter("username"), request.getParameter("password"));
+		
+		if(record == null) {
+			
+//System.out.println("record is null, username: "+request.getParameter("username"));
+			
+			request.setAttribute("message","Invalid User or Password!!");
+			request.getRequestDispatcher("/j_login.jsp").forward(request, response);
+			
+		}
+		else {
+			
+//System.out.println("record is not null");
+
+			request.setAttribute("message", "working great");
+			request.getRequestDispatcher("j_login.jsp").forward(request, response);
+		}
 	}
 
 }
