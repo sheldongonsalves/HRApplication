@@ -121,5 +121,32 @@ values(3,3,'Pass','Fail','Pass');
 
 select * from HR_Drugtest;
 
+create table HR_Interviewtable (
+interviewid int primary key,
+applicantid int,
+HRinterviewscheduled varchar(50),
+HRinterviewresult varchar(50),
+HMinterviewscheduled varchar(50),
+HMinterviewresult varchar(50),
+Groupinterviewscheduled varchar(50),
+Groupinterviewresult varchar(50),
+FOREIGN KEY (applicantid)
+REFERENCES HR_Applicant(applicantid)
+);
 
+
+
+insert into HR_Interviewtable(interviewid, applicantid, HRinterviewscheduled,
+HRinterviewresult,HMinterviewscheduled,HMinterviewresult,Groupinterviewscheduled,
+Groupinterviewresult)values(1,1,'Yes','Pass','Yes', 'Pass', 'No', 'null');
+
+insert into HR_Interviewtable(interviewid, applicantid, HRinterviewscheduled,
+HRinterviewresult,HMinterviewscheduled,HMinterviewresult,Groupinterviewscheduled,
+Groupinterviewresult)values(2,2,'Yes','Pass','Yes', 'Pass', 'Yes', 'Pass');
+
+insert into HR_Interviewtable(interviewid, applicantid, HRinterviewscheduled,
+HRinterviewresult,HMinterviewscheduled,HMinterviewresult,Groupinterviewscheduled,
+Groupinterviewresult)values(3,3,'No','Fail','No', 'null', 'No', 'null');
+
+select * from HR_Interviewtable;
 
