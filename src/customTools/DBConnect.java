@@ -91,11 +91,12 @@ public class DBConnect {
 		hrd.setStandardpaneltest(standardpaneltest);
 
 		insert(hrd);
+		updateDrugTest(applicantid);
 	}
 
 
 	// generics  to insert code
-	public <T> void insert(Object T) {
+	protected <T> void insert(Object T) {
 		EntityManager em = DBUtil.getEmFactory().createEntityManager();
 		EntityTransaction trans = em.getTransaction();
 		trans.begin();
