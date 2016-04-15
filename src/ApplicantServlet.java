@@ -1,6 +1,7 @@
 /*yash*/
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -58,27 +59,7 @@ HttpSession session = request.getSession();
 		//	HrApplicant u =candidate.get((int) session.getAttribute("Applicantid"));//gets 1st user out of list as resultlist contains one user
 		//	session.setAttribute("candidatesession", u);
 			
-			String name = candidate.get(0).getApplicantname();
-			
-			System.out.println("Name is:" + name);
-			String address = candidate.get(0).getAddress();
-			Date birthdate = candidate.get(0).getBirthdate(); 
-			String education = candidate.get(0).getEducation();
-			String jobhistory = candidate.get(0).getJobhistory();
-			String reference = candidate.get(0).getJobreference();
-			String veteran = candidate.get(0).getVeteranstatus();
-			String drugtest = candidate.get(0).getDrugtestresult();
-			String citizenship = candidate.get(0).getCitizenstatus();
-			
-			request.setAttribute("name", name);
-			request.setAttribute("address", address);
-			request.setAttribute("birthdate", birthdate);
-			request.setAttribute("education", education);
-			request.setAttribute("jobhistory", jobhistory);
-			request.setAttribute("reference", reference);
-			request.setAttribute("veteran", veteran);
-			request.setAttribute("drugtest", drugtest);
-			request.setAttribute("citizenship", citizenship);
+			session.setAttribute("candidate", candidate);
 			
 			request.getRequestDispatcher("/DisplayForm.jsp").forward(request, response);
 					}

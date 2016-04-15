@@ -12,25 +12,30 @@
 </head>
 <body>
 
-
+<c:forEach items="${candidate}" var="candidate">
 <form action="Education" method="post">
 
 Name:  
-${name} 
+<tr><td><c:out value="${candidate.applicantname}" /></td></tr>
 <br>
-Address: ${address}
+Address: 
+<tr><td><c:out value="${candidate.address}"/></td></tr>
 <br>
-Birthday: ${birthday}
+Birthday: 
+<tr><td><c:out value="${candidate.birthdate}"/></td></tr>
 <br>
-Job History: ${jobhistory}
+Job History: 
+<tr><td><c:out value="${candidate.jobhistory}"/></td></tr>
 <br>
-Reference: ${reference}
+Reference:
+ <tr><td><c:out value="${candidate.jobreference}"/></td></tr>
 <br>
-Veteran Status: ${veteran}
+Veteran Status:  
+<tr><td><c:out value="${candidate.veteranstatus}"/></td></tr>
 <br>
 
 </form>
-
+</c:forEach>
 
 
 
