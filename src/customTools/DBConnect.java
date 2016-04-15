@@ -1,8 +1,9 @@
- //Sheldon Gonsalves
+//Sheldon Gonsalves
 package customTools;
 import javax.persistence.Persistence;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
@@ -36,7 +37,16 @@ public class DBConnect {
 		EntityManager em1=DBUtil.getEmFactory().createEntityManager();
 		EntityTransaction trans = em1.getTransaction();
 		TypedQuery<HrApplicant> query =em1.createQuery("SELECT h FROM HrApplicant h where h.applicantid=:applicant_id",HrApplicant.class)
-				.setParameter("applicantid", applicant_id);
+				.setParameter("applicant_id", applicant_id);
+		return query ;
+
+	}
+	protected TypedQuery <HrDrugtest> getApplicantDrugDetails(long applicant_id)
+	{
+		EntityManager em1=DBUtil.getEmFactory().createEntityManager();
+		EntityTransaction trans = em1.getTransaction();
+		TypedQuery<HrDrugtest> query =em1.createQuery("SELECT h FROM HrDrugtest h where h.hrApplicant.applicantid=:applicant_id",HrDrugtest.class)
+				.setParameter("applicant_id", applicant_id);
 		return query ;
 
 	}
@@ -45,6 +55,14 @@ public class DBConnect {
 
 		EntityManager em1=DBUtil.getEmFactory().createEntityManager();
 		TypedQuery<Long> query =em1.createQuery("SELECT max(h.applicantid) FROM HrApplicant h",Long.class);
+
+		return (long) query.getSingleResult();
+	}
+	protected long getNextDrugTestid()
+	{
+
+		EntityManager em1=DBUtil.getEmFactory().createEntityManager();
+		TypedQuery<Long> query =em1.createQuery("SELECT max(h.drugtestid) FROM HrDrugtest h",Long.class);
 
 		return (long) query.getSingleResult();
 	}
@@ -61,10 +79,24 @@ public class DBConnect {
 		hra.setVeteranstatus(veteran);
 		insert(hra);
 	}
+	public void insertDrugTest(long applicantid  ,String alcoholtest ,String dottest,String standardpaneltest)
+	{
+		HrDrugtest hrd = new HrDrugtest();
+		HrApplicant hra =new HrApplicant();
+		hra.setApplicantid(applicantid);
+		hrd.setDrugtestid(getNextDrugTestid()+1);
+		hrd.setHrApplicant(hra);
+		hrd.setAlcoholtest(alcoholtest);
+		hrd.setDottest(dottest);
+		hrd.setStandardpaneltest(standardpaneltest);
+
+		insert(hrd);
+		updateDrugTest(applicantid);
+	}
 
 
 	// generics  to insert code
-	public <T> void insert(Object T) {
+	protected <T> void insert(Object T) {
 		EntityManager em = DBUtil.getEmFactory().createEntityManager();
 		EntityTransaction trans = em.getTransaction();
 		trans.begin();
@@ -88,6 +120,82 @@ public class DBConnect {
 
 				.setParameter("education",education)
 				.setParameter("applicantid",applicantid);
+		trans.begin();
+
+		try
+		{
+
+			query.executeUpdate();
+			trans.commit();
+
+		}
+		catch (Exception e)
+		{
+			trans.rollback();
+
+		}
+		finally
+		{
+			em1.close();
+		}
+
+	}
+
+	public void updateCitizenship(long applicantid ,String citizenship)
+	{
+		EntityManager em1 = DBUtil.getEmFactory().createEntityManager();
+		EntityTransaction trans = em1.getTransaction();
+		TypedQuery query =em1.createQuery(
+				"Update HrApplicant hr set hr.citizenstatus =:citizenship where hr.applicantid = :applicantid",HrApplicant.class)
+
+				.setParameter("citizenstatus",citizenship)
+				.setParameter("applicantid",applicantid);
+		trans.begin();
+
+		try
+		{
+
+			query.executeUpdate();
+			trans.commit();
+
+		}
+		catch (Exception e)
+		{
+			trans.rollback();
+
+		}
+		finally
+		{
+			em1.close();
+		}
+
+	}
+
+
+	public void updateDrugTest(long applicantid )
+	{
+		EntityManager em1 = DBUtil.getEmFactory().createEntityManager();
+		EntityTransaction trans = em1.getTransaction();
+		TypedQuery query=null;
+		List <HrDrugtest> drugTest =getApplicantDrugDetails(applicantid).getResultList();
+		if(drugTest.get(0).getDottest().equalsIgnoreCase("Fail")||drugTest.get(0).getAlcoholtest().equalsIgnoreCase("Fail")||drugTest.get(0).getStandardpaneltest().equalsIgnoreCase("Fail"))
+		{
+			String result="Fail";
+			query =em1.createQuery(
+					"Update HrApplicant hr set hr.drugtestresult =:result where hr.applicantid = :applicantid",HrApplicant.class)
+
+					.setParameter("drugtestresult",result)
+					.setParameter("applicantid",applicantid);
+		}
+		else
+		{
+			String result="Pass";
+			query =em1.createQuery(
+					"Update HrApplicant hr set hr.drugtestresult =:result where hr.applicantid = :applicantid",HrApplicant.class)
+
+					.setParameter("drugtestresult",result)
+					.setParameter("applicantid",applicantid);
+		}
 		trans.begin();
 
 		try

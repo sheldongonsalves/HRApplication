@@ -1,49 +1,22 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta charset="utf-8">
-
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
 <title>Insert title here</title>
 </head>
 <body>
+Chintan Testing jsp page
 
-<c:forEach items="${candidate}" var="candidate">
-<form action="Education" method="post">
+ 
 
-Name:  
-<tr><td><c:out value="${candidate.applicantname}" /></td></tr>
-<br>
-Address: 
-<tr><td><c:out value="${candidate.address}"/></td></tr>
-<br>
-Birthday: 
-<tr><td><c:out value="${candidate.birthdate}"/></td></tr>
-<br>
-Job History: 
-<tr><td><c:out value="${candidate.jobhistory}"/></td></tr>
-<br>
-Reference:
- <tr><td><c:out value="${candidate.jobreference}"/></td></tr>
-<br>
-Veteran Status:  
-<tr><td><c:out value="${candidate.veteranstatus}"/></td></tr>
-<br>
-
-</form>
-</c:forEach>
-
-
-<!-- 
 Education: ${education}
 
+<!-- Visible only if HR Specialist logs in -->
 
 <form action="Education" method="post">
-<c:if test="${rolename.equals('HR Specialist')}" >
+<c:if test="${roleid.equals('2')}" >    
 	<input type="text" name="education"><br>
 	<br> <input type="submit" value="education">
 </c:if>
@@ -54,11 +27,12 @@ Education: ${education}
 
 Drug User: ${druguser}
 
+<!-- Visible only if Health care professional logs in -->
 
 <form action="DrugUser" method="post">
-<c:if test="${rolename.equals('Health Care Professional')}" >
+
+<c:if test="${roleid.equals('4')}" >
 Standard Panel Test:
- 
 <form>
   <input type="radio" name="test1" value="Pass" > Pass<br>
   <input type="radio" name="test1" value="Fail"> Fail<br> 
@@ -78,20 +52,23 @@ Alcohol Test:
 
 
 
+
+
 Citizenship: ${citizenship}
+
+
 
 <form action="Citizenship" method="post">
 <c:if test="${rolename.equals('Health Care Professional')}" >
-
 <input type="radio" name="citizenship" value="IsCitizen"> Citizen <br>
  <input type="radio" name="citizenship" value="IsNotACitizen"> Not a citizen <br>
-  <input type="submit" value="submit"> 
-   
+  <input type="submit" value="submit">  
 </c:if>
 </form>
 
 
 
+<!-- Visible only if HR Manager logs in -->
 
 <form action="HRManager" method="post">
 <c:if test="${rolename.equals('HR Manager')}" >
@@ -100,9 +77,6 @@ Citizenship: ${citizenship}
  <input type="submit" value="schedule">
 </c:if>
 </form>
- -->
-
-
 
 </body>
 </html>
