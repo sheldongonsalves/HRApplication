@@ -31,7 +31,7 @@ public class DBConnect {
 		
 	}
 	
-	public TypedQuery <HrApplicant> getUserDetails(long applicant_id)
+	public TypedQuery <HrApplicant> getApplicantDetails(long applicant_id)
 	{
 		EntityManager em1=DBUtil.getEmFactory().createEntityManager();
 		EntityTransaction trans = em1.getTransaction();
@@ -62,22 +62,9 @@ public class DBConnect {
 		insert(hra);
 	}
 	
-	//generic code to update
-	public static <T> void update(Object T) {
-		EntityManager em = DBUtil.getEmFactory().createEntityManager();
-		EntityTransaction trans = em.getTransaction();
-		trans.begin();
-		try {
-			em.merge(T);
-			trans.commit();
-		} catch (Exception e) {
-			System.out.println(e);
-			trans.rollback();
-		} finally {
-			em.close();
-		}
-	}
-	public static <T> void insert(Object T) {// generics 
+	
+	// generics  to insert code
+	public <T> void insert(Object T) {
 		EntityManager em = DBUtil.getEmFactory().createEntityManager();
 		EntityTransaction trans = em.getTransaction();
 		trans.begin();
@@ -91,4 +78,13 @@ public class DBConnect {
 			em.close();
 		}
 	}
+	/*
+protected TypedQuery <HrApplicant> updateEducation(long applicantid)
+{
+	EntityManager em = DBUtil.getEmFactory().createEntityManager();
+	EntityTransaction trans = em.getTransaction();
+	return 
+}*/
+	
+
 }
