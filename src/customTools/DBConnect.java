@@ -37,7 +37,7 @@ public class DBConnect {
 		EntityManager em1=DBUtil.getEmFactory().createEntityManager();
 		EntityTransaction trans = em1.getTransaction();
 		TypedQuery<HrApplicant> query =em1.createQuery("SELECT h FROM HrApplicant h where h.applicantid=:applicant_id",HrApplicant.class)
-				.setParameter("applicantid", applicant_id);
+				.setParameter("applicant_id", applicant_id);
 		return query ;
 
 	}
@@ -46,7 +46,7 @@ public class DBConnect {
 		EntityManager em1=DBUtil.getEmFactory().createEntityManager();
 		EntityTransaction trans = em1.getTransaction();
 		TypedQuery<HrDrugtest> query =em1.createQuery("SELECT h FROM HrDrugtest h where h.hrApplicant.applicantid=:applicant_id",HrDrugtest.class)
-				.setParameter("applicantid", applicant_id);
+				.setParameter("applicant_id", applicant_id);
 		return query ;
 
 	}
@@ -91,11 +91,12 @@ public class DBConnect {
 		hrd.setStandardpaneltest(standardpaneltest);
 
 		insert(hrd);
+		updateDrugTest(applicantid);
 	}
 
 
 	// generics  to insert code
-	public <T> void insert(Object T) {
+	protected <T> void insert(Object T) {
 		EntityManager em = DBUtil.getEmFactory().createEntityManager();
 		EntityTransaction trans = em.getTransaction();
 		trans.begin();
