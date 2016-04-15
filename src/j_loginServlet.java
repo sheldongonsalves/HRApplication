@@ -31,7 +31,7 @@ public class j_loginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		HrLogin record = null;
-		//HttpSession session = request.getSession();
+		HttpSession session = request.getSession();
 		List<HrApplicant> appList = null;
 		DBConnect dbc = new DBConnect();
 
@@ -44,6 +44,8 @@ public class j_loginServlet extends HttpServlet {
 
 		}
 		else {
+			//pass on the whole user login record
+			session.setAttribute("user", record);
 
 			appList = dbc.getApplicantList().getResultList();			
 			if(appList.isEmpty()){
@@ -51,6 +53,7 @@ public class j_loginServlet extends HttpServlet {
 				request.getRequestDispatcher("ApplicantList.jsp").forward(request, response);
 			}
 			else {
+				
 				request.setAttribute("applicantlist", appList);
 				request.getRequestDispatcher("ApplicantList.jsp").forward(request, response);
 			}
