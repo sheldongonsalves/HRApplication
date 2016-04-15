@@ -16,7 +16,7 @@ Education: ${education}
 <!-- Visible only if HR Specialist logs in -->
 
 <form action="Education" method="post">
-<c:if test="${rolename.equals('HR Specialist')}" >
+<c:if test="${roleid.equals('2')}" >    
 	<input type="text" name="education"><br>
 	<br> <input type="submit" value="education">
 </c:if>
@@ -30,18 +30,21 @@ Drug User: ${druguser}
 <!-- Visible only if Health care professional logs in -->
 
 <form action="DrugUser" method="post">
-<c:if test="${rolename.equals('Health Care Professional')}" >
+
+<c:if test="${roleid.equals('4')}" >
 Standard Panel Test:
- <input type="checkbox" name="drugTest1" value="Pass"> Pass<br>
-  <input type="checkbox" name="drugTest1" value="Fail"> Fail<br>
+<form>
+  <input type="radio" name="test1" value="Pass" > Pass<br>
+  <input type="radio" name="test1" value="Fail"> Fail<br> 
+
 
 Dot Test:
- <input type="checkbox" name="drugTest2" value="Pass"> Pass <br>
-  <input type="checkbox" name="drugTest2" value="Fail"> Fail <br>
+ <input type="radio" name="test2" value="Pass" > Pass<br>
+  <input type="radio" name="test2" value="Fail"> Fail<br> 
 
 Alcohol Test:
- <input type="checkbox" name="drugTest3" value="Pass"> Pass <br>
- <input type="checkbox" name="drugTest3" value="Fail"> Fail <br>   
+ <input type="checkbox" name="test3" value="Pass"> Pass <br>
+ <input type="checkbox" name="test3" value="Fail"> Fail <br>   
  
  <input type="submit" value="submit">
 </c:if>
@@ -53,7 +56,7 @@ Alcohol Test:
 
 Citizenship: ${citizenship}
 
-<!-- Visible only if Compliance Officer logs in -->
+
 
 <form action="Citizenship" method="post">
 <c:if test="${rolename.equals('Health Care Professional')}" >

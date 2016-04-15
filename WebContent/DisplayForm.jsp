@@ -33,6 +33,70 @@ Veteran Status: ${veteran}
 
 
 
+<!-- 
+Education: ${education}
+
+
+<form action="Education" method="post">
+<c:if test="${rolename.equals('HR Specialist')}" >
+	<input type="text" name="education"><br>
+	<br> <input type="submit" value="education">
+</c:if>
+</form>
+
+
+
+
+Drug User: ${druguser}
+
+
+<form action="DrugUser" method="post">
+<c:if test="${rolename.equals('Health Care Professional')}" >
+Standard Panel Test:
+ 
+<form>
+  <input type="radio" name="test1" value="Pass" > Pass<br>
+  <input type="radio" name="test1" value="Fail"> Fail<br> 
+
+
+Dot Test:
+ <input type="radio" name="test2" value="Pass" > Pass<br>
+  <input type="radio" name="test2" value="Fail"> Fail<br> 
+
+Alcohol Test:
+ <input type="checkbox" name="test3" value="Pass"> Pass <br>
+ <input type="checkbox" name="test3" value="Fail"> Fail <br>   
+ 
+ <input type="submit" value="submit">
+</c:if>
+</form>
+
+
+
+Citizenship: ${citizenship}
+
+<form action="Citizenship" method="post">
+<c:if test="${rolename.equals('Health Care Professional')}" >
+
+<input type="radio" name="citizenship" value="IsCitizen"> Citizen <br>
+ <input type="radio" name="citizenship" value="IsNotACitizen"> Not a citizen <br>
+  <input type="submit" value="submit"> 
+   
+</c:if>
+</form>
+
+
+
+
+<form action="HRManager" method="post">
+<c:if test="${rolename.equals('HR Manager')}" >
+ <input type="radio" name="reject"><br>
+ <input type="radio" name="schedule"><br> 
+ <input type="submit" value="schedule">
+</c:if>
+</form>
+ -->
+
 
 
 </body>

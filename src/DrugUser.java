@@ -6,36 +6,40 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-/**
- * Servlet implementation class DrugUser
- */
+import customTools.DBConnect;
+
+
 @WebServlet("/DrugUser")
 public class DrugUser extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+ 
     public DrugUser() {
         super();
-        // TODO Auto-generated constructor stub
+        
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+	
+		doPost(request,response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		
+	HttpSession session= request.getSession() ;
+		
+		DBConnect d= new DBConnect();
+		
+		String test1=(String) request.getAttribute("test1");
+		String test2=(String) request.getAttribute("test2");
+		String test3=(String) request.getAttribute("test3");
+		
+		//For when this method is created
+	//	d.InsertDrugTest(test1,test2,test3); 
+		
+		//Call method getApplicantDetails to display druguser and return dispatcher to DisplayForm
 	}
 
 }
