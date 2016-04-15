@@ -35,7 +35,8 @@ public class ApplicantListServlet extends HttpServlet {
 		DBConnect ApplicantList = new DBConnect();
 		
 		long applicant_id = 0;
-		ApplicantList.getUserDetails(applicant_id);
+		ApplicantList.getApplicantDetails(applicant_id);
+		
 		
 	}
 
