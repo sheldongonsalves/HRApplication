@@ -40,18 +40,27 @@ public class ApplicantServlet extends HttpServlet {
 		
 HttpSession session = request.getSession();
 		
-		session.getAttribute("Applicantid");
+
+
+	//	session.getAttribute("Applicantid");
+      long applicant_id=1;
+      
 
 		DBConnect Applicant = new DBConnect();
+		System.out.println("Check1");
 		
-		long applicant_id = 1;
+
+	//	long applicant_id = 0;
+
 		List<HrApplicant> candidate= Applicant.getApplicantDetails(applicant_id).getResultList();
-		
+		System.out.println("Check2");
 		{
-			HrApplicant u =candidate.get((int) session.getAttribute("Applicantid"));//gets 1st user out of list as resultlist contains one user
-			session.setAttribute("candidatesession", u);
+		//	HrApplicant u =candidate.get((int) session.getAttribute("Applicantid"));//gets 1st user out of list as resultlist contains one user
+		//	session.setAttribute("candidatesession", u);
 			
 			String name = candidate.get(0).getApplicantname();
+			
+			System.out.println("Name is:" + name);
 			String address = candidate.get(0).getAddress();
 			Date birthdate = candidate.get(0).getBirthdate(); 
 			String education = candidate.get(0).getEducation();

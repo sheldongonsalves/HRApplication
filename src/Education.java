@@ -35,6 +35,16 @@ public class Education extends HttpServlet {
 		
 		DBConnect d= new DBConnect();
 		
+		
+		long applicantid = (long) session.getAttribute("Applicantid");
+		
+		String education =request.getParameter("education");
+		
+		d.updateEducation(applicantid, education); 
+		
+		
+		
+		
 	
 		
 		
