@@ -8,16 +8,24 @@
 </head>
 <body>
 <form>
-<h2>Human Resources Interview</h2>
+<h3>Human Resources Interview</h3>
 
   <input type="radio" name="status" value="pass" checked> Pass<br>
-  <input type="radio" name="status" value="fail"> Fail<br>
+  <input type="radio" name="status" value="fail"> Fail<br><br>
   
-<h2>Taken Coding Test?</h2> 
+  <h4>Any Comments?</h4>
+  <input type="text" name="comment" value="${param.comment}"><br>
+  <hr>
+  
+<h3>Taken Coding Test?</h3> 
   <input type="radio" name="test" value="yes" checked> Yes
   <input type="radio" name="test" value="no"> No<br>
+<h3>Dose the Applicant Pass or Fail?</h3>  
+   <input type="radio" name="teststatus" value="pass" checked> Pass
+  <input type="radio" name="teststatus" value="fail"> Fail<br>
+  <hr>
   
-  
+  <input type="submit" value="Submit">
 </form> 
 </body>
 </html>
