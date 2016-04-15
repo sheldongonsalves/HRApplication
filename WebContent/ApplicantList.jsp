@@ -35,7 +35,7 @@
 		</form>-->
 
 
-	<c:if Roleid=3>
+	<c:if test="${Loginid.Roleid} == 3">
 		<form action="NewApplication.jsp">
 			<input type="button" value="Add Applicant">
 		</form>
