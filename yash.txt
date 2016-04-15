@@ -88,4 +88,38 @@ insert into HR_Applicant(applicantid,applicantname,address,birthdate,education,j
 drugtestresult,veteranstatus,citizenstatus)
 values(1,'Yash','Fairfax',TO_DATE('02/29/2016','mm/dd/yyyy'),'Master of Science','3 Years Experience','Raoul Gabiam', 'Pass', 'No', 'No');
 
+insert into HR_Applicant(applicantid,applicantname,address,birthdate,education,jobhistory,jobreference,
+drugtestresult,veteranstatus,citizenstatus)
+values(2,'Chintan','Maryland',TO_DATE('01/29/2016','mm/dd/yyyy'),'Master of Science','2 Years Experience','Sachin Tendulkar', 'Pass', 'Yes', 'Yes');
+
+insert into HR_Applicant(applicantid,applicantname,address,birthdate,education,jobhistory,jobreference,
+drugtestresult,veteranstatus,citizenstatus)
+values(3,'Julie','GermanTown',TO_DATE('01/29/1970','mm/dd/yyyy'),'Master of Science','8 Years Experience','Eric Mazer', 'Fail', 'No', 'Yes');
 select * from HR_Applicant;
+
+
+
+create table HR_Drugtest (
+drugtestid int primary key,
+applicantid int,
+standardpaneltest varchar(50),
+DOTtest varchar(50),
+Alcoholtest varchar(50),
+FOREIGN KEY (applicantid)
+REFERENCES HR_Applicant(applicantid)
+);
+
+
+insert into HR_Drugtest(drugtestid,applicantid,standardpaneltest,DOTtest,Alcoholtest)
+values(1,1,'Pass','Pass','Pass');
+
+insert into HR_Drugtest(drugtestid,applicantid,standardpaneltest,DOTtest,Alcoholtest)
+values(2,2,'Pass','Pass','Pass');
+
+insert into HR_Drugtest(drugtestid,applicantid,standardpaneltest,DOTtest,Alcoholtest)
+values(3,3,'Pass','Fail','Pass');
+
+select * from HR_Drugtest;
+
+
+
