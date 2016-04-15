@@ -7,15 +7,15 @@
 <title>Login</title>
 </head>
 <body>
-	<form action="loginServlet" method="post">
-		<div class="form-group">
+	<form action="j_loginServlet" method="post">
 			<p>
 				<b>Welcome to HR Application</b>
 			</p>
-			User Name:<br> <input type="text" name="username" value=${para.username}><br>
-			Password:<br> <input type="password" name="password"><br>
+				<p>${message}</p>
+			
+			User Name:<br> <input type="text" name="username" value=${param.username}><br>
+			Password:<br> <input type="text" name="password"><br>
 			<br> <input type="submit" value="login">
-		</div>
 	</form>
 </body>
 </html>
