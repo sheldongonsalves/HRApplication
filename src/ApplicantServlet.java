@@ -80,7 +80,7 @@ HttpSession session = request.getSession();
 			request.setAttribute("drugtest", drugtest);
 			request.setAttribute("citizenship", citizenship);
 			
-			request.getRequestDispatcher("DisplayForm.jsp").forward(request, response);
+			request.getRequestDispatcher("/DisplayForm.jsp").forward(request, response);
 					}
 		
 		
