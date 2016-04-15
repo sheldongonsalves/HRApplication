@@ -2,7 +2,7 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -11,27 +11,34 @@
 </head>
 <body>
 
-<table class="table">		
-<tr>
+	<table class="table">
+		<tr>
 			<th>Applicant ID</th>
 			<th>Applicant Name</th>
-			</tr>
-			
-			<c:forEach items="${registeredlist}" var="Applicant">
+		</tr>
+
+		<c:forEach items="Change this-${registeredlist}" var="Applicant">
 			<tr>
 				<td><c:out value="${Applicant.applicantid}" /></td>
-				<td>
-				<input type="hidden" name="Applicantid" value="${Applicant.applicantid}">
-				<c:out <a href = "<c:url value="#servletname"}/>">${Applicant.applicantname}</a>/>
-			
+				<td><input type="hidden" name="Applicantid"
+					value="${Applicant.applicantid}"> <c:out
+						<a href = "<c:url value="#servletname"}/>">${Applicant.applicantname}</a> />
+
 				</td>
-				</tr>
+			</tr>
 		</c:forEach>
-			</table>
-			
-			<form action="/NewApplicant.jsp">
-		<input type="hidden" name="add" value="${studentid}">
-		<input type="submit" name="add" value="add class" >
+	</table>
+
+	<!--  	<form action="/NewApplicant.jsp">
+		<input type="hidden" name="add" value="${Loginid}">
+		<input type="submit" name="add" value="Add New Applicant" >
+		</form>-->
+
+
+	<c:if test="${Loginid.Roleid} == 3">
+		<form action="NewApplication.jsp">
+			<input type="button" value="Add Applicant">
 		</form>
+	</c:if>
 </body>
 </html>
