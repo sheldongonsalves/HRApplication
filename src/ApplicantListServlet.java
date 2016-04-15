@@ -30,13 +30,7 @@ public class ApplicantListServlet extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		HttpSession session = request.getSession();
-		
-		DBConnect ApplicantList = new DBConnect();
-		
-		long applicant_id = 0;
-		ApplicantList.getApplicantDetails(applicant_id);
-		
+	
 		
 	}
 
