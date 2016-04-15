@@ -28,5 +28,10 @@
 				</tr>
 		</c:forEach>
 			</table>
+			
+			<form action="/NewApplicant.jsp">
+		<input type="hidden" name="add" value="${studentid}">
+		<input type="submit" name="add" value="add class" >
+		</form>
 </body>
 </html>

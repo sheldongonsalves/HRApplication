@@ -16,7 +16,6 @@
 			<property name="javax.persistence.jdbc.user" value="ora1" />
 			<property name="javax.persistence.jdbc.password" value="ora1" />
 			<property name="javax.persistence.jdbc.driver" value="oracle.jdbc.OracleDriver" />
-			<property name="eclipselink.exclude-eclipselink-orm" value="false" />
 		</properties>
 
 	</persistence-unit>
