@@ -56,6 +56,8 @@ public class j_loginServlet extends HttpServlet {
 				
 				request.setAttribute("applicantlist", appList);
 				request.getRequestDispatcher("ApplicantList.jsp").forward(request, response);
+				//request.getRequestDispatcher("HumanResourceInterview.jsp").forward(request, response);
+
 			}
 		}
 	}
