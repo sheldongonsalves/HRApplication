@@ -1,3 +1,6 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page import="model.HrLogin"%>
+<%@ page import="model.HrRole"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -8,8 +11,8 @@
 </head>
 <body>
 <form>
-<h3>Human Resources Interview</h3>
 
+<h3>Human Resources Interview</h3>
   <input type="radio" name="status" value="pass" checked> Pass<br>
   <input type="radio" name="status" value="fail"> Fail<br><br>
   
