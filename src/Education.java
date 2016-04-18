@@ -3,12 +3,14 @@
 import java.io.IOException;
 import java.util.List;
 
+import javax.persistence.TypedQuery;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
 
 import model.HrApplicant;
 import customTools.DBConnect;
@@ -43,10 +45,17 @@ public class Education extends HttpServlet {
 		d.updateEducation(applicantid, education); 
 		
 		
+		//Call method getApplicantDetails to display education and return dispatcher to DisplayForm
 		
+
 		
-	
+		TypedQuery<HrApplicant> r = null;
 		
+		r = d.getApplicantDetails(applicantid);
+
+		request.setAttribute("applicantEdu", r);
+			
+		request.getRequestDispatcher("/DisplayForm.jsp").forward(request, response);
 		
 	}
 
