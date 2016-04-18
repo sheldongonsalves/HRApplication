@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import customTools.DBConnect;
+import customTools.DBLogin;
 import model.HrInterviewtable;
 import model.HrLogin;
 
@@ -30,6 +32,8 @@ public class InterviewServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HrInterviewtable interviewTable = new HrInterviewtable();
 		HttpSession session = request.getSession();
+		DBLogin dbl=null;
+		DBConnect dbc=null;
 
 		HrLogin user;
 
@@ -44,26 +48,26 @@ public class InterviewServlet extends HttpServlet {
 			String codingTest = request.getParameter("test");
 			//Coding test if taken: pass/fail
 			String codingTestStatus = request.getParameter("teststatus");
+			long applicantId = (long) session.getAttribute("Applicantid");
 
 
 			//assume only these 3 roles can make it here
 			if(user.getHrRole().getRolename().equalsIgnoreCase("HR Manager"))
 			{
-				interviewTable.setHrinterviewscheduled("yes");
-				interviewTable.setHrinterviewresult(interviewStatus);
-				//need to insert interview table here
+				//insert interview table for HR manager here
+				dbl.insertNewInterviewTable(applicantId, "Yes", interviewStatus);
 			}
 			else if(user.getHrRole().getRolename().equalsIgnoreCase("Hiring Manager"))
 			{
-				interviewTable.setHminterviewscheduled("yes");
-				interviewTable.setHminterviewresult(interviewStatus);
-				//need to update interview table here
+				//update interview table for Hiring Manager here
+				dbc.updateScheduleHiringManagerInterview(applicantId);
+				dbc.updateHMInterviewResult(applicantId, interviewStatus);
 			}
 			else if(user.getHrRole().getRolename().equalsIgnoreCase("Group Interview Manager"))
 			{
-				interviewTable.setGroupinterviewscheduled("yes");
-				interviewTable.setGroupinterviewresult(interviewStatus);
-				//need to update interview table here
+				//update interview table for group interview here
+				dbc.updateScheduleGroupInterview(applicantId);
+				dbc.updateGroupInterviewResult(applicantId, interviewStatus);
 			}
 		}
 
