@@ -42,7 +42,7 @@ public class DBConnect {
 		return query ;
 
 	}
-	protected TypedQuery <HrDrugtest> getApplicantDrugDetails(long applicant_id)
+	public TypedQuery <HrDrugtest> getApplicantDrugDetails(long applicant_id)
 	{
 		EntityManager em1=DBUtil.getEmFactory().createEntityManager();
 		EntityTransaction trans = em1.getTransaction();
@@ -431,14 +431,15 @@ public class DBConnect {
 				.setParameter("applicantid", applicantid);
 		return query;
 	}
-	public void updateCodingTestTaken(long applicantid ,String groupinterviewresultstatus)//Group Interview hits a pass or fail then update the group interview column
+	
+	public void updateCodingTestTaken(long applicantid ,String codingTestTaken)//Group interview taken or not taken
 	{
 		EntityManager em1 = DBUtil.getEmFactory().createEntityManager();
 		EntityTransaction trans = em1.getTransaction();
 		TypedQuery query =em1.createQuery(
-				"Update HrInterviewtable hr set hr.groupinterviewresult =:groupinterviewresultstatus where hr.hrApplicant.applicantid = :applicantid",HrInterviewtable.class)
+				"Update HrInterviewtable hr set hr.codingtest =:codingTestTaken where hr.hrApplicant.applicantid = :applicantid",HrInterviewtable.class)
 
-				.setParameter("groupinterviewresultstatus",groupinterviewresultstatus)
+				.setParameter("codingTestTaken",codingTestTaken)
 				.setParameter("applicantid",applicantid);
 		trans.begin();
 
@@ -460,7 +461,36 @@ public class DBConnect {
 		}
 
 	}
-	
+	public void updateCodingTestResult(long applicantid ,String codingTestResult)//Coding test result updated in the table
+	{
+		EntityManager em1 = DBUtil.getEmFactory().createEntityManager();
+		EntityTransaction trans = em1.getTransaction();
+		TypedQuery query =em1.createQuery(
+				"Update HrInterviewtable hr set hr.codingtestresult =:codingTestResult where hr.hrApplicant.applicantid = :applicantid",HrInterviewtable.class)
+
+				.setParameter("codingTestResult",codingTestResult)
+				.setParameter("applicantid",applicantid);
+		trans.begin();
+
+		try
+		{
+
+			query.executeUpdate();
+			trans.commit();
+
+		}
+		catch (Exception e)
+		{
+			trans.rollback();
+
+		}
+		finally
+		{
+			em1.close();
+		}
+
+	}
+
 
 }
 
