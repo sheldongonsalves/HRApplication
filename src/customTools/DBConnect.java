@@ -16,7 +16,7 @@ import model.HrDrugtest;
 import model.HrInterviewtable;
 import model.HrLogin;
 import model.HrRole;
-import model.Samazon;
+
 
 public class DBConnect {
 
@@ -283,12 +283,12 @@ public class DBConnect {
 		List<HrInterviewtable> details=(List<HrInterviewtable>) getInterviewList(applicantid).getSingleResult();
 		if(details.get(0).getHrinterviewresult().equalsIgnoreCase("Pass"))
 		{
-		String hminterview="Yes";
-		query =em1.createQuery(
-				"Update HrInterviewtable hr set hr.hminterviewscheduled =:hminterviewstatus where hr.hrApplicant.applicantid = :applicantid",HrInterviewtable.class)
+			String hminterview="Yes";
+			query =em1.createQuery(
+					"Update HrInterviewtable hr set hr.hminterviewscheduled =:hminterviewstatus where hr.hrApplicant.applicantid = :applicantid",HrInterviewtable.class)
 
-				.setParameter("hminterviewstatus",hminterview)
-				.setParameter("applicantid",applicantid);
+					.setParameter("hminterviewstatus",hminterview)
+					.setParameter("applicantid",applicantid);
 		}
 		else
 		{
@@ -356,12 +356,12 @@ public class DBConnect {
 		List<HrInterviewtable> details=(List<HrInterviewtable>) getInterviewList(applicantid).getSingleResult();
 		if(details.get(0).getHrinterviewresult().equalsIgnoreCase("Pass"))
 		{
-		String groupinterview="Yes";
-		query =em1.createQuery(
-				"Update HrInterviewtable hr set hr.groupinterviewscheduled =:groupinterviewstatus where hr.hrApplicant.applicantid = :applicantid",HrInterviewtable.class)
+			String groupinterview="Yes";
+			query =em1.createQuery(
+					"Update HrInterviewtable hr set hr.groupinterviewscheduled =:groupinterviewstatus where hr.hrApplicant.applicantid = :applicantid",HrInterviewtable.class)
 
-				.setParameter("groupinterviewstatus",groupinterview)
-				.setParameter("applicantid",applicantid);
+					.setParameter("groupinterviewstatus",groupinterview)
+					.setParameter("applicantid",applicantid);
 		}
 		else
 		{
@@ -392,7 +392,7 @@ public class DBConnect {
 		}
 
 	}
-	
+
 	public void updateGroupInterviewResult(long applicantid ,String groupinterviewresultstatus)//Group Interview hits a pass or fail then update the group interview column
 	{
 		EntityManager em1 = DBUtil.getEmFactory().createEntityManager();
@@ -430,8 +430,8 @@ public class DBConnect {
 				.setParameter("applicantid", applicantid);
 		return query;
 	}
-	
-	}
+
+}
 
 
 
