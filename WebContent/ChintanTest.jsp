@@ -11,7 +11,7 @@ Chintan Testing jsp page
 
  
 
-Education: ${education}
+<!--  Education: ${education}   -->
 
 <!-- Visible only if HR Specialist logs in -->
 
@@ -20,6 +20,7 @@ Education: ${education}
 	<input type="text" name="education"><br>
 	<br> <input type="submit" value="education">
 </c:if>
+Education: ${applicantEdu}     
 </form>
 
 
@@ -59,7 +60,7 @@ Citizenship: ${citizenship}
 
 
 <form action="Citizenship" method="post">
-<c:if test="${rolename.equals('Health Care Professional')}" >
+<c:if test="${roleid.equals('5')}" >
 <input type="radio" name="citizenship" value="IsCitizen"> Citizen <br>
  <input type="radio" name="citizenship" value="IsNotACitizen"> Not a citizen <br>
   <input type="submit" value="submit">  
@@ -71,7 +72,7 @@ Citizenship: ${citizenship}
 <!-- Visible only if HR Manager logs in -->
 
 <form action="HRManager" method="post">
-<c:if test="${rolename.equals('HR Manager')}" >
+<c:if test="${rolename.equals('1')}" >
  <input type="radio" name="reject"><br>
  <input type="radio" name="schedule"><br> 
  <input type="submit" value="schedule">
