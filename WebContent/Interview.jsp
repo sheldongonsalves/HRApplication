@@ -14,8 +14,8 @@
 		<h3>
 			<c:out value="${user.hrRole.rolename} " /> Interview
 		</h3>
-		<input type="radio" name="status" value="Pass" ${passchecked}> Pass<br>
-		<input type="radio" name="status" value="Fail" ${failchecked}> Fail<br>
+		<input type="radio" name="status" value="Pass"> Pass<br>
+		<input type="radio" name="status" value="Fail"> Fail<br>
 		<br>
 
 		<h4>Any Comments?</h4>
@@ -23,10 +23,10 @@
 		<hr>
 		<c:if test="${user.hrRole.rolename != 'HR Manager'}" >
 			<h3>Taken Coding Test?</h3>
-			<input type="radio" name="test" value="Yes" checked> Yes 
+			<input type="radio" name="test" value="Yes"> Yes 
 			<input type="radio" name="test" value="No"> No<br>
 			<h3>Dose the Applicant Pass or Fail?</h3>
-			<input type="radio" name="teststatus" value="Pass" checked>
+			<input type="radio" name="teststatus" value="Pass">
 			Pass <input type="radio" name="teststatus" value="Fail"> Fail<br>
 		</c:if>
 		<input type="submit" value="Submit">
