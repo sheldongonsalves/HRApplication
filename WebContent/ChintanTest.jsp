@@ -15,13 +15,17 @@ Chintan Testing jsp page
 
 <!-- Visible only if HR Specialist logs in -->
 
-<form action="Education" method="post">
-<c:if test="${roleid.equals('2')}" >    
+
+
+<c:if test="${roleid.equals('2')}" > 
+<form action="Education" method="post">   
 	<input type="text" name="education"><br>
 	<br> <input type="submit" value="education">
+	</form>
 </c:if>
+
 Education: ${applicantEdu}     
-</form>
+
 
 
 
