@@ -15,9 +15,9 @@
 <tr><td>Name:<input type="text" id="Name" name="Name" /></td></tr>
 <tr><td>Address:<input type="text" id="Address" name="Address" /></td></tr>
 <tr><td>BirthDate: <input type="date" id="Birthdate" name="Birthdate" /></td></tr>
-<tr><td>Job History: <input type="text" id="jobhistory" name="jobhistory" /></td></tr>
-<tr><td>Reference: <input type="text" id="reference" name="reference" /></td></tr>
-<tr><td>Veteran Status: <input type="text" id="veteranstatus" name="veteranstatus" /></td></tr>
+<tr><td>Job History: <input type="text" id="Jobhistory" name="Jobhistory" /></td></tr>
+<tr><td>Reference: <input type="text" id="Reference" name="Reference" /></td></tr>
+<tr><td>Veteran Status: <input type="text" id="Veteranstatus" name="Veteranstatus" /></td></tr>
 
 <tr><td><form action="NewApplicantServlet" method="Post">
 <input type="hidden" name="Add Details" value="1">
