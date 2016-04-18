@@ -41,7 +41,7 @@ public class ApplicantServlet extends HttpServlet {
 		
 HttpSession session = request.getSession();
 		
-
+session.getAttribute("user");
 
 	//	session.getAttribute("Applicantid");
      

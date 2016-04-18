@@ -17,7 +17,7 @@
 			<th>Applicant Name</th>
 		</tr>
 
-		<c:forEach items="Change this-${registeredlist}" var="Applicant">
+		<c:forEach items="${applicantlist}" var="Applicant">
 			<tr>
 				<td><c:out value="${Applicant.applicantid}" /></td>
 				<td><input type="hidden" name="Applicantid"
