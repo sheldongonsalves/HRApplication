@@ -45,7 +45,7 @@ session.getAttribute("user");
 
 	//	session.getAttribute("Applicantid");
      
-		long applicant_id=2;
+		long applicant_id=Long.parseLong((request.getParameter("Applicantid")));
 		long roleid=4;
 
 		DBConnect Applicant = new DBConnect();
@@ -62,7 +62,7 @@ session.getAttribute("user");
 			
 			session.setAttribute("candidate", candidate);
 			session.setAttribute("roleid", roleid);
-			
+			session.setAttribute("applicantid", applicant_id);
 			request.getRequestDispatcher("/DisplayForm.jsp").forward(request, response);
 					
 		}
