@@ -38,7 +38,9 @@ public class Education extends HttpServlet {
 		DBConnect d= new DBConnect();
 		
 		
-		long applicantid = (long) session.getAttribute("Applicantid");
+	//	long applicantid = (long) session.getAttribute("Applicantid");
+		
+		long applicantid=2;
 		
 		String education =request.getParameter("education");
 		
@@ -49,11 +51,13 @@ public class Education extends HttpServlet {
 		
 
 		
-		TypedQuery<HrApplicant> r = null;
+	
 		
-		r = d.getApplicantDetails(applicantid);
+		List<HrApplicant> applicantUpdate= d.getApplicantDetails(applicantid).getResultList();
 
-		request.setAttribute("applicantEdu", r);
+		request.setAttribute("applicantUpdate", applicantUpdate);
+		
+	
 			
 		request.getRequestDispatcher("/DisplayForm.jsp").forward(request, response);
 		

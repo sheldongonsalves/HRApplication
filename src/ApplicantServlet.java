@@ -41,11 +41,12 @@ public class ApplicantServlet extends HttpServlet {
 		
 HttpSession session = request.getSession();
 		
-
+session.getAttribute("user");
 
 	//	session.getAttribute("Applicantid");
-      long applicant_id=1;
-      
+     
+		long applicant_id=2;
+		long roleid=4;
 
 		DBConnect Applicant = new DBConnect();
 		System.out.println("Check1");
@@ -60,10 +61,11 @@ HttpSession session = request.getSession();
 		//	session.setAttribute("candidatesession", u);
 			
 			session.setAttribute("candidate", candidate);
+			session.setAttribute("roleid", roleid);
 			
 			request.getRequestDispatcher("/DisplayForm.jsp").forward(request, response);
-					}
-		
+					
+		}
 		
 		
 		
