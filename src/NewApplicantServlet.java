@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import customTools.DBConnect;
+import model.HrApplicant;
 
 
 
@@ -38,6 +40,7 @@ public class NewApplicantServlet extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		DBConnect NewApplicant = new DBConnect();
+		List<HrApplicant> appList = null;
 		
 		String name = request.getParameter("Name");
 		String address = request.getParameter("Address");
@@ -54,8 +57,9 @@ public class NewApplicantServlet extends HttpServlet {
 		String veteranstatus = request.getParameter("Veteranstatus");
 		
 		NewApplicant.insertNewApplicant(name, address, birthdate, jobhistory, reference, veteranstatus );
-		
-		request.getRequestDispatcher("/ApplicantList.jsp").forward(request, response);
+		appList = NewApplicant.getApplicantList().getResultList();
+		request.setAttribute("applicantlist", appList);
+		request.getRequestDispatcher("ApplicantList.jsp").forward(request, response);
 		
  		
 	}

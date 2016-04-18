@@ -1,6 +1,7 @@
 
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.persistence.TypedQuery;
 import javax.servlet.ServletException;
@@ -33,25 +34,30 @@ public class DrugUser extends HttpServlet {
 		
 	HttpSession session= request.getSession() ;
 	
-	long applicantid= (long) session.getAttribute("applicantid");
+	//long applicantid= (long) session.getAttribute("applicantid");
 		
+	long applicantid=2;
+	
 		DBConnect d= new DBConnect();
 		
-		String test1=(String) request.getAttribute("test1");
-		String test2=(String) request.getAttribute("test2");
-		String test3=(String) request.getAttribute("test3");
+		String test1=(String) request.getParameter("test1");
+		System.out.println("testing result1"+ test1);
 		
-		//For when this method is created
-	//	d.InsertDrugTest(test1,test2,test3); 
+		String test2=(String) request.getParameter("test2");
+		String test3=(String) request.getParameter("test3");
+		
+		
+	   d.insertDrugTest(applicantid,test1,test2,test3); 
 		
 		//Call method getApplicantDetails to display druguser and return dispatcher to DisplayForm
 	
 		
-		TypedQuery<HrApplicant> r = null;
-		
-		r = d.getApplicantDetails(applicantid);
 
-		request.setAttribute("applicantDrug", r);
+		List<HrApplicant> applicantUpdate= d.getApplicantDetails(applicantid).getResultList();
+
+		request.setAttribute("applicantUpdate", applicantUpdate);
+		
+	
 			
 		request.getRequestDispatcher("/DisplayForm.jsp").forward(request, response);
 	}
