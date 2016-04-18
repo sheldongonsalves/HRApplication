@@ -5,9 +5,25 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>New Applicant Details</title>
 </head>
 <body>
+<h1>HR Application</h1>
+<h2>Insert New Applicant Details</h2>
+<table class="table">
 
+<tr><td>Name:<input type="text" id="Name" name="Name" /></td></tr>
+<tr><td>Address:<input type="text" id="Address" name="Address" /></td></tr>
+<tr><td>BirthDate: <input type="date" id="Birthdate" name="Birthdate" /></td></tr>
+<tr><td>Job History: <input type="text" id="jobhistory" name="jobhistory" /></td></tr>
+<tr><td>Reference: <input type="text" id="reference" name="reference" /></td></tr>
+<tr><td>Veteran Status: <input type="text" id="veteranstatus" name="veteranstatus" /></td></tr>
+
+<tr><td><form action="NewApplicantServlet" method="Post">
+<input type="hidden" name="Add Details" value="1">
+<input type="submit" value="Add Details">
+</form></td></tr>
+
+</table>
 </body>
 </html>
