@@ -218,7 +218,7 @@ public class DBConnect {
 		}
 
 	}
-	public void updateHrInterviewResult(long applicantid ,String hrinterviewresultstatus)//Hr manager hits a schedule then update the hrinterviewtable
+	public void updateHrInterviewSchedule(long applicantid ,String hrinterviewresultstatus)//Hr manager hits a schedule then update the hrinterviewtable
 	{
 		EntityManager em1 = DBUtil.getEmFactory().createEntityManager();
 		EntityTransaction trans = em1.getTransaction();
