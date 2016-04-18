@@ -23,8 +23,8 @@
 		<hr>
 		<c:if test="${user.hrRole.rolename != 'HR Manager'}" >
 			<h3>Taken Coding Test?</h3>
-			<input type="radio" name="test" value="Yes"> Yes 
-			<input type="radio" name="test" value="No"> No<br>
+			<input type="radio" name="test" value="Taken"> Yes 
+			<input type="radio" name="test" value="NotTaken"> No<br>
 			<h3>Dose the Applicant Pass or Fail?</h3>
 			<input type="radio" name="teststatus" value="Pass">
 			Pass <input type="radio" name="teststatus" value="Fail"> Fail<br>
