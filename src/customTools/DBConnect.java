@@ -149,7 +149,7 @@ public class DBConnect {
 		TypedQuery query =em1.createQuery(
 				"Update HrApplicant hr set hr.citizenstatus =:citizenship where hr.applicantid = :applicantid",HrApplicant.class)
 
-				.setParameter("citizenstatus",citizenship)
+				.setParameter("citizenship",citizenship)
 				.setParameter("applicantid",applicantid);
 		trans.begin();
 

@@ -1,6 +1,8 @@
 
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import customTools.DBConnect;
+import model.HrApplicant;
 
 
 @WebServlet("/Citizenship")
@@ -30,15 +33,29 @@ public class Citizenship extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 HttpSession session= request.getSession() ;
+
+//long applicantid= (long) session.getAttribute("applicantid");
+	
+		long applicantid=2;
 		
 		DBConnect d= new DBConnect();
 		
-		String citizenship=(String) request.getAttribute("citizenship");
+		String citizenship=(String) request.getParameter("citizenship");
+		
+		System.out.println("Your status is "+citizenship);
 	
-		//For when this method is created
-	//	d.InsertCitizenship(citizenship); 
+		d.updateCitizenship(applicantid,citizenship); 
 		
 		//Call method getApplicantDetails to display citizenship and return dispatcher to DisplayForm
+	
+
+		List<HrApplicant> applicantUpdate= d.getApplicantDetails(applicantid).getResultList();
+
+		request.setAttribute("applicantUpdate", applicantUpdate);
+		
+	
+			
+		request.getRequestDispatcher("/DisplayForm.jsp").forward(request, response);
 	}
 
 }

@@ -55,8 +55,7 @@ Education: ${candidate.education}
 	</c:forEach>
 	</c:if>
 <br>
-
-
+<br>
 
 
 
@@ -64,22 +63,28 @@ Education: ${candidate.education}
 
 
 <c:forEach items="${candidate}" var="candidate">
-Drug Test: ${candidate.drugtestresult}
+Drug Test: ${candidate.drugtestresult} <br>
 </c:forEach>
-<c:if test="${roleid.equals(4)}" > 
+<br>
+
+<c:if test="${roleid.equals(4)}"> 
+
+	
 <form action="DrugUser" method="post">   
+
+Update test results: <br>
 	
 Standard Panel Test:
-  	<input type="radio" name="test1" value="Pass" > Pass<br>
+  	<input type="radio" name="test1" value="Pass" > Pass
   	<input type="radio" name="test1" value="Fail"> Fail<br> 
 
 
 Dot Test:
- 	<input type="radio" name="test2" value="Pass" > Pass<br>
+ 	<input type="radio" name="test2" value="Pass" > Pass
   	<input type="radio" name="test2" value="Fail"> Fail<br> 
 
 Alcohol Test:
- 	<input type="radio" name="test3" value="Pass"> Pass <br>
+ 	<input type="radio" name="test3" value="Pass"> Pass 
  	<input type="radio" name="test3" value="Fail"> Fail <br>   
  
  	<input type="submit" value="submit">
@@ -93,24 +98,34 @@ Alcohol Test:
 <br>
 
 
-<!--  
+
 
 
 <c:forEach items="${candidate}" var="candidate">
-
 Citizen: ${candidate.citizenstatus}
-
 </c:forEach>
 
 
+<c:if test="${roleid.equals(5)}" > 
+<form action="Citizenship" method="post">   
+<input type="radio" name="citizenship" value="Yes"> Citizen <br>
+ <input type="radio" name="citizenship" value="No"> Not a citizen <br>
+  <input type="submit" value="submit"> 
+	</form>
+	
+	<c:forEach items="${applicantUpdate}" var="applicantUpdate">
+	Updated Citizenship:
+	 <tr><td><c:out value="${applicantUpdate.citizenstatus}"/></td></tr>
+	</c:forEach>
+	</c:if>
+<br>
 
 
 
 
 
 
-
-  
+  <!--  
 
 Drug User: ${druguser}
 
@@ -143,8 +158,8 @@ Citizenship: ${citizenship}
 <form action="Citizenship" method="post">
 <c:if test="${rolename.equals('Health Care Professional')}" >
 
-<input type="radio" name="citizenship" value="IsCitizen"> Citizen <br>
- <input type="radio" name="citizenship" value="IsNotACitizen"> Not a citizen <br>
+<input type="radio" name="citizenship" value="Yes"> Citizen <br>
+ <input type="radio" name="citizenship" value="No"> Not a citizen <br>
   <input type="submit" value="submit"> 
    
 </c:if>
