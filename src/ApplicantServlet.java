@@ -46,7 +46,7 @@ session.getAttribute("user");
 	//	session.getAttribute("Applicantid");
      
 		long applicant_id=Long.parseLong((request.getParameter("Applicantid")));
-		long roleid=4;
+		long roleid=(long) session.getAttribute("roleid");
 
 		DBConnect Applicant = new DBConnect();
 		System.out.println("Check1");

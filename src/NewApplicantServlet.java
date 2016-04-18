@@ -39,6 +39,7 @@ public class NewApplicantServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		
 		HttpSession session = request.getSession();
+		long roleid=(long) session.getAttribute("roleid");
 		DBConnect NewApplicant = new DBConnect();
 		List<HrApplicant> appList = null;
 		
@@ -58,6 +59,7 @@ public class NewApplicantServlet extends HttpServlet {
 		
 		NewApplicant.insertNewApplicant(name, address, birthdate, jobhistory, reference, veteranstatus );
 		appList = NewApplicant.getApplicantList().getResultList();
+		session.setAttribute("roleid", roleid);
 		request.setAttribute("applicantlist", appList);
 		request.getRequestDispatcher("ApplicantList.jsp").forward(request, response);
 		
