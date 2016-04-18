@@ -46,7 +46,8 @@ public class LoginServlet extends HttpServlet {
 		else {
 			//pass on the whole user login record
 			session.setAttribute("user", record);
-			session.setAttribute("roleid", record.getHrRole().getRoleid());
+			long roleid = 3;
+			//session.setAttribute("roleid", record.getHrRole().getRoleid());
 
 
 			appList = dbc.getApplicantList().getResultList();			
