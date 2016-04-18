@@ -16,11 +16,11 @@ import customTools.DBLogin;
 import model.HrApplicant;
 import model.HrLogin;
 
-@WebServlet("/j_loginServlet")
-public class j_loginServlet extends HttpServlet {
+@WebServlet("/LoginServlet")
+public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public j_loginServlet() {
+	public LoginServlet() {
 		super();
 	}
 
@@ -40,7 +40,7 @@ public class j_loginServlet extends HttpServlet {
 		if(record == null) {
 
 			request.setAttribute("message","Invalid User or Password!!");
-			request.getRequestDispatcher("/j_login.jsp").forward(request, response);
+			request.getRequestDispatcher("/Login.jsp").forward(request, response);
 
 		}
 		else {
@@ -56,7 +56,7 @@ public class j_loginServlet extends HttpServlet {
 				
 				request.setAttribute("applicantlist", appList);
 				request.getRequestDispatcher("ApplicantList.jsp").forward(request, response);
-				//request.getRequestDispatcher("HumanResourceInterview.jsp").forward(request, response);
+				//request.getRequestDispatcher("Interview.jsp").forward(request, response);
 
 			}
 		}

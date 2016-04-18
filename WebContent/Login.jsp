@@ -7,7 +7,7 @@
 <title>Login</title>
 </head>
 <body>
-	<form action="j_loginServlet" method="post">
+	<form action="LoginServlet" method="post">
 			<p>
 				<b>Welcome to HR Application</b>
 			</p>
