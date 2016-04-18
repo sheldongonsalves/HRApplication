@@ -60,7 +60,7 @@ Education: ${candidate.education}
 
 
 
-<!--  
+  
 
 
 <c:forEach items="${candidate}" var="candidate">
@@ -68,10 +68,23 @@ Drug Test: ${candidate.drugtestresult}
 </c:forEach>
 <c:if test="${roleid.equals(4)}" > 
 <form action="DrugUser" method="post">   
-	<input type="text" name="druguser"><br>
-	<input type="submit">
-	</form>
 	
+Standard Panel Test:
+  	<input type="radio" name="test1" value="Pass" > Pass<br>
+  	<input type="radio" name="test1" value="Fail"> Fail<br> 
+
+
+Dot Test:
+ 	<input type="radio" name="test2" value="Pass" > Pass<br>
+  	<input type="radio" name="test2" value="Fail"> Fail<br> 
+
+Alcohol Test:
+ 	<input type="radio" name="test3" value="Pass"> Pass <br>
+ 	<input type="radio" name="test3" value="Fail"> Fail <br>   
+ 
+ 	<input type="submit" value="submit">
+	
+	</form>
 	<c:forEach items="${applicantUpdate}" var="applicantUpdate">
 	Updated Drug Test:
 	 <tr><td><c:out value="${applicantUpdate.drugtestresult}"/></td></tr>
@@ -80,6 +93,7 @@ Drug Test: ${candidate.drugtestresult}
 <br>
 
 
+<!--  
 
 
 <c:forEach items="${candidate}" var="candidate">

@@ -179,13 +179,14 @@ public class DBConnect {
 		EntityTransaction trans = em1.getTransaction();
 		TypedQuery query=null;
 		List <HrDrugtest> drugTest =getApplicantDrugDetails(applicantid).getResultList();
+		System.out.println(drugTest.get(0).getDottest());
 		if(drugTest.get(0).getDottest().equalsIgnoreCase("Fail")||drugTest.get(0).getAlcoholtest().equalsIgnoreCase("Fail")||drugTest.get(0).getStandardpaneltest().equalsIgnoreCase("Fail"))
-		{
+		{   
 			String result="Fail";
 			query =em1.createQuery(
 					"Update HrApplicant hr set hr.drugtestresult =:result where hr.applicantid = :applicantid",HrApplicant.class)
 
-					.setParameter("drugtestresult",result)
+					.setParameter("result",result)
 					.setParameter("applicantid",applicantid);
 		}
 		else
