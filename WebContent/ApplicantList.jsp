@@ -21,8 +21,8 @@
 			<tr>
 				<td><c:out value="${Applicant.applicantid}" /></td>
 				<td><input type="hidden" name="Applicantid"
-					value="${Applicant.applicantid}"> <c:out
-						<a href = "<c:url value="#servletname"}/>">${Applicant.applicantname}</a> />
+					value="${Applicant.applicantid}"> 
+					<c:out <a href = "<c:url value="#ApplicantServlet"}/>">${Applicant.applicantname}</a> />
 
 				</td>
 			</tr>
@@ -35,7 +35,7 @@
 		</form>-->
 
 
-	<c:if test="${Loginid.Roleid} == 3"> <!-- need to confirm loginid and role id -->
+	<c:if test="${roleid.equals(3)}"> <!-- need to confirm loginid and role id -->
 		<form action="NewApplication.jsp">
 			<input type="button" value="Add Applicant">
 		</form>
