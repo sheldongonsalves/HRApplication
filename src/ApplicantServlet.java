@@ -44,10 +44,10 @@ public class ApplicantServlet extends HttpServlet {
 
 		//	session.getAttribute("Applicantid");
 
-		//long applicant_id=2;
-		//long roleid=5;
-		long applicant_id=Long.parseLong(request.getParameter("Applicantid"));
-		long roleid=(long) session.getAttribute("roleid");
+		long applicant_id=2;
+		long roleid=1;
+	//	long applicant_id=Long.parseLong(request.getParameter("Applicantid"));
+	//	long roleid=(long) session.getAttribute("roleid");
 
 
 		DBConnect Applicant = new DBConnect();
