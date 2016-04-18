@@ -15,7 +15,12 @@ public class HrInterviewtable implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long interviewid;
+
+	private String codingtest;
+
+	private String codingtestresult;
 
 	private String groupinterviewresult;
 
@@ -43,6 +48,22 @@ public class HrInterviewtable implements Serializable {
 
 	public void setInterviewid(long interviewid) {
 		this.interviewid = interviewid;
+	}
+
+	public String getCodingtest() {
+		return this.codingtest;
+	}
+
+	public void setCodingtest(String codingtest) {
+		this.codingtest = codingtest;
+	}
+
+	public String getCodingtestresult() {
+		return this.codingtestresult;
+	}
+
+	public void setCodingtestresult(String codingtestresult) {
+		this.codingtestresult = codingtestresult;
 	}
 
 	public String getGroupinterviewresult() {
