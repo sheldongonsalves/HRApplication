@@ -1,11 +1,15 @@
 package customTools;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.management.Query;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 
+import model.HrApplicant;
+import model.HrInterviewtable;
 import model.HrLogin;
 
 public class DBLogin {
@@ -33,6 +37,45 @@ public class DBLogin {
 			return record;
 		}
 		
+	}
+	
+	// generics  to insert code
+	protected <T> void insert(Object T) {
+			EntityManager em = DBUtil.getEmFactory().createEntityManager();
+			EntityTransaction trans = em.getTransaction();
+			trans.begin();
+			try {
+				em.persist(T);
+				trans.commit();
+			} catch (Exception e) {
+				System.out.println(e);
+				trans.rollback();
+			} finally {
+				em.close();
+			}
+		}
+	
+	protected long getNextInterviewTableid()
+	{
+
+		EntityManager em1=DBUtil.getEmFactory().createEntityManager();
+		TypedQuery<Long> query =em1.createQuery("SELECT max(h.interviewid) FROM HrInterviewtable h",Long.class);
+
+		return (long) query.getSingleResult();
+	}
+	
+	public void insertNewInterviewTable(long applicantid, String schedule, String status)
+	{
+		HrInterviewtable hrit =new HrInterviewtable();
+		HrApplicant ha = new HrApplicant();
+		
+		ha.setApplicantid(applicantid);
+		hrit.setHrApplicant(ha);
+		hrit.setInterviewid(getNextInterviewTableid()+1);
+		hrit.setHrinterviewscheduled(schedule);
+		hrit.setHrinterviewresult(status);
+		
+		insert(hrit);
 	}
 
 }
