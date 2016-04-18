@@ -21,59 +21,56 @@ import model.HrApplicant;
 @WebServlet("/ApplicantServlet")
 public class ApplicantServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-   
-    public ApplicantServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
-	
+
+	public ApplicantServlet() {
+		super();
+		
+	}
+
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+
+
 		doPost(request, response);
 	}
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		
-HttpSession session = request.getSession();
-		
-session.getAttribute("user");
 
-	//	session.getAttribute("Applicantid");
-     
-<<<<<<< HEAD
-		long applicant_id=2;
-		long roleid=5;
-=======
-		long applicant_id=Long.parseLong((request.getParameter("Applicantid")));
+		HttpSession session = request.getSession();
+
+		session.getAttribute("user");
+
+		//	session.getAttribute("Applicantid");
+
+		//long applicant_id=2;
+		//long roleid=5;
+		long applicant_id=Long.parseLong(request.getParameter("Applicantid"));
 		long roleid=(long) session.getAttribute("roleid");
->>>>>>> c6375c47f8e6ebd0e24ac337d7d18364dde9d9e9
+
 
 		DBConnect Applicant = new DBConnect();
 		System.out.println("Check1");
-		
 
-	//	long applicant_id = 0;
+
+		//	long applicant_id = 0;
 
 		List<HrApplicant> candidate= Applicant.getApplicantDetails(applicant_id).getResultList();
 		System.out.println("Check2");
 		{
-		//	HrApplicant u =candidate.get((int) session.getAttribute("Applicantid"));//gets 1st user out of list as resultlist contains one user
-		//	session.setAttribute("candidatesession", u);
-			
+			//	HrApplicant u =candidate.get((int) session.getAttribute("Applicantid"));//gets 1st user out of list as resultlist contains one user
+			//	session.setAttribute("candidatesession", u);
+
 			session.setAttribute("candidate", candidate);
 			session.setAttribute("roleid", roleid);
 			session.setAttribute("applicantid", applicant_id);
 			request.getRequestDispatcher("/DisplayForm.jsp").forward(request, response);
-					
+
 		}
-		
-		
-		
+
+
+
 	}
 
 }
