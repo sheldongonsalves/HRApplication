@@ -156,3 +156,25 @@ select * from HR_Role;
 select * from HR_Applicant;
 select * from HR_Drugtest;
 select * from HR_Interviewtable;
+
+
+
+
+---------------------------------------------------
+Adding column in HR_interviewtable
+-----------------------------------------------------
+
+alter table HR_Interviewtable add CodingTest varchar(50);
+alter table HR_Interviewtable add CodingTestResult varchar(50);
+
+update HR_Interviewtable
+Set CodingTest='Taken', CodingTestResult='Pass'
+where interviewid=1;
+
+update HR_Interviewtable
+Set CodingTest='Taken', CodingTestResult='Fail'
+where interviewid=2;
+
+update HR_Interviewtable
+Set CodingTest='NotTaken', CodingTestResult='Fail'
+where interviewid=3;
