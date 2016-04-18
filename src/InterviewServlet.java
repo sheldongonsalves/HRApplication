@@ -56,18 +56,25 @@ public class InterviewServlet extends HttpServlet {
 			{
 				//insert interview table for HR manager here
 				dbl.insertNewInterviewTable(applicantId, "Yes", interviewStatus);
+
 			}
 			else if(user.getHrRole().getRolename().equalsIgnoreCase("Hiring Manager"))
 			{
 				//update interview table for Hiring Manager here
 				dbc.updateScheduleHiringManagerInterview(applicantId);
 				dbc.updateHMInterviewResult(applicantId, interviewStatus);
+				dbc.updateCodingTestTaken(applicantId, codingTest);
+				dbc.updateCodingTestResult(applicantId, codingTestStatus);
 			}
 			else if(user.getHrRole().getRolename().equalsIgnoreCase("Group Interview Manager"))
 			{
 				//update interview table for group interview here
 				dbc.updateScheduleGroupInterview(applicantId);
 				dbc.updateGroupInterviewResult(applicantId, interviewStatus);
+				dbc.updateCodingTestTaken(applicantId, codingTest);
+				dbc.updateCodingTestResult(applicantId, codingTestStatus);
+
+
 			}
 		}
 
