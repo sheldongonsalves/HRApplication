@@ -16,6 +16,7 @@ import model.HrDrugtest;
 import model.HrInterviewtable;
 import model.HrLogin;
 import model.HrRole;
+import model.Samazon;
 
 public class DBConnect {
 
@@ -216,7 +217,221 @@ public class DBConnect {
 		}
 
 	}
-}
+	public void updateHrInterviewResult(long applicantid ,String hrinterviewresultstatus)//Hr manager hits a schedule then update the hrinterviewtable
+	{
+		EntityManager em1 = DBUtil.getEmFactory().createEntityManager();
+		EntityTransaction trans = em1.getTransaction();
+		TypedQuery query =em1.createQuery(
+				"Update HrInterviewtable hr set hr.hrinterviewresult =:hrinterviewstatus where hr.hrApplicant.applicantid = :applicantid",HrInterviewtable.class)
+
+				.setParameter("hrinterviewstatus",hrinterviewresultstatus)
+				.setParameter("applicantid",applicantid);
+		trans.begin();
+
+		try
+		{
+
+			query.executeUpdate();
+			trans.commit();
+
+		}
+		catch (Exception e)
+		{
+			trans.rollback();
+
+		}
+		finally
+		{
+			em1.close();
+		}
+
+	}
+	public void updateHrResult(long applicantid ,String hrinterviewresultstatus)//Hr manager hits a schedule then update the hrinterviewtable
+	{
+		EntityManager em1 = DBUtil.getEmFactory().createEntityManager();
+		EntityTransaction trans = em1.getTransaction();
+		TypedQuery query =em1.createQuery(
+				"Update HrInterviewtable hr set hr.hrinterviewresult =:hrinterviewstatus where hr.hrApplicant.applicantid = :applicantid",HrInterviewtable.class)
+
+				.setParameter("hrinterviewstatus",hrinterviewresultstatus)
+				.setParameter("applicantid",applicantid);
+		trans.begin();
+
+		try
+		{
+
+			query.executeUpdate();
+			trans.commit();
+
+		}
+		catch (Exception e)
+		{
+			trans.rollback();
+
+		}
+		finally
+		{
+			em1.close();
+		}
+
+	}
+	public void updateScheduleHiringManagerInterview(long applicantid)//Hm manager interview scheduled
+	{
+		EntityManager em1 = DBUtil.getEmFactory().createEntityManager();
+		EntityTransaction trans = em1.getTransaction();
+		TypedQuery query ;
+		List<HrInterviewtable> details=(List<HrInterviewtable>) getInterviewList(applicantid).getSingleResult();
+		if(details.get(0).getHrinterviewresult().equalsIgnoreCase("Pass"))
+		{
+		String hminterview="Yes";
+		query =em1.createQuery(
+				"Update HrInterviewtable hr set hr.hminterviewscheduled =:hminterviewstatus where hr.hrApplicant.applicantid = :applicantid",HrInterviewtable.class)
+
+				.setParameter("hminterviewstatus",hminterview)
+				.setParameter("applicantid",applicantid);
+		}
+		else
+		{
+			String hminterview="No";
+			query =em1.createQuery(
+					"Update HrInterviewtable hr set hr.hminterviewscheduled =:hminterviewstatus where hr.hrApplicant.applicantid = :applicantid",HrInterviewtable.class)
+
+					.setParameter("hminterviewstatus",hminterview)
+					.setParameter("applicantid",applicantid);
+		}
+		trans.begin();
+
+		try
+		{
+
+			query.executeUpdate();
+			trans.commit();
+
+		}
+		catch (Exception e)
+		{
+			trans.rollback();
+
+		}
+		finally
+		{
+			em1.close();
+		}
+
+	}
+	public void updateHMInterviewResult(long applicantid ,String hminterviewresultstatus)//HM manager hits a pass or fail then update the hminterview column
+	{
+		EntityManager em1 = DBUtil.getEmFactory().createEntityManager();
+		EntityTransaction trans = em1.getTransaction();
+		TypedQuery query =em1.createQuery(
+				"Update HrInterviewtable hr set hr.hminterviewresult =:hminterviewstatus where hr.hrApplicant.applicantid = :applicantid",HrInterviewtable.class)
+
+				.setParameter("hminterviewstatus",hminterviewresultstatus)
+				.setParameter("applicantid",applicantid);
+		trans.begin();
+
+		try
+		{
+
+			query.executeUpdate();
+			trans.commit();
+
+		}
+		catch (Exception e)
+		{
+			trans.rollback();
+
+		}
+		finally
+		{
+			em1.close();
+		}
+
+	}
+	public void updateScheduleGroupInterview(long applicantid)//group interview scheduled
+	{
+		EntityManager em1 = DBUtil.getEmFactory().createEntityManager();
+		EntityTransaction trans = em1.getTransaction();
+		TypedQuery query ;
+		List<HrInterviewtable> details=(List<HrInterviewtable>) getInterviewList(applicantid).getSingleResult();
+		if(details.get(0).getHrinterviewresult().equalsIgnoreCase("Pass"))
+		{
+		String groupinterview="Yes";
+		query =em1.createQuery(
+				"Update HrInterviewtable hr set hr.groupinterviewscheduled =:groupinterviewstatus where hr.hrApplicant.applicantid = :applicantid",HrInterviewtable.class)
+
+				.setParameter("groupinterviewstatus",groupinterview)
+				.setParameter("applicantid",applicantid);
+		}
+		else
+		{
+			String groupinterview="No";
+			query =em1.createQuery(
+					"Update HrInterviewtable hr set hr.groupinterviewscheduled =:hminterviewstatus where hr.hrApplicant.applicantid = :applicantid",HrInterviewtable.class)
+
+					.setParameter("groupinterviewstatus",groupinterview)
+					.setParameter("applicantid",applicantid);
+		}
+		trans.begin();
+
+		try
+		{
+
+			query.executeUpdate();
+			trans.commit();
+
+		}
+		catch (Exception e)
+		{
+			trans.rollback();
+
+		}
+		finally
+		{
+			em1.close();
+		}
+
+	}
+	
+	public void updateGroupInterviewResult(long applicantid ,String groupinterviewresultstatus)//Group Interview hits a pass or fail then update the group interview column
+	{
+		EntityManager em1 = DBUtil.getEmFactory().createEntityManager();
+		EntityTransaction trans = em1.getTransaction();
+		TypedQuery query =em1.createQuery(
+				"Update HrInterviewtable hr set hr.groupinterviewresult =:groupinterviewresultstatus where hr.hrApplicant.applicantid = :applicantid",HrInterviewtable.class)
+
+				.setParameter("groupinterviewresultstatus",groupinterviewresultstatus)
+				.setParameter("applicantid",applicantid);
+		trans.begin();
+
+		try
+		{
+
+			query.executeUpdate();
+			trans.commit();
+
+		}
+		catch (Exception e)
+		{
+			trans.rollback();
+
+		}
+		finally
+		{
+			em1.close();
+		}
+
+	}
+
+	public TypedQuery <HrInterviewtable> getInterviewList(long applicantid)//gets a selected row from the interview table
+	{
+		EntityManager em1=DBUtil.getEmFactory().createEntityManager();
+		TypedQuery<HrInterviewtable> query =em1.createQuery("SELECT h FROM HrInterviewtable h hrApplicant.applicantid = :applicantid",HrInterviewtable.class)
+				.setParameter("applicantid", applicantid);
+		return query;
+	}
+	
+	}
 
 
 
