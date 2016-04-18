@@ -14,8 +14,8 @@
 		<h3>
 			<c:out value="${user.hrRole.rolename} " /> Interview
 		</h3>
-		<input type="radio" name="status" value="pass" checked> Pass<br>
-		<input type="radio" name="status" value="fail"> Fail<br>
+		<input type="radio" name="status" value="pass" ${passchecked}> Pass<br>
+		<input type="radio" name="status" value="fail" ${failchecked}> Fail<br>
 		<br>
 
 		<h4>Any Comments?</h4>
