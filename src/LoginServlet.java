@@ -32,7 +32,7 @@ public class LoginServlet extends HttpServlet {
 
 		HrLogin record = null;
 		HttpSession session = request.getSession();
-		List<HrApplicant> appList = null;
+		List<HrApplicant> appList ;
 		DBConnect dbc = new DBConnect();
 
 		record = DBLogin.getLogin(request.getParameter("username"), request.getParameter("password"));
@@ -51,16 +51,22 @@ public class LoginServlet extends HttpServlet {
 
 			appList = dbc.getApplicantList().getResultList();			
 			if(appList.isEmpty()){
-				request.setAttribute("applicantlist", "No Applicants");
+				System.out.println("We are here if");
+				session.setAttribute("applicantlist", "No Applicants");
 				request.getRequestDispatcher("ApplicantList.jsp").forward(request, response);
 			}
 			else {
-				
-				request.setAttribute("applicantlist", appList);
-				request.getRequestDispatcher("ApplicantList.jsp").forward(request, response);
+				System.out.println("We are here else");
+				for(HrApplicant list:appList)
+				{
+					System.out.println(list.getApplicantid()+list.getApplicantname());
+				}
+				session.setAttribute("applicantlist",appList);
+				request.getRequestDispatcher("/ApplicantList.jsp").forward(request, response);
 				//request.getRequestDispatcher("Interview.jsp").forward(request, response);
 
 			}
+			
 		}
 	}
 
