@@ -54,12 +54,12 @@ public class NewApplicantServlet extends HttpServlet {
 		}
 		
 		//String birthdate = request.getParameter("Birthdate");
-		
+		String education = request.getParameter("Education");
 		String jobhistory = request.getParameter("Jobhistory");
 		String reference = request.getParameter("Reference");
 		String veteranstatus = request.getParameter("Veteranstatus");
 		
-		NewApplicant.insertNewApplicant(name, address, birthdate, jobhistory, reference, veteranstatus );
+		NewApplicant.insertNewApplicant(name, address, birthdate, education, jobhistory, reference, veteranstatus );
 		appList = NewApplicant.getApplicantList().getResultList();
 		session.setAttribute("roleid", roleid);
 		request.setAttribute("applicantlist", appList);
