@@ -34,33 +34,6 @@
 
 <h2> Applicant Details </h2>
 
-<tr><td>
-Name:  
-</td><td><c:out value="${candidate.applicantname}" /></td></tr>
-<br>
-<tr><td>
-Address: 
-</td><tr><td><c:out value="${candidate.address}"/></td></tr>
-<br>
-<tr><td>
-Birthday: 
-</td><tr><td><c:out value="${candidate.birthdate}"/></td></tr>
-<br>
-<tr><td>
-Job History: 
-</td><tr><td><c:out value="${candidate.jobhistory}"/></td></tr>
-<br>
-<tr><td>
-Reference:
- <tr><td><c:out value="${candidate.jobreference}"/></td></tr>
-<br>
-<tr><td>
-Veteran Status:  
-</td><tr><td><c:out value="${candidate.veteranstatus}"/></td></tr>
-<br>
-
-
-
 <table class="table">
 <tr>
 <td>Name: </td>  
@@ -98,6 +71,7 @@ Veteran Status:
 </c:forEach>
 
 <br>
+
 <c:forEach items="${candidate}" var="candidate">
 
 <c:if test="${roleid.equals(3)}" > 
