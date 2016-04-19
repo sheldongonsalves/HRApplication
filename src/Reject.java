@@ -32,7 +32,10 @@ public class Reject extends HttpServlet {
 		HrInterviewtable hrit=null;
 
 		long applicantId = (long)session.getAttribute("applicantid");
-		dbl.insertNewInterviewTable(applicantId, "No", "");
+		String interviewschedule ="No";
+		String status="";
+System.out.println("Applicant ID:" + applicantId);
+		dbl.insertNewInterviewTable(applicantId,interviewschedule,status);
 
 		session.setAttribute("interviewtable", hrit);
 	
