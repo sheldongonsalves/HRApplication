@@ -35,6 +35,7 @@ public class Reject extends HttpServlet {
 		dbl.insertNewInterviewTable(applicantId, "No", "");
 
 		session.setAttribute("interviewtable", hrit);
+	
 		request.getRequestDispatcher("/DisplayForm.jsp").forward(request, response);
 		
 	}
