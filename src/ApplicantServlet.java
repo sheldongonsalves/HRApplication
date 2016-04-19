@@ -57,7 +57,7 @@ public class ApplicantServlet extends HttpServlet {
 
 		//	long applicant_id = 0;
 
-		List<HrApplicant> candidate= Applicant.getApplicantDetails(applicant_id).getResultList();
+		List<HrApplicant> candidate= Applicant.getApplicantDetails(applicantid).getResultList();
 		System.out.println("Check2");
 		{
 			//	HrApplicant u =candidate.get((int) session.getAttribute("Applicantid"));//gets 1st user out of list as resultlist contains one user
