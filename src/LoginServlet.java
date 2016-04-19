@@ -46,10 +46,9 @@ public class LoginServlet extends HttpServlet {
 		}
 		else {
 			//pass on the whole user login record
-<<<<<<< HEAD
-=======
 
->>>>>>> a94d996ca04768f5d383298ebb8bf2c847b540e7
+
+
 			session.setAttribute("user", record);
 			//long roleid = 3;
 			session.setAttribute("roleid", record.getHrRole().getRoleid());
@@ -59,10 +58,9 @@ public class LoginServlet extends HttpServlet {
 			if(applicantlist.isEmpty()){
 				System.out.println("We are here if");
 				session.setAttribute("applicantlist", "No Applicants");
-<<<<<<< HEAD
-=======
 
->>>>>>> a94d996ca04768f5d383298ebb8bf2c847b540e7
+
+
 
 			//session.setAttribute("user", record);
 			//long roleid = 3;
