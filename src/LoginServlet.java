@@ -69,18 +69,24 @@ public class LoginServlet extends HttpServlet {
 				System.out.println("We are here else");
 				try{
 					request.setAttribute("applicantlist",applicantlist);
+					session.setAttribute("applicantlist",applicantlist);
 					request.getRequestDispatcher("/ApplicantList.jsp").forward(request, response);
 					//request.getRequestDispatcher("Interview.jsp").forward(request, response);
+
+			
 				}
+
 				catch (NumberFormatException ex)
 				{
 					ex.getMessage();
+
 				}
 
 			}
 
 		}
 	}
-
 }
+
+
 
