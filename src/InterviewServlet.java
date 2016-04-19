@@ -32,25 +32,30 @@ public class InterviewServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HrInterviewtable interviewTable = new HrInterviewtable();
 		HttpSession session = request.getSession();
-		DBLogin dbl=null;
-		DBConnect dbc=null;
-		HrInterviewtable hrit=null;
+		DBLogin dbl=new DBLogin();
+		DBConnect dbc=new DBConnect();
+		HrInterviewtable hrit= new HrInterviewtable();
+		
+		
+		HrLogin user = (HrLogin)session.getAttribute("user");			
+		long  roleid = (long)session.getAttribute("roleid");
 
-		HrLogin user;
+		//getting input from Interview page
+		//Interview status: pass/fail
+		String interviewStatus = request.getParameter("status");
+		System.out.println("...................................."+interviewStatus);
+		//Coding test: taken or not
+		String codingTest = request.getParameter("test");
+		//Coding test if taken: pass/fail
+		String codingTestStatus = request.getParameter("teststatus");
+		long applicantId = (long) session.getAttribute("applicantid");
+		
+		
+		dbc.updateHrResult(applicantId, interviewStatus);
 
 		if(request.getParameter("status").equals("pass")==true)
 		{
-			user = (HrLogin)session.getAttribute("user");			
-			long  roleid = (long)session.getAttribute("roleid");
-
-			//getting input from Interview page
-			//Interview status: pass/fail
-			String interviewStatus = request.getParameter("status");
-			//Coding test: taken or not
-			String codingTest = request.getParameter("test");
-			//Coding test if taken: pass/fail
-			String codingTestStatus = request.getParameter("teststatus");
-			long applicantId = (long) session.getAttribute("applicantid");
+			
 
 
 			//assume only these 3 roles can make it here

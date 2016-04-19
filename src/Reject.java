@@ -15,10 +15,10 @@ import model.HrInterviewtable;
 @WebServlet("/Reject")
 public class Reject extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    
-    public Reject() {
-        super();
-    }
+
+	public Reject() {
+		super();
+	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
@@ -28,19 +28,20 @@ public class Reject extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		DBLogin dbl=null;
-		HrInterviewtable hrit=null;
+		DBLogin dbl= new DBLogin();
+		HrInterviewtable hrit=new HrInterviewtable();
 
 		long applicantId = (long)session.getAttribute("applicantid");
 		String interviewschedule ="No";
 		String status="";
-System.out.println("Applicant ID:" + applicantId);
+		System.out.println("Applicant ID:" + applicantId);
+
 		dbl.insertNewInterviewTable(applicantId,interviewschedule,status);
 
 		session.setAttribute("interviewtable", hrit);
-	
+
 		request.getRequestDispatcher("/DisplayForm.jsp").forward(request, response);
-		
+
 	}
 
 }

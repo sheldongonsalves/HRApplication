@@ -10,7 +10,7 @@
 <title>Interview</title>
 </head>
 <body>
-	<form>
+	<form action="Interview" method="post">
 		<h3>
 			<c:out value="${user.hrRole.rolename} " /> Interview
 		</h3>

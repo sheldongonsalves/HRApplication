@@ -247,14 +247,14 @@ public class DBConnect {
 		}
 
 	}
-	public void updateHrResult(long applicantid ,String hrinterviewresultstatus)//Hr manager hits a schedule then update the hrinterviewtable
+	public void updateHrResult(long applicantid ,String hrinterviewresult)//Hr manager hits a schedule then update the hrinterviewtable
 	{
 		EntityManager em1 = DBUtil.getEmFactory().createEntityManager();
 		EntityTransaction trans = em1.getTransaction();
 		TypedQuery query =em1.createQuery(
-				"Update HrInterviewtable hr set hr.hrinterviewresult =:hrinterviewstatus where hr.hrApplicant.applicantid = :applicantid",HrInterviewtable.class)
+				"Update HrInterviewtable hr set hr.hrinterviewresult =:hrinterviewresult where hr.hrApplicant.applicantid = :applicantid",HrInterviewtable.class)
 
-				.setParameter("hrinterviewstatus",hrinterviewresultstatus)
+				.setParameter("hrinterviewresult",hrinterviewresult)
 				.setParameter("applicantid",applicantid);
 		trans.begin();
 

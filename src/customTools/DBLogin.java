@@ -70,9 +70,10 @@ public class DBLogin {
 		HrApplicant ha = new HrApplicant();
 		DBConnect dbc = new DBConnect();
 
-		List<HrInterviewtable> details= (List<HrInterviewtable>) dbc.getInterviewList(applicantid).getSingleResult();
+		List<HrInterviewtable> details= dbc.getInterviewList(applicantid).getResultList();
 		if(details.isEmpty()){
 			//insert new interview row
+			
 			ha.setApplicantid(applicantid);
 			hrit.setHrApplicant(ha);
 			hrit.setInterviewid(getNextInterviewTableid()+1);
