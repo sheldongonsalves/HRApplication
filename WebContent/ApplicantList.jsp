@@ -42,9 +42,12 @@
 
 	<c:if test="${roleid.equals(3)}">
 		<!-- need to confirm loginid and role id -->
-		<form action="NewApplicant.jsp">
+	<!--  	<form action="NewApplicant.jsp" method="post">
 			<input type="button" value="Add Applicant">
-		</form>
+		</form>  -->
+		
+		<a href="NewApplicant.jsp"> Add new applicant </a>
+		
 	</c:if>
 </body>
 </html>

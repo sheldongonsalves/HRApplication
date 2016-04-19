@@ -21,8 +21,8 @@
 <tr><td>Veteran Status: <input type="text" id="Veteranstatus" name="Veteranstatus" /></td></tr>
 
 
-<input type="hidden" name="Add Details" value="1">
-<input type="submit" value="Add Details">
+<tr><td><input type="hidden" name="Add Details" value="1">
+<input type="submit" value="Add Details"></td></tr>
 </form></td></tr>
 
 </table>
