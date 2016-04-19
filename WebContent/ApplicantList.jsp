@@ -25,7 +25,7 @@
 					<td><c:out value="${item.applicantid}"></c:out></td>
 					<td><c:out value="${item.applicantname}"></c:out></td>
 					<form action="ApplicantServlet" method="post">
-					<td><input type="hidden" name="applicantID" value="${item.applicantid}"> 
+					<td><input type="hidden" name="applicantid" value="${item.applicantid}"> 
 					<input type="submit" value="view details"></td>
 					</form>
 				</tr>
