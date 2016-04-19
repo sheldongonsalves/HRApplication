@@ -26,44 +26,76 @@
 
 <c:forEach items="${candidate}" var="candidate">
 
-<h2> Applicant name </h2>
-<tr><td><c:out value="${candidate.applicantname}" /></td></tr>
-<br>
+<h3> Applicant name: <c:out value="${candidate.applicantname}" /> </h3>
 
-Nationality: 
-<tr><td><c:out value="${candidate.citizenstatus}"/></td></tr>
 <br>
-Job Reference: 
-<tr><td><c:out value="${candidate.jobreference}"/></td></tr>
 <br>
-Job History: 
-<tr><td><c:out value="${candidate.jobhistory}"/></td></tr>
-<br>
-Drug Test Result:
- <tr><td><c:out value="${candidate.drugtestresult}"/></td></tr>
-<br>
-Veteran Status:  
-<tr><td><c:out value="${candidate.veteranstatus}"/></td></tr>
-<br>
+</c:forEach>
+
+<table class="table">
+
+<c:forEach items="${candidate}" var="candidate">
+
+<tr>
+<td>Nationality: </td>
+<td><c:out value="${candidate.citizenstatus}"/></td>
+</tr>
+
+
+<tr>
+<td>Job Reference: </td>
+<td><c:out value="${candidate.jobreference}"/></td>
+</tr>
+
+
+<tr>
+<td>Job History: </td>
+<td><c:out value="${candidate.jobhistory}"/></td>
+</tr>
+
+<tr>
+<td>Drug Test Result: </td>
+<td><c:out value="${candidate.drugtestresult}"/></td>
+ </tr>
+
+
+<tr>
+<td>Veteran Status: </td> 
+<td><c:out value="${candidate.veteranstatus}"/></td>
+</tr>
+
 
 </c:forEach>
 
 <c:forEach items="${interviewtable}" var="interviewtable">
 
-Coding Test Result: 
-<tr><td><c:out value="${interviewtable.codingtestresult}"/></td></tr>
-<br>
-HR Interview Result: 
-<tr><td><c:out value="${interviewtable.hrinterviewresult}"/></td></tr>
-<br>
-Hiring Manager Interview Result: 
-<tr><td><c:out value="${interviewtable.hminterviewresult}"/></td></tr>
-<br>
-Group Interview Result:
- <tr><td><c:out value="${interviewtable.groupinterviewresult}"/></td></tr>
-<br>
+<tr>
+<td>Coding Test Result: </td>
+<td><c:out value="${interviewtable.codingtestresult}"/></td>
+</tr>
+
+
+<tr>
+<td>HR Interview Result: </td>
+<td><c:out value="${interviewtable.hrinterviewresult}"/></td>
+</tr>
+
+
+<tr>
+<td>Hiring Manager Interview Result: </td>
+<td><c:out value="${interviewtable.hminterviewresult}"/></td>
+</tr>
+
+
+<tr>
+<td>Group Interview Result: </td>
+<td><c:out value="${interviewtable.groupinterviewresult}"/></td>
+</tr>
+
+
 
 </c:forEach>
 
+</table>
 </body>
 </html>

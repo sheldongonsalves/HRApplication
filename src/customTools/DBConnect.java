@@ -493,6 +493,39 @@ public class DBConnect {
 		}
 
 	}
+	public void UpdateApplicant(String name ,String address , String jobhistory ,String jobreference ,String veteranstatus ,long applicantid)
+	{
+		EntityManager em1 = DBUtil.getEmFactory().createEntityManager();
+		EntityTransaction trans = em1.getTransaction();
+		TypedQuery query =em1.createQuery(
+				"Update HrApplicant hr set hr.applicantname=:name ,hr.address=:address ,hr.jobhistory=:jobhistory ,hr.jobreference=:jobreference ,hr.veteranstatus=:veteranstatus where hr.applicantid = :applicantid",HrApplicant.class)
+
+				.setParameter("name",name)
+				.setParameter("address", address)
+				.setParameter("jobhistory",jobhistory)
+				.setParameter("jobreference",jobreference)
+				.setParameter("veteranstatus",veteranstatus)
+				.setParameter("applicantid",applicantid);
+		trans.begin();
+
+		try
+		{
+
+			query.executeUpdate();
+			trans.commit();
+
+		}
+		catch (Exception e)
+		{
+			trans.rollback();
+
+		}
+		finally
+		{
+			em1.close();
+		}
+
+	}
 
 
 }

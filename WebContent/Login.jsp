@@ -18,10 +18,10 @@
 
 <title>Login</title>
 </head>
-<body>
+<body background="http://www.ngahr.com/sites/default/files/background/slide1.png">
 	<form action="LoginServlet" method="post">
 			<p>
-				<b>Welcome to HR Application</b>
+				<h1>Welcome to HR Application</h1>
 			</p>
 				<p>${message}</p>
 			

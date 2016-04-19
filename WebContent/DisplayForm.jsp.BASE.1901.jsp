@@ -34,105 +34,30 @@
 
 <h2> Applicant Details </h2>
 
-<tr><td>
 Name:  
-</td><td><c:out value="${candidate.applicantname}" /></td></tr>
+<tr><td><c:out value="${candidate.applicantname}" /></td></tr>
 <br>
-<tr><td>
 Address: 
-</td><tr><td><c:out value="${candidate.address}"/></td></tr>
+<tr><td><c:out value="${candidate.address}"/></td></tr>
 <br>
-<tr><td>
 Birthday: 
-</td><tr><td><c:out value="${candidate.birthdate}"/></td></tr>
+<tr><td><c:out value="${candidate.birthdate}"/></td></tr>
 <br>
-<tr><td>
 Job History: 
-</td><tr><td><c:out value="${candidate.jobhistory}"/></td></tr>
+<tr><td><c:out value="${candidate.jobhistory}"/></td></tr>
 <br>
-<tr><td>
 Reference:
  <tr><td><c:out value="${candidate.jobreference}"/></td></tr>
 <br>
-<tr><td>
 Veteran Status:  
-</td><tr><td><c:out value="${candidate.veteranstatus}"/></td></tr>
+<tr><td><c:out value="${candidate.veteranstatus}"/></td></tr>
 <br>
-
-
-
-<table class="table">
-<tr>
-<td>Name: </td>  
-<td><c:out value="${candidate.applicantname}" /></td>
-</tr>
-
-<tr>
-<td>Address: </td> 
-<td><c:out value="${candidate.address}"/></td>
-</tr>
-
-<tr>
-<td>Birthday: </td> 
-<td><c:out value="${candidate.birthdate}"/></td>
-</tr>
-
-<tr>
-<td>Job History: </td> 
-<td><c:out value="${candidate.jobhistory}"/></td>
-</tr>
-
-<tr>
-<td>Reference: </td>
-<td><c:out value="${candidate.jobreference}"/></td>
-</tr>
-
-<tr>
-<td>Veteran Status: </td>  
-<td><c:out value="${candidate.veteranstatus}"/></td>
-</tr>
-
-
-</table>
 
 </c:forEach>
 
 <br>
 <c:forEach items="${candidate}" var="candidate">
-
-<c:if test="${roleid.equals(3)}" > 
-<form action="EditServlet" method="post">   
-Name:  
-<tr><td><input type= "text" name = "Name" value="<c:out value="${candidate.applicantname}" />"></td></tr>
-<br>
-Address: 
-<tr><td><input type= "text" name = "Address" value="<c:out value="${candidate.address}"/>"></td></tr>
-<br>
-Job History: 
-<tr><td><input type= "text" name = "Jobhistory" value="<c:out value="${candidate.jobhistory}"/>"></td></tr>
-<br>
-Reference:
- <tr><td><input type= "text" name = "Reference" value="<c:out value="${candidate.jobreference}"/>"></td></tr>
-<br>
-Veteran Status:  
-<tr><td><input type= "text" name = "Veteranstatus" value="<c:out value="${candidate.veteranstatus}"/>"></td></tr>
-<br>
-	<input type="hidden" name="edit" value="${applicantid}"><br>
-	<input type="submit" value = "edit">
-	</form>
-	</c:if>
-	</c:forEach>
-<br>
-<c:forEach items="${candidate}" var="candidate">
 Education: ${candidate.education}
-
-<table class="table">
-<tr>
-<td>Education: </td>
-<td> ${candidate.education} </td>
-</tr>
-</table>
-
 </c:forEach>
 
 <c:if test="${roleid.equals(2)}" > 
@@ -155,12 +80,7 @@ Education: ${candidate.education}
 
 
 <c:forEach items="${candidate}" var="candidate">
-<table class="table">
-<tr>
-<td>Drug Test: </td>
-<td> ${candidate.drugtestresult} </td>
-</tr>
-</table>
+Drug Test: ${candidate.drugtestresult} <br>
 </c:forEach>
 <br>
 
@@ -199,12 +119,7 @@ Alcohol Test:
 
 
 <c:forEach items="${candidate}" var="candidate">
-<table class="table">
-<tr>
-<td> Citizen: </td>
-<td> ${candidate.citizenstatus} </td>
-</tr>
-</table>
+Citizen: ${candidate.citizenstatus}
 </c:forEach>
 
 
