@@ -39,7 +39,7 @@ public class PreInterview extends HttpServlet {
 		long applicantid = (long)session.getAttribute("applicantid");
 		long roleId = (long)session.getAttribute("roleid");
 
-		System.out.println("===============applicantid is "+applicantid);
+System.out.println("===============applicantid is "+applicantid);
 		if(roleId == 1) 
 		{
 			dbl.insertNewInterviewTable(applicantid, hrinterviewschedule, "");	//insert or update hrinterviewschedule

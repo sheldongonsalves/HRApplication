@@ -282,7 +282,7 @@ public class DBConnect {
 		EntityManager em1 = DBUtil.getEmFactory().createEntityManager();
 		EntityTransaction trans = em1.getTransaction();
 		TypedQuery query ;
-		List<HrInterviewtable> details=(List<HrInterviewtable>) getInterviewList(applicantid).getSingleResult();
+		List<HrInterviewtable> details=(List<HrInterviewtable>) getInterviewList(applicantid).getResultList();
 		if(details.get(0).getHrinterviewresult().equalsIgnoreCase("Pass"))
 		{
 			String hminterview="Yes";
@@ -355,7 +355,7 @@ public class DBConnect {
 		EntityManager em1 = DBUtil.getEmFactory().createEntityManager();
 		EntityTransaction trans = em1.getTransaction();
 		TypedQuery query ;
-		List<HrInterviewtable> details=(List<HrInterviewtable>) getInterviewList(applicantid).getSingleResult();
+		List<HrInterviewtable> details=(List<HrInterviewtable>) getInterviewList(applicantid).getResultList();
 		if(details.get(0).getHrinterviewresult().equalsIgnoreCase("Pass"))
 		{
 			String groupinterview="Yes";
