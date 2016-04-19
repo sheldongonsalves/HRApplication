@@ -1,6 +1,7 @@
 
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.TypedQuery;
@@ -32,9 +33,9 @@ public class LoginServlet extends HttpServlet {
 
 		HrLogin record = null;
 		HttpSession session = request.getSession();
-		List<HrApplicant> appList ;
+		
 		DBConnect dbc = new DBConnect();
-
+		List <HrApplicant> applicantlist  =  dbc.getApplicantList().getResultList();		
 		record = DBLogin.getLogin(request.getParameter("username"), request.getParameter("password"));
 
 		if(record == null) {
@@ -45,26 +46,40 @@ public class LoginServlet extends HttpServlet {
 		}
 		else {
 			//pass on the whole user login record
+<<<<<<< HEAD
 			session.setAttribute("user", record);
 			//long roleid = 3;
 			session.setAttribute("roleid", record.getHrRole().getRoleid());
 			session.setAttribute("rolename", record.getHrRole().getRolename());
+=======
+			session.setAttribute("user",record);
+			//long roleid = 3;
+			session.setAttribute("roleid", record.getHrRole().getRoleid());
+            //System.out.println("----------------------"+record.getHrRole().getRoleid());
+>>>>>>> e807d3dbfa4ee81a2c0a6ef6360f5d2459376e10
 
-			appList = dbc.getApplicantList().getResultList();			
-			if(appList.isEmpty()){
+				
+			if(applicantlist.isEmpty()){
 				System.out.println("We are here if");
+<<<<<<< HEAD
 				session.setAttribute("applicantlist", "No Applicants");
+=======
+				session.setAttribute("applicantlist","No Applicants");
+>>>>>>> e807d3dbfa4ee81a2c0a6ef6360f5d2459376e10
 				request.getRequestDispatcher("/ApplicantList.jsp").forward(request, response);
 			}
 			else {
 				System.out.println("We are here else");
-				for(HrApplicant list:appList)
-				{
-					System.out.println(list.getApplicantid()+list.getApplicantname());
-				}
-				session.setAttribute("applicantlist",appList);
+				System.out.println("--------------------------------"+applicantlist.get(0).getApplicantid());
+				try{
+				request.setAttribute("applicantlist",applicantlist);
 				request.getRequestDispatcher("/ApplicantList.jsp").forward(request, response);
 				//request.getRequestDispatcher("Interview.jsp").forward(request, response);
+				}
+				catch (NumberFormatException ex)
+				{
+					ex.getMessage();
+				}
 
 			}
 			

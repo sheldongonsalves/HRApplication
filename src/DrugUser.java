@@ -34,9 +34,9 @@ public class DrugUser extends HttpServlet {
 		
 	HttpSession session= request.getSession() ;
 	
-	//long applicantid= (long) session.getAttribute("applicantid");
+	long applicantid= (long) session.getAttribute("applicantid");
 		
-	long applicantid=2;
+	//long applicantid=2;
 	
 		DBConnect d= new DBConnect();
 		
@@ -56,9 +56,7 @@ public class DrugUser extends HttpServlet {
 		List<HrApplicant> applicantUpdate= d.getApplicantDetails(applicantid).getResultList();
 
 		request.setAttribute("applicantUpdate", applicantUpdate);
-		
-	
-			
+		session.setAttribute("applicantid", applicantid);
 		request.getRequestDispatcher("/DisplayForm.jsp").forward(request, response);
 	}
 

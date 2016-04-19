@@ -28,7 +28,7 @@ public class DBConnect {
 	{
 		EntityManager em1=DBUtil.getEmFactory().createEntityManager();
 		EntityTransaction trans = em1.getTransaction();
-		TypedQuery<HrApplicant> query =em1.createQuery("SELECT h.applicantid ,h.applicantname FROM HrApplicant h",HrApplicant.class);
+		TypedQuery<HrApplicant> query =em1.createQuery("SELECT h FROM HrApplicant h",HrApplicant.class);
 		return query ;
 
 	}

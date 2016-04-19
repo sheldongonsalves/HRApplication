@@ -13,8 +13,8 @@
 			</p>
 				<p>${message}</p>
 			
-			User Name:<br> <input type="text" name="username" value=${param.username}><br>
-			Password:<br> <input type="text" name="password"><br>
+			User Name:<br> <input type="text" name="username" value="Felicia"><br>
+			Password:<br> <input type="text" name="password" value="password1"><br>
 			<br> <input type="submit" value="login">
 	</form>
 </body>

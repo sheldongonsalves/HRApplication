@@ -44,9 +44,10 @@ public class ApplicantServlet extends HttpServlet {
 
 		//	session.getAttribute("Applicantid");
 
-		long applicant_id=2;
-		long roleid=1;
-	//	long applicant_id=Long.parseLong(request.getParameter("Applicantid"));
+		//long applicant_id=2;
+		long roleid=(long) session.getAttribute("roleid");
+	long applicantid=Long.parseLong(request.getParameter("applicantid"));
+	
 	//	long roleid=(long) session.getAttribute("roleid");
 
 
@@ -64,7 +65,7 @@ public class ApplicantServlet extends HttpServlet {
 
 			session.setAttribute("candidate", candidate);
 			session.setAttribute("roleid", roleid);
-			session.setAttribute("applicantid", applicant_id);
+			session.setAttribute("applicantid", applicantid);
 			request.getRequestDispatcher("/DisplayForm.jsp").forward(request, response);
 
 		}
