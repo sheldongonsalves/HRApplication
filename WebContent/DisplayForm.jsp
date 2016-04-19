@@ -13,6 +13,13 @@
 <body>
 <h1> HR Application </h1>
 
+
+<c:if test="${roleid.equals(1)||roleid.equals(6)||roleid.equals(7)}" >
+<form action="CheckList" method="post">
+ <input type="submit" value="CheckList">
+ </form>
+</c:if>
+
 <c:forEach items="${candidate}" var="candidate">
 
 <h2> Applicant Details </h2>
@@ -124,58 +131,17 @@ Citizen: ${candidate.citizenstatus}
 
 
 
-
-  <!--  
-
-Drug User: ${druguser}
-
-
-<form action="DrugUser" method="post">
-<c:if test="${rolename.equals('Health Care Professional')}" >
-Standard Panel Test:
+<c:if test="${roleid.equals(1)}" >
+<form action="Reject" method="post">
+ <input type="submit" value="Reject">
+ </form>
  
-<form>
-  <input type="radio" name="test1" value="Pass" > Pass<br>
-  <input type="radio" name="test1" value="Fail"> Fail<br> 
-
-
-Dot Test:
- <input type="radio" name="test2" value="Pass" > Pass<br>
-  <input type="radio" name="test2" value="Fail"> Fail<br> 
-
-Alcohol Test:
- <input type="checkbox" name="test3" value="Pass"> Pass <br>
- <input type="checkbox" name="test3" value="Fail"> Fail <br>   
- 
- <input type="submit" value="submit">
+ <form action="PreInterview" method="post">
+ <input type="submit" value="Schedule">
+ </form>
 </c:if>
-</form>
 
 
-
-Citizenship: ${citizenship}
-
-<form action="Citizenship" method="post">
-<c:if test="${rolename.equals('Health Care Professional')}" >
-
-<input type="radio" name="citizenship" value="Yes"> Citizen <br>
- <input type="radio" name="citizenship" value="No"> Not a citizen <br>
-  <input type="submit" value="submit"> 
-   
-</c:if>
-</form>
-
-
-
-
-<form action="HRManager" method="post">
-<c:if test="${rolename.equals('HR Manager')}" >
- <input type="radio" name="reject"><br>
- <input type="radio" name="schedule"><br> 
- <input type="submit" value="schedule">
-</c:if>
-</form>
- -->
 
 
 

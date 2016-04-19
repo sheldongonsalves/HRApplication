@@ -34,6 +34,7 @@ public class InterviewServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		DBLogin dbl=null;
 		DBConnect dbc=null;
+		HrInterviewtable hrit=null;
 
 		HrLogin user;
 
@@ -56,7 +57,6 @@ public class InterviewServlet extends HttpServlet {
 			{
 				//insert interview table for HR manager here
 				dbl.insertNewInterviewTable(applicantId, "Yes", interviewStatus);
-
 			}
 			else if(user.getHrRole().getRolename().equalsIgnoreCase("Hiring Manager"))
 			{
@@ -66,16 +66,19 @@ public class InterviewServlet extends HttpServlet {
 				dbc.updateCodingTestTaken(applicantId, codingTest);
 				dbc.updateCodingTestResult(applicantId, codingTestStatus);
 			}
-			else if(user.getHrRole().getRolename().equalsIgnoreCase("Group Interview Manager"))
+			else //if(user.getHrRole().getRolename().equalsIgnoreCase("Group Interview Manager"))
 			{
 				//update interview table for group interview here
 				dbc.updateScheduleGroupInterview(applicantId);
 				dbc.updateGroupInterviewResult(applicantId, interviewStatus);
 				dbc.updateCodingTestTaken(applicantId, codingTest);
 				dbc.updateCodingTestResult(applicantId, codingTestStatus);
-
-
 			}
+			
+			//retrieve the newly inserted or updated interview table
+			hrit = dbc.getInterviewList(applicantId).getSingleResult();
+			session.setAttribute("interviewtable", hrit);
+
 		}
 
 	}
