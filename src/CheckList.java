@@ -35,22 +35,30 @@ public class CheckList extends HttpServlet {
 		
 		HttpSession session= request.getSession() ;
 		
-		//long applicantid= (long) session.getAttribute("applicantid");
-			
-			long applicantid=2;
+		DBConnect d= new DBConnect();
 		
-			DBConnect d= new DBConnect();
-			
-			d.getInterviewList(applicantid); 
-			
 		
-			List<HrInterviewtable> checklist= d.getInterviewList(applicantid).getResultList();
+	//	long applicantid = (long) session.getAttribute("Applicantid");
+		
+		long applicantid=2;
+		
+	
+		
+		d.getApplicantDetails(applicantid); 
+		
+		
+		//Call method getApplicantDetails to display education and return dispatcher to DisplayForm
+		
 
-			request.setAttribute("checklist", checklist);
-			
 		
-				
-			request.getRequestDispatcher("/CheckList.jsp").forward(request, response);
+	
+		
+		List<HrApplicant> checklistDetails= d.getApplicantDetails(applicantid).getResultList();
+
+		request.setAttribute("checklistDetails", checklistDetails);
+		
+		
+		request.getRequestDispatcher("/DisplayForm.jsp").forward(request, response);
 	}
 
 }
