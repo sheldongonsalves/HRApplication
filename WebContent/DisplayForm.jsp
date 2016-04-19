@@ -126,17 +126,19 @@ Citizen: ${candidate.citizenstatus}
 	</c:forEach>
 	</c:if>
 <br>
-
+<br>
 
 
 
 
 <c:if test="${roleid.equals(1)}" >
 <form action="Reject" method="post">
- <input type="submit" value="Reject">
+ Candidate not the best fit:
+ <input type="submit" value="Reject"><br>
  </form>
  
  <form action="PreInterview" method="post">
+ Continue with candidate:
  <input type="submit" value="Schedule">
  </form>
 </c:if>

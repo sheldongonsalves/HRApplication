@@ -78,7 +78,7 @@ public class InterviewServlet extends HttpServlet {
 			//retrieve the newly inserted or updated interview table
 			hrit = dbc.getInterviewList(applicantId).getSingleResult();
 			session.setAttribute("interviewtable", hrit);
-
+			request.getRequestDispatcher("/CheckList.jsp").forward(request, response);
 		}
 
 	}
