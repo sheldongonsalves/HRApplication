@@ -427,7 +427,7 @@ public class DBConnect {
 	public TypedQuery <HrInterviewtable> getInterviewList(long applicantid)//gets a selected row from the interview table
 	{
 		EntityManager em1=DBUtil.getEmFactory().createEntityManager();
-		TypedQuery<HrInterviewtable> query =em1.createQuery("SELECT h FROM HrInterviewtable h hrApplicant.applicantid = :applicantid",HrInterviewtable.class)
+		TypedQuery<HrInterviewtable> query =em1.createQuery("SELECT h FROM HrInterviewtable h where h.hrApplicant.applicantid = :applicantid",HrInterviewtable.class)
 				.setParameter("applicantid", applicantid);
 		return query;
 	}

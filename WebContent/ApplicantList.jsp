@@ -17,12 +17,12 @@
 			<th>Applicant Name</th>
 		</tr>
 
-		<c:forEach items="${applicantlist}" var="Applicant">
+		<br><c:forEach items="${applicantlist}" var="Applicant">
 			<tr>
 				<td><c:out value="${Applicant.applicantid}" /></td>
 				<td><input type="hidden" name="Applicantid"
 					value="${Applicant.applicantid}"> 
-					<c:out <a href = "<c:url value="#ApplicantServlet"}/>">${Applicant.applicantname}</a> />
+					<c:out <a href = "<c:url value="#ApplicantServlet"}/>">${Applicant.applicantname}</a>></c:out>
 
 				</td>
 			</tr>
