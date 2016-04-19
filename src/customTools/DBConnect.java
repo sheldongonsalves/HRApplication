@@ -223,7 +223,7 @@ public class DBConnect {
 		EntityManager em1 = DBUtil.getEmFactory().createEntityManager();
 		EntityTransaction trans = em1.getTransaction();
 		TypedQuery query =em1.createQuery(
-				"Update HrInterviewtable hr set hr.hrinterviewresult =:hrinterviewstatus where hr.hrApplicant.applicantid = :applicantid",HrInterviewtable.class)
+				"Update HrInterviewtable hr set hr.hrinterviewscheduled =:hrinterviewstatus where hr.hrApplicant.applicantid = :applicantid",HrInterviewtable.class)
 
 				.setParameter("hrinterviewstatus",hrinterviewresultstatus)
 				.setParameter("applicantid",applicantid);
