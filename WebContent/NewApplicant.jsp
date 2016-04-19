@@ -29,12 +29,13 @@
 <table class="table">
 <tr><td><form action="NewApplicantServlet" method="Post">
 
-<tr><td>Name:<input type="text" id="Name" name="Name" /></td></tr>
-<tr><td>Address:<input type="text" id="Address" name="Address" /></td></tr>
-<tr><td>BirthDate: <input type="date" id="Birthdate" name="Birthdate" /></td></tr>
-<tr><td>Job History: <input type="text" id="Jobhistory" name="Jobhistory" /></td></tr>
-<tr><td>Reference: <input type="text" id="Reference" name="Reference" /></td></tr>
-<tr><td>Veteran Status: <input type="text" id="Veteranstatus" name="Veteranstatus" /></td></tr>
+<tr><td>Name:</td><td><input type="text" id="Name" name="Name" /></td></tr>
+<tr><td>Address:</td><td><input type="text" id="Address" name="Address" /></td></tr>
+<tr><td>BirthDate:</td><td><input type="date" id="Birthdate" name="Birthdate" /></td></tr>
+<tr><td>Education:</td><td><input type="text" id="Education" name="Education" /></td></tr>
+<tr><td>Job History:</td><td><input type="text" id="Jobhistory" name="Jobhistory" /></td></tr>
+<tr><td>Reference:</td><td><input type="text" id="Reference" name="Reference" /></td></tr>
+<tr><td>Veteran Status:</td><td><input type="text" id="Veteranstatus" name="Veteranstatus" /></td></tr>
 
 
 <tr><td><input type="hidden" name="Add Details" value="1">

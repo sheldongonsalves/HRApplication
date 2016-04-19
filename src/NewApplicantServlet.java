@@ -45,21 +45,21 @@ public class NewApplicantServlet extends HttpServlet {
 		String name = request.getParameter("Name");
 		String address = request.getParameter("Address");
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");   
-		Date birthdate = null;
+		java.util.Date birthdate = null;
 		try {
-			birthdate = (Date) formatter.parse(request.getParameter("Birthdate"));
+			birthdate = (java.util.Date) formatter.parse(request.getParameter("Birthdate"));
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
 		//String birthdate = request.getParameter("Birthdate");
-		
+		String education = request.getParameter("Education");
 		String jobhistory = request.getParameter("Jobhistory");
 		String reference = request.getParameter("Reference");
 		String veteranstatus = request.getParameter("Veteranstatus");
 		
-		NewApplicant.insertNewApplicant(name, address, birthdate, jobhistory, reference, veteranstatus );
+		NewApplicant.insertNewApplicant(name, address, birthdate, education, jobhistory, reference, veteranstatus );
 		appList = NewApplicant.getApplicantList().getResultList();
 		session.setAttribute("roleid", roleid);
 		request.setAttribute("applicantlist", appList);
