@@ -7,12 +7,22 @@
 <meta charset="utf-8">
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script
+	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <title>Insert title here</title>
 </head>
 <body>
-<h1> HR Application </h1>
 
+	<%@ include file="CommonOptions.jsp"%>
+	
+	<h1> HR Application </h1>
 
 <c:if test="${roleid.equals(1)||roleid.equals(6)||roleid.equals(7)}" >
 <form action="CheckList" method="post">
@@ -131,7 +141,7 @@ Citizen: ${candidate.citizenstatus}
 
 
 
-<c:if test="${roleid.equals(1)}" >
+<c:if test="${roleid.equals(1)||roleid.equals(6)||roleid.equals(7)}" >
 <form action="Reject" method="post">
  Candidate not the best fit:
  <input type="submit" value="Reject"><br>
