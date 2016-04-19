@@ -33,28 +33,57 @@
 <c:forEach items="${candidate}" var="candidate">
 
 <h2> Applicant Details </h2>
-
+<tr><td>
 Name:  
-<tr><td><c:out value="${candidate.applicantname}" /></td></tr>
+</td><td><c:out value="${candidate.applicantname}" /></td></tr>
 <br>
+<tr><td>
 Address: 
-<tr><td><c:out value="${candidate.address}"/></td></tr>
+</td><tr><td><c:out value="${candidate.address}"/></td></tr>
 <br>
+<tr><td>
 Birthday: 
-<tr><td><c:out value="${candidate.birthdate}"/></td></tr>
+</td><tr><td><c:out value="${candidate.birthdate}"/></td></tr>
 <br>
+<tr><td>
 Job History: 
-<tr><td><c:out value="${candidate.jobhistory}"/></td></tr>
+</td><tr><td><c:out value="${candidate.jobhistory}"/></td></tr>
 <br>
+<tr><td>
 Reference:
  <tr><td><c:out value="${candidate.jobreference}"/></td></tr>
 <br>
+<tr><td>
 Veteran Status:  
-<tr><td><c:out value="${candidate.veteranstatus}"/></td></tr>
+</td><tr><td><c:out value="${candidate.veteranstatus}"/></td></tr>
 <br>
 
 </c:forEach>
 
+<br>
+<c:forEach items="${candidate}" var="candidate">
+<c:if test="${roleid.equals(3)}" > 
+<form action="EditServlet" method="post">   
+Name:  
+<tr><td><input type= "text" name = "Name" value="<c:out value="${candidate.applicantname}" />"></td></tr>
+<br>
+Address: 
+<tr><td><input type= "text" name = "Address" value="<c:out value="${candidate.address}"/>"></td></tr>
+<br>
+Job History: 
+<tr><td><input type= "text" name = "Jobhistory" value="<c:out value="${candidate.jobhistory}"/>"></td></tr>
+<br>
+Reference:
+ <tr><td><input type= "text" name = "Reference" value="<c:out value="${candidate.jobreference}"/>"></td></tr>
+<br>
+Veteran Status:  
+<tr><td><input type= "text" name = "Veteranstatus" value="<c:out value="${candidate.veteranstatus}"/>"></td></tr>
+<br>
+	<input type="hidden" name="edit" value="${applicantid}"><br>
+	<input type="submit" value = "edit">
+	</form>
+	</c:if>
+	</c:forEach>
 <br>
 <c:forEach items="${candidate}" var="candidate">
 Education: ${candidate.education}

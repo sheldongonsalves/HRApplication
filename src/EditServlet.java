@@ -1,7 +1,6 @@
 
 
 import java.io.IOException;
-import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
@@ -17,14 +16,14 @@ import customTools.DBConnect;
 import model.HrApplicant;
 
 
-
-@WebServlet("/NewApplicantServlet")
-public class NewApplicantServlet extends HttpServlet {
+@WebServlet("/EditServlet")
+public class EditServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-  
-    public NewApplicantServlet() {
-        super();
        
+   
+    public EditServlet() {
+        super();
+        
     }
 
 	
@@ -33,39 +32,30 @@ public class NewApplicantServlet extends HttpServlet {
 		doPost(request, response);
 	}
 
-	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
 		
 		HttpSession session = request.getSession();
 		long roleid=(long) session.getAttribute("roleid");
-		DBConnect NewApplicant = new DBConnect();
-		List<HrApplicant> appList = null;
+		long applicantid = (long) session.getAttribute("applicantid");
+		
+		DBConnect EditApplicant = new DBConnect();
+		List<HrApplicant> editList = null;
 		
 		String name = request.getParameter("Name");
-		String address = request.getParameter("Address");
-		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");   
-		java.util.Date birthdate = null;
-		try {
-			birthdate = (java.util.Date) formatter.parse(request.getParameter("Birthdate"));
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		
-		//String birthdate = request.getParameter("Birthdate");
-		String education = request.getParameter("Education");
+		String address = request.getParameter("Address");
+		
+		
 		String jobhistory = request.getParameter("Jobhistory");
 		String reference = request.getParameter("Reference");
 		String veteranstatus = request.getParameter("Veteranstatus");
-		
-		NewApplicant.insertNewApplicant(name, address, birthdate, education, jobhistory, reference, veteranstatus );
-		appList = NewApplicant.getApplicantList().getResultList();
+		System.out.println(name + address + jobhistory + reference + veteranstatus);
+		EditApplicant.UpdateApplicant(name, address, jobhistory, reference, veteranstatus, applicantid);// change this
+		editList = EditApplicant.getApplicantList().getResultList(); // change this
 		session.setAttribute("roleid", roleid);
-		session.setAttribute("applicantlist", appList);
+		session.setAttribute("applicantlist", editList);
 		request.getRequestDispatcher("ApplicantList.jsp").forward(request, response);
 		
- 		
 	}
 
 }
