@@ -46,22 +46,20 @@ public class LoginServlet extends HttpServlet {
 		}
 		else {
 			//pass on the whole user login record
-<<<<<<< HEAD
 			session.setAttribute("user", record);
 			//long roleid = 3;
 			session.setAttribute("roleid", record.getHrRole().getRoleid());
-			//session.setAttribute("rolename", record.getHrRole().getRolename());
+			session.setAttribute("rolename", record.getHrRole().getRolename());
 			
 				
 			if(applicantlist.isEmpty()){
 				System.out.println("We are here if");
 				session.setAttribute("applicantlist", "No Applicants");
-=======
 
-			session.setAttribute("user", record);
+			//session.setAttribute("user", record);
 			//long roleid = 3;
-			session.setAttribute("roleid", record.getHrRole().getRoleid());
-			session.setAttribute("rolename", record.getHrRole().getRolename());
+			//session.setAttribute("roleid", record.getHrRole().getRoleid());
+			//session.setAttribute("rolename", record.getHrRole().getRolename());
 
 			session.setAttribute("user",record);
 			//long roleid = 3;
@@ -77,7 +75,6 @@ public class LoginServlet extends HttpServlet {
 
 				session.setAttribute("applicantlist","No Applicants");
 
->>>>>>> b2d640741b6790bab22e39b9b80abd532e20dd28
 				request.getRequestDispatcher("/ApplicantList.jsp").forward(request, response);
 			}
 			else {
