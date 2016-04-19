@@ -34,30 +34,49 @@
 
 <h2> Applicant Details </h2>
 
-Name:  
-<tr><td><c:out value="${candidate.applicantname}" /></td></tr>
-<br>
-Address: 
-<tr><td><c:out value="${candidate.address}"/></td></tr>
-<br>
-Birthday: 
-<tr><td><c:out value="${candidate.birthdate}"/></td></tr>
-<br>
-Job History: 
-<tr><td><c:out value="${candidate.jobhistory}"/></td></tr>
-<br>
-Reference:
- <tr><td><c:out value="${candidate.jobreference}"/></td></tr>
-<br>
-Veteran Status:  
-<tr><td><c:out value="${candidate.veteranstatus}"/></td></tr>
-<br>
+<table class="table">
+<tr>
+<td>Name: </td>  
+<td><c:out value="${candidate.applicantname}" /></td>
+</tr>
 
+<tr>
+<td>Address: </td> 
+<td><c:out value="${candidate.address}"/></td>
+</tr>
+
+<tr>
+<td>Birthday: </td> 
+<td><c:out value="${candidate.birthdate}"/></td>
+</tr>
+
+<tr>
+<td>Job History: </td> 
+<td><c:out value="${candidate.jobhistory}"/></td>
+</tr>
+
+<tr>
+<td>Reference: </td>
+<td><c:out value="${candidate.jobreference}"/></td>
+</tr>
+
+<tr>
+<td>Veteran Status: </td>  
+<td><c:out value="${candidate.veteranstatus}"/></td>
+</tr>
+
+
+</table>
 </c:forEach>
 
 <br>
 <c:forEach items="${candidate}" var="candidate">
-Education: ${candidate.education}
+<table class="table">
+<tr>
+<td>Education: </td>
+<td> ${candidate.education} </td>
+</tr>
+</table>
 </c:forEach>
 
 <c:if test="${roleid.equals(2)}" > 
@@ -80,7 +99,12 @@ Education: ${candidate.education}
 
 
 <c:forEach items="${candidate}" var="candidate">
-Drug Test: ${candidate.drugtestresult} <br>
+<table class="table">
+<tr>
+<td>Drug Test: </td>
+<td> ${candidate.drugtestresult} </td>
+</tr>
+</table>
 </c:forEach>
 <br>
 
@@ -119,7 +143,12 @@ Alcohol Test:
 
 
 <c:forEach items="${candidate}" var="candidate">
-Citizen: ${candidate.citizenstatus}
+<table class="table">
+<tr>
+<td> Citizen: </td>
+<td> ${candidate.citizenstatus} </td>
+</tr>
+</table>
 </c:forEach>
 
 
