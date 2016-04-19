@@ -71,32 +71,21 @@ public class LoginServlet extends HttpServlet {
 					request.setAttribute("applicantlist",applicantlist);
 					request.getRequestDispatcher("/ApplicantList.jsp").forward(request, response);
 					//request.getRequestDispatcher("Interview.jsp").forward(request, response);
-				}
-<<<<<<< HEAD
-				else {
-					System.out.println("We are here else");
-					try{
-						request.setAttribute("applicantlist",applicantlist);
-						session.setAttribute("applicantlist", applicantlist);
-						request.getRequestDispatcher("/ApplicantList.jsp").forward(request, response);
-						//request.getRequestDispatcher("Interview.jsp").forward(request, response);
-					}
-					catch (NumberFormatException ex)
-					{
-						ex.getMessage();
-					}
 
-=======
+			
+				}
+
 				catch (NumberFormatException ex)
 				{
 					ex.getMessage();
->>>>>>> 0e5d6df30ae0ce73eda806b6a688bbe285ef4234
+
 				}
 
 			}
 
 		}
 	}
-
 }
+
+
 
