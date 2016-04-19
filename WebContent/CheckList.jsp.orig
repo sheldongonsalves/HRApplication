@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<<<<<<< HEAD
 
 <h2>Applicant Check List for ${interviewtable.hrApplicant.applicantname}</h2>
 
@@ -29,7 +29,7 @@
 <h1> Check List </h1>
 
  
-
+>>>>>>> d99c010f3c80e0f2f3e650ad12eb706d1879dd46
 </table>
 </body>
 </html>
