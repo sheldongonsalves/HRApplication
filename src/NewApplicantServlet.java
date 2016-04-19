@@ -45,9 +45,9 @@ public class NewApplicantServlet extends HttpServlet {
 		String name = request.getParameter("Name");
 		String address = request.getParameter("Address");
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");   
-		Date birthdate = null;
+		java.util.Date birthdate = null;
 		try {
-			birthdate = (Date) formatter.parse(request.getParameter("Birthdate"));
+			birthdate = (java.util.Date) formatter.parse(request.getParameter("Birthdate"));
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
