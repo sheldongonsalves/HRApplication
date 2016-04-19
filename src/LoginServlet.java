@@ -46,26 +46,26 @@ public class LoginServlet extends HttpServlet {
 		}
 		else {
 			//pass on the whole user login record
-<<<<<<< HEAD
+
 			session.setAttribute("user", record);
 			//long roleid = 3;
 			session.setAttribute("roleid", record.getHrRole().getRoleid());
 			session.setAttribute("rolename", record.getHrRole().getRolename());
-=======
+
 			session.setAttribute("user",record);
 			//long roleid = 3;
 			session.setAttribute("roleid", record.getHrRole().getRoleid());
             //System.out.println("----------------------"+record.getHrRole().getRoleid());
->>>>>>> e807d3dbfa4ee81a2c0a6ef6360f5d2459376e10
+
 
 				
 			if(applicantlist.isEmpty()){
 				System.out.println("We are here if");
-<<<<<<< HEAD
+
 				session.setAttribute("applicantlist", "No Applicants");
-=======
+
 				session.setAttribute("applicantlist","No Applicants");
->>>>>>> e807d3dbfa4ee81a2c0a6ef6360f5d2459376e10
+
 				request.getRequestDispatcher("/ApplicantList.jsp").forward(request, response);
 			}
 			else {
