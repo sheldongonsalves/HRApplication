@@ -44,9 +44,10 @@ public class ApplicantServlet extends HttpServlet {
 
 		//	session.getAttribute("Applicantid");
 
-		long applicant_id=2;
-		long roleid=1;
-	//	long applicant_id=Long.parseLong(request.getParameter("Applicantid"));
+		//long applicant_id=2;
+		long roleid=(long) session.getAttribute("roleid");
+	long applicant_id=Long.parseLong(request.getParameter("applicantID"));
+	
 	//	long roleid=(long) session.getAttribute("roleid");
 
 

@@ -38,9 +38,9 @@ public class CheckList extends HttpServlet {
 		DBConnect d= new DBConnect();
 		
 		
-	//	long applicantid = (long) session.getAttribute("Applicantid");
+		long applicantid = (long) session.getAttribute("applicantid");
 		
-		long applicantid=1;
+		//long applicantid=1;
 		
 		d.getInterviewList(applicantid);
 		
@@ -57,8 +57,7 @@ public class CheckList extends HttpServlet {
 		List<HrApplicant> candidate= d.getApplicantDetails(applicantid).getResultList();
 
 		request.setAttribute("candidate", candidate);
-		
-		
+		session.setAttribute("applicantid", applicantid);
 		request.getRequestDispatcher("/CheckList.jsp").forward(request, response);
 	}
 

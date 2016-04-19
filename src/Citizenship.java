@@ -34,9 +34,9 @@ public class Citizenship extends HttpServlet {
 	
 HttpSession session= request.getSession() ;
 
-//long applicantid= (long) session.getAttribute("applicantid");
+long applicantid= (long) session.getAttribute("applicantid");
 	
-		long applicantid=2;
+		//long applicantid=2;
 		
 		DBConnect d= new DBConnect();
 		
@@ -52,6 +52,7 @@ HttpSession session= request.getSession() ;
 		List<HrApplicant> applicantUpdate= d.getApplicantDetails(applicantid).getResultList();
 
 		request.setAttribute("applicantUpdate", applicantUpdate);
+		session.setAttribute("applicantid", applicantid);
 		
 	
 			
