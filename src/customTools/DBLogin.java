@@ -13,10 +13,10 @@ import model.HrInterviewtable;
 import model.HrLogin;
 
 public class DBLogin {
-	
+
 	public static HrLogin getLogin(String username, String password)
 	{
-		
+
 		EntityManager em = DBUtil.getEmFactory().createEntityManager();
 		String qString = "SELECT h FROM HrLogin h where h.username=:username and h.password=:password";
 		TypedQuery<HrLogin> q = em.createQuery(qString, model.HrLogin.class);
@@ -36,25 +36,25 @@ public class DBLogin {
 			em.close();
 			return record;
 		}
-		
+
 	}
-	
+
 	// generics  to insert code
 	protected <T> void insert(Object T) {
-			EntityManager em = DBUtil.getEmFactory().createEntityManager();
-			EntityTransaction trans = em.getTransaction();
-			trans.begin();
-			try {
-				em.persist(T);
-				trans.commit();
-			} catch (Exception e) {
-				System.out.println(e);
-				trans.rollback();
-			} finally {
-				em.close();
-			}
+		EntityManager em = DBUtil.getEmFactory().createEntityManager();
+		EntityTransaction trans = em.getTransaction();
+		trans.begin();
+		try {
+			em.persist(T);
+			trans.commit();
+		} catch (Exception e) {
+			System.out.println(e);
+			trans.rollback();
+		} finally {
+			em.close();
 		}
-	
+	}
+
 	protected long getNextInterviewTableid()
 	{
 
@@ -63,19 +63,34 @@ public class DBLogin {
 
 		return (long) query.getSingleResult();
 	}
-	
+
 	public void insertNewInterviewTable(long applicantid, String schedule, String status)
 	{
 		HrInterviewtable hrit =new HrInterviewtable();
 		HrApplicant ha = new HrApplicant();
-		
-		ha.setApplicantid(applicantid);
-		hrit.setHrApplicant(ha);
-		hrit.setInterviewid(getNextInterviewTableid()+1);
-		hrit.setHrinterviewscheduled(schedule);
-		hrit.setHrinterviewresult(status);
-		
-		insert(hrit);
+		DBConnect dbc = new DBConnect();
+
+		List<HrInterviewtable> details= (List<HrInterviewtable>) dbc.getInterviewList(applicantid).getSingleResult();
+		if(details.isEmpty()){
+			//insert new interview row
+			ha.setApplicantid(applicantid);
+			hrit.setHrApplicant(ha);
+			hrit.setInterviewid(getNextInterviewTableid()+1);
+			hrit.setHrinterviewscheduled(schedule);
+			hrit.setHrinterviewresult(status);
+			hrit.setCodingtest("");
+			hrit.setCodingtestresult("");
+			hrit.setGroupinterviewresult("");
+			hrit.setGroupinterviewscheduled("");
+			hrit.setHminterviewresult("");
+			hrit.setHminterviewscheduled("");
+			insert(hrit);
+		}
+		else {
+			//update the interview table
+			dbc.updateHrInterviewSchedule(applicantid,schedule);
+			dbc.updateHrResult(applicantid,status);
+		}
 	}
 
 }

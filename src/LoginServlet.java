@@ -31,7 +31,7 @@ public class LoginServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		 
+
 		HttpSession session = request.getSession();
 
 		DBConnect dbc = new DBConnect();
@@ -47,37 +47,32 @@ public class LoginServlet extends HttpServlet {
 		else {
 			//pass on the whole user login record
 
+
+
 			session.setAttribute("user", record);
-			
+
 			session.setAttribute("roleid", record.getHrRole().getRoleid());
-			
-/*
+
+			session.setAttribute("rolename", record.getHrRole().getRolename());
+
+
 			if(applicantlist.isEmpty()){
 				System.out.println("We are here if");
+
 				session.setAttribute("applicantlist", "No Applicants");
 
+				session.setAttribute("applicantlist","No Applicants");
 
-				session.setAttribute("user", record);
-				//long roleid = 3;
-				session.setAttribute("roleid", record.getHrRole().getRoleid());
-				session.setAttribute("rolename", record.getHrRole().getRolename());
-
-				session.setAttribute("user",record);
-				//long roleid = 3;
-				session.setAttribute("roleid", record.getHrRole().getRoleid());
-				//System.out.println("----------------------"+record.getHrRole().getRoleid());
-
-*/
-
-				if(applicantlist.isEmpty()){
-					System.out.println("We are here if");
-
-					session.setAttribute("applicantlist", "No Applicants");
-
-					session.setAttribute("applicantlist","No Applicants");
-
+				request.getRequestDispatcher("/ApplicantList.jsp").forward(request, response);
+			}
+			else {
+				System.out.println("We are here else");
+				try{
+					request.setAttribute("applicantlist",applicantlist);
 					request.getRequestDispatcher("/ApplicantList.jsp").forward(request, response);
+					//request.getRequestDispatcher("Interview.jsp").forward(request, response);
 				}
+<<<<<<< HEAD
 				else {
 					System.out.println("We are here else");
 					try{
@@ -91,10 +86,17 @@ public class LoginServlet extends HttpServlet {
 						ex.getMessage();
 					}
 
+=======
+				catch (NumberFormatException ex)
+				{
+					ex.getMessage();
+>>>>>>> 0e5d6df30ae0ce73eda806b6a688bbe285ef4234
 				}
 
 			}
-		}
 
+		}
 	}
+
+}
 

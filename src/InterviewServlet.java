@@ -40,7 +40,8 @@ public class InterviewServlet extends HttpServlet {
 
 		if(request.getParameter("status").equals("pass")==true)
 		{
-			user = (HrLogin)session.getAttribute("user");
+			user = (HrLogin)session.getAttribute("user");			
+			long  roleid = (long)session.getAttribute("roleid");
 
 			//getting input from Interview page
 			//Interview status: pass/fail
@@ -49,16 +50,16 @@ public class InterviewServlet extends HttpServlet {
 			String codingTest = request.getParameter("test");
 			//Coding test if taken: pass/fail
 			String codingTestStatus = request.getParameter("teststatus");
-			long applicantId = (long) session.getAttribute("Applicantid");
+			long applicantId = (long) session.getAttribute("applicantid");
 
 
 			//assume only these 3 roles can make it here
-			if(user.getHrRole().getRolename().equalsIgnoreCase("HR Manager"))
+			if(roleid == 1)
 			{
 				//insert interview table for HR manager here
 				dbl.insertNewInterviewTable(applicantId, "Yes", interviewStatus);
 			}
-			else if(user.getHrRole().getRolename().equalsIgnoreCase("Hiring Manager"))
+			if(roleid == 6)
 			{
 				//update interview table for Hiring Manager here
 				dbc.updateScheduleHiringManagerInterview(applicantId);
@@ -66,7 +67,7 @@ public class InterviewServlet extends HttpServlet {
 				dbc.updateCodingTestTaken(applicantId, codingTest);
 				dbc.updateCodingTestResult(applicantId, codingTestStatus);
 			}
-			else //if(user.getHrRole().getRolename().equalsIgnoreCase("Group Interview Manager"))
+			if(roleid == 7) //if(user.getHrRole().getRolename().equalsIgnoreCase("Group Interview Manager"))
 			{
 				//update interview table for group interview here
 				dbc.updateScheduleGroupInterview(applicantId);
@@ -76,9 +77,9 @@ public class InterviewServlet extends HttpServlet {
 			}
 			
 			//retrieve the newly inserted or updated interview table
-			hrit = dbc.getInterviewList(applicantId).getSingleResult();
-			session.setAttribute("interviewtable", hrit);
-			request.getRequestDispatcher("/CheckList.jsp").forward(request, response);
+			//hrit = dbc.getInterviewList(applicantId).getSingleResult();
+			//session.setAttribute("interviewtable", hrit);
+			//request.getRequestDispatcher("/CheckList.jsp").forward(request, response);
 		}
 
 	}

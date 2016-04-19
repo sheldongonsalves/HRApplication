@@ -52,6 +52,9 @@ public class NewApplicantServlet extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		//String birthdate = request.getParameter("Birthdate");
+		
 		String jobhistory = request.getParameter("Jobhistory");
 		String reference = request.getParameter("Reference");
 		String veteranstatus = request.getParameter("Veteranstatus");

@@ -68,13 +68,13 @@ public class DBConnect {
 		return (long) query.getSingleResult();
 	}
 
-	public void insertNewApplicant(String name ,String address ,Date bday ,String job_history ,String job_refrernce ,String veteran)
+	public void insertNewApplicant(String name ,String address ,Date birthdate ,String job_history ,String job_refrernce ,String veteran)
 	{
 		HrApplicant hra =new HrApplicant();
 		hra.setApplicantid(getNextApplicantid()+1);
 		hra.setApplicantname(name);
 		hra.setAddress(address);
-		hra.setBirthdate(bday);
+		hra.setBirthdate(birthdate);
 		hra.setJobhistory(job_history);
 		hra.setJobreference(job_refrernce);	
 		hra.setVeteranstatus(veteran);
@@ -223,7 +223,7 @@ public class DBConnect {
 		EntityManager em1 = DBUtil.getEmFactory().createEntityManager();
 		EntityTransaction trans = em1.getTransaction();
 		TypedQuery query =em1.createQuery(
-				"Update HrInterviewtable hr set hr.hrinterviewresult =:hrinterviewstatus where hr.hrApplicant.applicantid = :applicantid",HrInterviewtable.class)
+				"Update HrInterviewtable hr set hr.hrinterviewscheduled =:hrinterviewstatus where hr.hrApplicant.applicantid = :applicantid",HrInterviewtable.class)
 
 				.setParameter("hrinterviewstatus",hrinterviewresultstatus)
 				.setParameter("applicantid",applicantid);
