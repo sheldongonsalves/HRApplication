@@ -68,7 +68,7 @@ public class DBConnect {
 		return (long) query.getSingleResult();
 	}
 
-	public void insertNewApplicant(String name ,String address ,String birthdate ,String job_history ,String job_refrernce ,String veteran)
+	public void insertNewApplicant(String name ,String address ,Date birthdate ,String job_history ,String job_refrernce ,String veteran)
 	{
 		HrApplicant hra =new HrApplicant();
 		hra.setApplicantid(getNextApplicantid()+1);

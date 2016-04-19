@@ -31,7 +31,7 @@ public class LoginServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		 
+
 		HttpSession session = request.getSession();
 
 		DBConnect dbc = new DBConnect();
@@ -50,65 +50,37 @@ public class LoginServlet extends HttpServlet {
 
 
 			session.setAttribute("user", record);
-			
+
 			session.setAttribute("roleid", record.getHrRole().getRoleid());
-<<<<<<< HEAD
+
 			session.setAttribute("rolename", record.getHrRole().getRolename());
-=======
->>>>>>> 89e92e75cae474fa84b1957e8ec51ccac5c6bd7c
-			
-/*
+
+
 			if(applicantlist.isEmpty()){
 				System.out.println("We are here if");
+
 				session.setAttribute("applicantlist", "No Applicants");
 
+				session.setAttribute("applicantlist","No Applicants");
 
-<<<<<<< HEAD
-
-
-			//session.setAttribute("user", record);
-			//long roleid = 3;
-			//session.setAttribute("roleid", record.getHrRole().getRoleid());
-			//session.setAttribute("rolename", record.getHrRole().getRolename());
-=======
-				session.setAttribute("user", record);
-				//long roleid = 3;
-				session.setAttribute("roleid", record.getHrRole().getRoleid());
-				session.setAttribute("rolename", record.getHrRole().getRolename());
->>>>>>> 89e92e75cae474fa84b1957e8ec51ccac5c6bd7c
-
-				session.setAttribute("user",record);
-				//long roleid = 3;
-				session.setAttribute("roleid", record.getHrRole().getRoleid());
-				//System.out.println("----------------------"+record.getHrRole().getRoleid());
-
-*/
-
-				if(applicantlist.isEmpty()){
-					System.out.println("We are here if");
-
-					session.setAttribute("applicantlist", "No Applicants");
-
-					session.setAttribute("applicantlist","No Applicants");
-
+				request.getRequestDispatcher("/ApplicantList.jsp").forward(request, response);
+			}
+			else {
+				System.out.println("We are here else");
+				try{
+					request.setAttribute("applicantlist",applicantlist);
 					request.getRequestDispatcher("/ApplicantList.jsp").forward(request, response);
+					//request.getRequestDispatcher("Interview.jsp").forward(request, response);
 				}
-				else {
-					System.out.println("We are here else");
-					try{
-						request.setAttribute("applicantlist",applicantlist);
-						request.getRequestDispatcher("/ApplicantList.jsp").forward(request, response);
-						//request.getRequestDispatcher("Interview.jsp").forward(request, response);
-					}
-					catch (NumberFormatException ex)
-					{
-						ex.getMessage();
-					}
-
+				catch (NumberFormatException ex)
+				{
+					ex.getMessage();
 				}
 
 			}
-		}
 
+		}
 	}
+
+}
 

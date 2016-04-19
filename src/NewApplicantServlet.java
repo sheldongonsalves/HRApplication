@@ -45,15 +45,15 @@ public class NewApplicantServlet extends HttpServlet {
 		String name = request.getParameter("Name");
 		String address = request.getParameter("Address");
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");   
-		/*Date birthdate = null;
+		Date birthdate = null;
 		try {
 			birthdate = (Date) formatter.parse(request.getParameter("Birthdate"));
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}*/
+		}
 		
-		String birthdate = request.getParameter("Birthdate");
+		//String birthdate = request.getParameter("Birthdate");
 		
 		String jobhistory = request.getParameter("Jobhistory");
 		String reference = request.getParameter("Reference");
