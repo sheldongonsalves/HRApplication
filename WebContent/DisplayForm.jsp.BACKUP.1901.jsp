@@ -33,7 +33,7 @@
 <c:forEach items="${candidate}" var="candidate">
 
 <h2> Applicant Details </h2>
-
+<<<<<<< HEAD
 <tr><td>
 Name:  
 </td><td><c:out value="${candidate.applicantname}" /></td></tr>
@@ -59,7 +59,7 @@ Veteran Status:
 </td><tr><td><c:out value="${candidate.veteranstatus}"/></td></tr>
 <br>
 
-
+=======
 
 <table class="table">
 <tr>
@@ -94,12 +94,12 @@ Veteran Status:
 
 
 </table>
-
+>>>>>>> df659cb877fd4374080bebd6bc3d83e942bf54c2
 </c:forEach>
 
 <br>
 <c:forEach items="${candidate}" var="candidate">
-
+<<<<<<< HEAD
 <c:if test="${roleid.equals(3)}" > 
 <form action="EditServlet" method="post">   
 Name:  
@@ -125,14 +125,14 @@ Veteran Status:
 <br>
 <c:forEach items="${candidate}" var="candidate">
 Education: ${candidate.education}
-
+=======
 <table class="table">
 <tr>
 <td>Education: </td>
 <td> ${candidate.education} </td>
 </tr>
 </table>
-
+>>>>>>> df659cb877fd4374080bebd6bc3d83e942bf54c2
 </c:forEach>
 
 <c:if test="${roleid.equals(2)}" > 

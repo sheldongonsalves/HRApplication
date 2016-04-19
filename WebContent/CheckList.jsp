@@ -26,45 +26,44 @@
 
 <c:forEach items="${candidate}" var="candidate">
 
-<h2> Applicant name </h2>
-<tr><td><c:out value="${candidate.applicantname}" /></td></tr>
+<h3> Applicant name: <c:out value="${candidate.applicantname}" /> </h3>
+
 <br>
 <br>
+</c:forEach>
+
+<table class="table">
+
+<c:forEach items="${candidate}" var="candidate">
 
 <tr>
 <td>Nationality: </td>
 <td><c:out value="${candidate.citizenstatus}"/></td>
 </tr>
-<br>
-<br>
+
 
 <tr>
 <td>Job Reference: </td>
 <td><c:out value="${candidate.jobreference}"/></td>
 </tr>
-<br>
-<br>
+
 
 <tr>
 <td>Job History: </td>
 <td><c:out value="${candidate.jobhistory}"/></td>
 </tr>
-<br>
-<br>
 
 <tr>
 <td>Drug Test Result: </td>
 <td><c:out value="${candidate.drugtestresult}"/></td>
  </tr>
-<br>
-<br>
+
 
 <tr>
 <td>Veteran Status: </td> 
 <td><c:out value="${candidate.veteranstatus}"/></td>
 </tr>
-<br>
-<br>
+
 
 </c:forEach>
 
@@ -74,31 +73,29 @@
 <td>Coding Test Result: </td>
 <td><c:out value="${interviewtable.codingtestresult}"/></td>
 </tr>
-<br>
-<br>
+
 
 <tr>
 <td>HR Interview Result: </td>
 <td><c:out value="${interviewtable.hrinterviewresult}"/></td>
 </tr>
-<br>
-<br>
+
 
 <tr>
 <td>Hiring Manager Interview Result: </td>
 <td><c:out value="${interviewtable.hminterviewresult}"/></td>
 </tr>
-<br>
-<br>
+
 
 <tr>
 <td>Group Interview Result: </td>
 <td><c:out value="${interviewtable.groupinterviewresult}"/></td>
 </tr>
-<br>
-<br>
+
+
 
 </c:forEach>
 
+</table>
 </body>
 </html>
