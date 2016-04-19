@@ -16,7 +16,7 @@ public class testdbLogin {
 	@Test
 public void testLogin() {
 		
-		HrLogin record = null;
+		HrLogin record = new HrLogin();
 
 		record = DBLogin.getLogin("Dawn", "password1");
 			
@@ -29,8 +29,8 @@ public void testLogin() {
 	public void testinsert() {
 			
 		List<HrInterviewtable>  record = null;
-			DBLogin dbl=null;
-			DBConnect dbc=null;
+			DBLogin dbl= new DBLogin();
+			DBConnect dbc= new DBConnect();
 			
 			System.out.println("Test if insert is working") ;
 			

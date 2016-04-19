@@ -35,57 +35,45 @@ public class InterviewServlet extends HttpServlet {
 		DBLogin dbl=new DBLogin();
 		DBConnect dbc=new DBConnect();
 		HrInterviewtable hrit= new HrInterviewtable();
-		
-		
+
 		HrLogin user = (HrLogin)session.getAttribute("user");			
 		long  roleid = (long)session.getAttribute("roleid");
 
 		//getting input from Interview page
 		//Interview status: pass/fail
 		String interviewStatus = request.getParameter("status");
-		System.out.println("...................................."+interviewStatus);
+System.out.println("...................................."+interviewStatus);
 		//Coding test: taken or not
 		String codingTest = request.getParameter("test");
 		//Coding test if taken: pass/fail
 		String codingTestStatus = request.getParameter("teststatus");
 		long applicantId = (long) session.getAttribute("applicantid");
-		
-		
-		dbc.updateHrResult(applicantId, interviewStatus);
 
-		if(request.getParameter("status").equals("pass")==true)
+		//assume only these 3 roles can make it here
+		if(roleid == 1) //human resource manager
 		{
-			
+			//update interview table for HR manager here
+			//dbl.insertNewInterviewTable(applicantId, "Yes", interviewStatus);
+			dbc.updateHrResult(applicantId, interviewStatus);
 
-
-			//assume only these 3 roles can make it here
-			if(roleid == 1)
-			{
-				//insert interview table for HR manager here
-				dbl.insertNewInterviewTable(applicantId, "Yes", interviewStatus);
-			}
-			if(roleid == 6)
-			{
-				//update interview table for Hiring Manager here
-				dbc.updateScheduleHiringManagerInterview(applicantId);
-				dbc.updateHMInterviewResult(applicantId, interviewStatus);
-				dbc.updateCodingTestTaken(applicantId, codingTest);
-				dbc.updateCodingTestResult(applicantId, codingTestStatus);
-			}
-			if(roleid == 7) //if(user.getHrRole().getRolename().equalsIgnoreCase("Group Interview Manager"))
-			{
-				//update interview table for group interview here
-				dbc.updateScheduleGroupInterview(applicantId);
-				dbc.updateGroupInterviewResult(applicantId, interviewStatus);
-				dbc.updateCodingTestTaken(applicantId, codingTest);
-				dbc.updateCodingTestResult(applicantId, codingTestStatus);
-			}
-			
-			//retrieve the newly inserted or updated interview table
-			//hrit = dbc.getInterviewList(applicantId).getSingleResult();
-			//session.setAttribute("interviewtable", hrit);
-			//request.getRequestDispatcher("/CheckList.jsp").forward(request, response);
 		}
+		if(roleid == 6)	//hiring manager and coding test
+		{
+			//update interview table for Hiring Manager here
+			//dbc.updateScheduleHiringManagerInterview(applicantId);
+			dbc.updateHMInterviewResult(applicantId, interviewStatus);
+			dbc.updateCodingTestTaken(applicantId, codingTest);
+			dbc.updateCodingTestResult(applicantId, codingTestStatus);
+		}
+		if(roleid == 7) //if(user.getHrRole().getRolename().equalsIgnoreCase("Group Interview Manager"))
+		{
+			//update interview table for group interview here
+			dbc.updateGroupInterviewResult(applicantId, interviewStatus);
+			dbc.updateCodingTestTaken(applicantId, codingTest);
+			dbc.updateCodingTestResult(applicantId, codingTestStatus);
+		}
+		
+		request.getRequestDispatcher("/ApplicantList.jsp").forward(request, response);
 
 	}
 

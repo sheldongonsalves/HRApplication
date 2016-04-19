@@ -34,13 +34,14 @@ public class Reject extends HttpServlet {
 		long applicantId = (long)session.getAttribute("applicantid");
 		String interviewschedule ="No";
 		String status="";
-		System.out.println("Applicant ID:" + applicantId);
+System.out.println("Applicant ID:" + applicantId);
 
+		//insert or update a interviewTable row with schedule and status
 		dbl.insertNewInterviewTable(applicantId,interviewschedule,status);
 
-		session.setAttribute("interviewtable", hrit);
+		//session.setAttribute("interviewtable", hrit);
 
-		request.getRequestDispatcher("/DisplayForm.jsp").forward(request, response);
+		request.getRequestDispatcher("/ApplicantList.jsp").forward(request, response);
 
 	}
 
