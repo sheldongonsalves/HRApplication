@@ -131,13 +131,15 @@
 
 			<c:if test="${roleid.equals(2)}">
 				<form action="Education" method="post">
-					<input type="text" name="education"><br> <input
-						type="submit">
+					<tr>
+					<td><input type="text" name="education"><br> <input
+						type="submit"></td>
+						</tr>
 				</form>
 
 				<c:forEach items="${applicantUpdate}" var="applicantUpdate">
-	Updated Education:
-	 <tr>
+	 		<tr><td>Updated Education:</td>
+	
 						<td><c:out value="${applicantUpdate.education}" /></td>
 					</tr>
 				</c:forEach>
@@ -259,6 +261,9 @@
 
 	</table>
 
-
+<br>
+	<form action="DisplayForm.jsp" method="post">
+	<input type="submit" value="Back">
+    </form>
 </body>
 </html>
