@@ -45,7 +45,10 @@ public class PreInterview extends HttpServlet {
         List<HrInterviewtable> isCandidatePresent =dbc.getInterviewList(applicantid).getResultList();
 		System.out.println("===============applicantid is "+applicantid);
 		System.out.println("===============roleid is "+roleId);
-
+		long roleid=(long) session.getAttribute("roleid");
+		String rolename = (String) session.getAttribute("rolename");
+		String username = (String) session.getAttribute("username");
+		
 
 		if(roleId == 1) 
 		{
@@ -60,12 +63,17 @@ public class PreInterview extends HttpServlet {
 			List <HrApplicant> applicantlist  =  dbc.getApplicantList().getResultList();
 			request.setAttribute("applicantlist",applicantlist);
 			session.setAttribute("applicantlist",applicantlist);
+			session.setAttribute("roleid", roleid);
+			session.setAttribute("rolename", rolename);
+			session.setAttribute("username", username);
+			session.setAttribute("applicantid", applicantid);
 			request.setAttribute("messages","This applicant cannot be scheduled because he has not completed previous rounds");
 			request.getRequestDispatcher("/ApplicantList.jsp").forward(request, response);
 		}
 		else 
 		{
 			
+		
 			if(roleId == 6)	//hiring manager and coding test
 			{
 				//update interview table for Hiring Manager here
@@ -81,13 +89,20 @@ public class PreInterview extends HttpServlet {
 			if (roleId == 1 || (roleId == 6 && isCandidatePresent.get(0).getHrinterviewresult().equals("Pass")) || (roleId == 7 && isCandidatePresent.get(0).getHminterviewresult().equals("Pass")))
 			{
 				session.setAttribute("interviewresult",interviewresult);
+				session.setAttribute("roleid", roleid);
+				session.setAttribute("rolename", rolename);
+				session.setAttribute("username", username);
+				session.setAttribute("applicantid", applicantid);
 				request.getRequestDispatcher("/Interview.jsp").forward(request, response);
 			}
 			else if((roleId == 6 && isCandidatePresent.get(0).getHrinterviewresult().equals("Fail")) || 
 					(roleId == 7 && (isCandidatePresent.get(0).getHrinterviewresult().equals("Fail") || 
 							isCandidatePresent.get(0).getHminterviewresult().equals("Fail"))))
 			{
-				
+				session.setAttribute("roleid", roleid);
+				session.setAttribute("rolename", rolename);
+				session.setAttribute("username", username);
+				session.setAttribute("applicantid", applicantid);
 				request.getRequestDispatcher("/Reject.jsp").forward(request, response);
 
 			}
