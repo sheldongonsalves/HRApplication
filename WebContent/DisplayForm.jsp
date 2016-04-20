@@ -237,7 +237,12 @@
 			<td><c:if
 					test="${roleid.equals(1)||roleid.equals(6)||roleid.equals(7)}">
 					<form action="Reject" method="post">
-						Candidate not the best fit: <input type="submit" value="Reject"><br>
+					<c:forEach items="${candidate}" var="candidate">
+					
+					<input type="hidden" name="reject" value="${candidate.applicantname}">
+				
+						Candidate not the best fit: <input type="submit" value="reject"><br>
+					</c:forEach>
 					</form>
 
 					<form action="PreInterview" method="post">

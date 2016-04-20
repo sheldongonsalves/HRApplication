@@ -30,18 +30,18 @@ public class Reject extends HttpServlet {
 		HttpSession session = request.getSession();
 		DBLogin dbl= new DBLogin();
 		HrInterviewtable hrit=new HrInterviewtable();
-
+		String reject = request.getParameter("reject");
 		long applicantId = (long)session.getAttribute("applicantid");
 		String interviewschedule ="No";
 		String status="";
-System.out.println("Applicant ID:" + applicantId);
+		System.out.println("Applicant ID:" + applicantId);
 
 		//insert or update a interviewTable row with schedule and status
 		dbl.insertNewInterviewTable(applicantId,interviewschedule,status);
 
 		//session.setAttribute("interviewtable", hrit);
-
-		request.getRequestDispatcher("/ApplicantList.jsp").forward(request, response);
+		session.setAttribute("reject", reject);
+		request.getRequestDispatcher("/Reject.jsp").forward(request, response);
 
 	}
 
