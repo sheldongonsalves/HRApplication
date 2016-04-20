@@ -32,8 +32,8 @@
 			</p>
 				<p>${message}</p>
 			
-			User Name:<br> <input type="text" name="username" value="Felicia"><br>
-			Password:<br> <input type="text" name="password" value="password1"><br>
+			User Name:<br> <input type="text" name="username" value="${param.username}"><br>
+			Password:<br> <input type="password" name="password" value="${param.password}"><br>
 			<br> <input type="submit" value="login">
 	</form>
 </body>
