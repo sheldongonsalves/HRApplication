@@ -63,5 +63,8 @@
 		<a href="NewApplicant.jsp"> Add new applicant </a>
 		
 	</c:if>
+	
+
+    
 </body>
 </html>
