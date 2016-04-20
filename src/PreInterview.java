@@ -67,7 +67,7 @@ public class PreInterview extends HttpServlet {
 			session.setAttribute("rolename", rolename);
 			session.setAttribute("username", username);
 			session.setAttribute("applicantid", applicantid);
-			request.setAttribute("messages","This applicant cannot be scheduled because he has not completed previous rounds");
+			request.setAttribute("messages","This applicant cannot be scheduled because he has not completed previous rounds!!");
 			request.getRequestDispatcher("/ApplicantList.jsp").forward(request, response);
 		}
 		else 

@@ -29,7 +29,7 @@
 <br>
 <h3>Applicant List</h3>
 
-	<p>${messages}</p><br>
+	<p class="text-danger">${messages}</p><br>
 	
 	<table class="table">
 	

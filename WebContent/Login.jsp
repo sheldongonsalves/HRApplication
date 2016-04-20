@@ -32,7 +32,7 @@
 			<p>
 				<h2>Welcome to HR Portal</h2>
 			</p>
-				<p>${message}</p>
+				<p class="text-danger">${message}</p>
 			<div class="form-group col-xs-4">
 			User Name:<br> <input type="text" class="form-control" name="username" value="${param.username}" placeholder="Enter username"><br>
 			Password:<br> <input type="password" class="form-control" name="password" value="${param.password}" placeholder="Enter password"><br>
