@@ -19,11 +19,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 
-<<<<<<< HEAD
-<title>Insert title here</title>
-=======
+
 <title>Interview</title>
->>>>>>> 85510539097022493086f1c9365e44868ac95a97
+
 </head>
 <body>
 
