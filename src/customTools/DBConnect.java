@@ -51,7 +51,7 @@ public class DBConnect {
 		return query ;
 
 	}
-	
+
 	public TypedQuery <HrInterviewtable> getApplicantInterviewDetails(long applicant_id)
 	{
 		EntityManager em1=DBUtil.getEmFactory().createEntityManager();
@@ -104,14 +104,14 @@ public class DBConnect {
 		hrd.setStandardpaneltest(standardpaneltest);
 		if(existingApplicant.isEmpty())
 		{
-		insert(hrd);
-		updateDrugTest(applicantid);
+			insert(hrd);
+			updateDrugTest(applicantid);
 		}
 		else
 		{
 			updateDrugTestForExistingUser(standardpaneltest ,dottest ,alcoholtest ,applicantid);
 			updateDrugTest(applicantid);	
-			
+
 		}
 	}
 
@@ -333,42 +333,44 @@ public class DBConnect {
 		EntityTransaction trans = em1.getTransaction();
 		TypedQuery query ;
 		List<HrInterviewtable> details=(List<HrInterviewtable>) getInterviewList(applicantid).getResultList();
-		if(details.get(0).getHrinterviewresult().equalsIgnoreCase("Pass"))
-		{
-			String hminterview="Yes";
-			query =em1.createQuery(
-					"Update HrInterviewtable hr set hr.hminterviewscheduled =:hminterviewstatus where hr.hrApplicant.applicantid = :applicantid",HrInterviewtable.class)
+		
+			if(details.get(0).getHrinterviewresult().equalsIgnoreCase("Pass"))
+			{
+				String hminterview="Yes";
+				query =em1.createQuery(
+						"Update HrInterviewtable hr set hr.hminterviewscheduled =:hminterviewstatus where hr.hrApplicant.applicantid = :applicantid",HrInterviewtable.class)
 
-					.setParameter("hminterviewstatus",hminterview)
-					.setParameter("applicantid",applicantid);
-		}
-		else
-		{
-			String hminterview="No";
-			query =em1.createQuery(
-					"Update HrInterviewtable hr set hr.hminterviewscheduled =:hminterviewstatus where hr.hrApplicant.applicantid = :applicantid",HrInterviewtable.class)
+						.setParameter("hminterviewstatus",hminterview)
+						.setParameter("applicantid",applicantid);
+			}
+			else
+			{
+				String hminterview="No";
+				query =em1.createQuery(
+						"Update HrInterviewtable hr set hr.hminterviewscheduled =:hminterviewstatus where hr.hrApplicant.applicantid = :applicantid",HrInterviewtable.class)
 
-					.setParameter("hminterviewstatus",hminterview)
-					.setParameter("applicantid",applicantid);
-		}
-		trans.begin();
+						.setParameter("hminterviewstatus",hminterview)
+						.setParameter("applicantid",applicantid);
+			}
+			trans.begin();
 
-		try
-		{
+			try
+			{
 
-			query.executeUpdate();
-			trans.commit();
+				query.executeUpdate();
+				trans.commit();
 
-		}
-		catch (Exception e)
-		{
-			trans.rollback();
+			}
+			catch (Exception e)
+			{
+				trans.rollback();
 
-		}
-		finally
-		{
-			em1.close();
-		}
+			}
+			finally
+			{
+				em1.close();
+			}
+		
 
 	}
 	public void updateHMInterviewResult(long applicantid ,String hminterviewresultstatus)//HM manager hits a pass or fail then update the hminterview column
@@ -484,7 +486,7 @@ public class DBConnect {
 				.setParameter("applicantid", applicantid);
 		return query;
 	}
-	
+
 	public void updateCodingTestTaken(long applicantid ,String codingTestTaken)//Group interview taken or not taken
 	{
 		EntityManager em1 = DBUtil.getEmFactory().createEntityManager();
