@@ -35,6 +35,7 @@ public class PreInterview extends HttpServlet {
 		HttpSession session = request.getSession();
 		DBConnect dbc= new DBConnect();
 		DBLogin dbl =new DBLogin();
+		String reject = request.getParameter("reject");
 		HrInterviewtable hrit = new HrInterviewtable();
 		HrApplicant hra = new HrApplicant();
 		String hrinterviewschedule="Yes";
@@ -70,8 +71,10 @@ public class PreInterview extends HttpServlet {
 				(roleId == 7 && (hrit.getHrinterviewresult().equals("Fail") || 
 						hrit.getHminterviewresult().equals("Fail"))))
 		{
+			
 			hra = dbc.getApplicantDetails(applicantid).getSingleResult();
 			//session.setAttribute("applicantname", hra.getApplicantname());
+			session.setAttribute("reject", reject);
 			request.getRequestDispatcher("/Reject.jsp").forward(request, response);
 
 		}

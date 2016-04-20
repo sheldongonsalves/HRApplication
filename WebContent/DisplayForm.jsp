@@ -246,7 +246,11 @@
 					</form>
 
 					<form action="PreInterview" method="post">
+					<c:forEach items="${candidate}" var="candidate">
+					
+					<input type="hidden" name="reject" value="${candidate.applicantname}">
 						Continue with candidate: <input type="submit" value="Schedule">
+							</c:forEach>
 					</form>
 				</c:if></td>
 		</tr>
