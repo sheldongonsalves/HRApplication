@@ -71,8 +71,8 @@ System.out.println("===============roleid is "+roleId);
 						hrit.getHminterviewresult().equals("Fail"))))
 		{
 			hra = dbc.getApplicantDetails(applicantid).getSingleResult();
-			session.setAttribute("applicantname", hra.getApplicantname());
-			request.getRequestDispatcher("/TempFail.jsp").forward(request, response);
+			//session.setAttribute("applicantname", hra.getApplicantname());
+			request.getRequestDispatcher("/Reject.jsp").forward(request, response);
 
 		}
 	}
