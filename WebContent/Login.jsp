@@ -22,6 +22,7 @@
 
 	<nav class="navbar navbar-default">
 		<div class="navbar-header">
+			<a class = "navbar-brand">HDZDogs</a>
 			<a class="navbar-brand">Harrison Dalton Zork Business Process Application</a>
 		</div>
 	</nav>
