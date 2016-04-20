@@ -103,6 +103,7 @@ public class PreInterview extends HttpServlet {
 				session.setAttribute("rolename", rolename);
 				session.setAttribute("username", username);
 				session.setAttribute("applicantid", applicantid);
+				session.setAttribute("reject", reject);
 				request.getRequestDispatcher("/Reject.jsp").forward(request, response);
 
 			}
