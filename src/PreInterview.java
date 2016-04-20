@@ -41,8 +41,8 @@ public class PreInterview extends HttpServlet {
 		long applicantid = (long)session.getAttribute("applicantid");
 		long roleId = (long)session.getAttribute("roleid");
 
-System.out.println("===============applicantid is "+applicantid);
-System.out.println("===============roleid is "+roleId);
+		System.out.println("===============applicantid is "+applicantid);
+		System.out.println("===============roleid is "+roleId);
 
 		if(roleId == 1) 
 		{
