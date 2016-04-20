@@ -26,7 +26,7 @@
 	<%@ include file="CommonOptions.jsp"%>
 
 
-<body background="http://www.ngahr.com/sites/default/files/background/slide1.png">
+
 
 	<form action="Interview" method="post">
 		<h3>
