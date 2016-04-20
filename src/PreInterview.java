@@ -80,36 +80,11 @@ public class PreInterview extends HttpServlet {
 
 			}
 			
-		}
-<<<<<<< HEAD
-	
 		
-=======
-		if (roleId == 7)
-		{
-			dbc.updateScheduleGroupInterview(applicantid);
-		}
-		session.setAttribute("interviewtable", hrit);
 
-		//if HR employee's roles are HR Manager, Hiring Manager, or Group interview
-		if (roleId == 1 || (roleId == 6 && hrit.getHrinterviewresult().equals("Pass")) || (roleId == 7 && hrit.getHminterviewresult().equals("Pass")))
-		{
-			request.getRequestDispatcher("/Interview.jsp").forward(request, response);
-		}
-		else if((roleId == 6 && hrit.getHrinterviewresult().equals("Fail")) || 
-				(roleId == 7 && (hrit.getHrinterviewresult().equals("Fail") || 
-						hrit.getHminterviewresult().equals("Fail"))))
-		{
-			
-			hra = dbc.getApplicantDetails(applicantid).getSingleResult();
-			//session.setAttribute("applicantname", hra.getApplicantname());
-			session.setAttribute("reject", reject);
-			request.getRequestDispatcher("/Reject.jsp").forward(request, response);
-
-		}
 	}
 
->>>>>>> 2f972b026e0ff85e572b8e1718b859f481e7788a
+
 }
 	
 
