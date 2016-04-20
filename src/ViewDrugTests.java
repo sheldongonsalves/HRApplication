@@ -34,10 +34,12 @@ public class ViewDrugTests extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		HttpSession session= request.getSession() ;
-		
-		//long applicantid= (long) session.getAttribute("applicantid");
+		String rolename = (String) session.getAttribute("rolename");
+		String username = (String) session.getAttribute("username");
+		long applicantid= (long) session.getAttribute("applicantid");
+		long roleid = (long) session.getAttribute("roleid");
 			
-		long applicantid=2;
+		//long applicantid=2;
 		
 			DBConnect d= new DBConnect();
 
@@ -54,7 +56,10 @@ public class ViewDrugTests extends HttpServlet {
 			
 			request.setAttribute("viewTests", viewTests);
 			
-		
+			session.setAttribute("roleid", roleid);
+			session.setAttribute("rolename", rolename);
+			session.setAttribute("username", username);
+			session.setAttribute("applicantid", applicantid);
 				
 			request.getRequestDispatcher("/DisplayForm.jsp").forward(request, response);
 	}

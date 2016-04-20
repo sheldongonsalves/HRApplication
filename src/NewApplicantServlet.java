@@ -39,6 +39,8 @@ public class NewApplicantServlet extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		long roleid=(long) session.getAttribute("roleid");
+		String rolename = (String) session.getAttribute("rolename");
+		String username = (String) session.getAttribute("username");
 		DBConnect NewApplicant = new DBConnect();
 		List<HrApplicant> appList = null;
 		
@@ -62,6 +64,8 @@ public class NewApplicantServlet extends HttpServlet {
 		NewApplicant.insertNewApplicant(name, address, birthdate, education, jobhistory, reference, veteranstatus );
 		appList = NewApplicant.getApplicantList().getResultList();
 		session.setAttribute("roleid", roleid);
+		session.setAttribute("rolename", rolename);
+		session.setAttribute("username", username);
 		session.setAttribute("applicantlist", appList);
 		request.getRequestDispatcher("ApplicantList.jsp").forward(request, response);
 		

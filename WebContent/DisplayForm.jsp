@@ -18,11 +18,13 @@
 
 <title>Insert title here</title>
 </head>
-<body>
+<body background="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQVKicit_rgbITlRlAbVK2vU2fZ2QGTkBP0vcFbnxcIO9Wwl_J2">
 
 	<%@ include file="CommonOptions.jsp"%>
-
-	<h1>HR Application</h1>
+<h2>${username}</h2>
+<h3>${rolename}</h3>
+<br>
+<h3>Applicant Details</h3>
 	<table class="table table-hover table-condensed">
 
 		<c:if test="${roleid.equals(1)||roleid.equals(6)||roleid.equals(7)}">
@@ -246,7 +248,11 @@
 					</form>
 
 					<form action="PreInterview" method="post">
+					<c:forEach items="${candidate}" var="candidate">
+					
+					<input type="hidden" name="reject" value="${candidate.applicantname}">
 						Continue with candidate: <input type="submit" value="Schedule">
+							</c:forEach>
 					</form>
 				</c:if></td>
 		</tr>

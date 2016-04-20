@@ -41,7 +41,8 @@ public class Education extends HttpServlet {
 	//	long applicantid = (long) session.getAttribute("Applicantid");
 	
 		long applicantid=(long) session.getAttribute("applicantid");
-		
+		String rolename = (String) session.getAttribute("rolename");
+		String username = (String) session.getAttribute("username");
 		String education =request.getParameter("education");
 		
 		d.updateEducation(applicantid, education); 
@@ -57,6 +58,8 @@ public class Education extends HttpServlet {
 
 		request.setAttribute("applicantUpdate", applicantUpdate);
 		session.setAttribute("applicantid", applicantid);
+		session.setAttribute("rolename", rolename);
+		session.setAttribute("username", username);
 	
 		request.getRequestDispatcher("/DisplayForm.jsp").forward(request, response);
 		
