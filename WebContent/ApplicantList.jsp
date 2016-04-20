@@ -24,10 +24,10 @@
 <body background="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQVKicit_rgbITlRlAbVK2vU2fZ2QGTkBP0vcFbnxcIO9Wwl_J2">
 
 	<%@ include file="CommonOptions.jsp"%>
-<h2>Welcome, ${username}</h2>
-<h3>${rolename}</h3>
+<h3 align="right">Welcome,${username}<br>
+${rolename}</h3>
 <br>
-<h3>Applicant List</h3>
+<h3 align="center">Applicant List</h3>
 
 	<p class="text-danger">${messages}</p><br>
 	

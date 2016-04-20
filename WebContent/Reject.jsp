@@ -23,15 +23,18 @@
 	<%@ include file="CommonOptions.jsp"%>
 	
 	
-<h2>${username}</h2>
-<h3>${rolename}</h3>
+<h3 align="right">${username}<br>
+${rolename}</h3>
 <br>
-<h3> Applicant Rejected Confirmation</h3>
+<h3 align="center"> Applicant Rejected Confirmation</h3>
 Candidate Name:  ${reject}
 <br>
 <br>
 <p>Rejection email sent to ${reject}</p>
 
-
+<br>
+<form action="DisplayForm.jsp" method="post">
+	<input type="submit" value="Back">
+    </form>
 </body>
 </html>

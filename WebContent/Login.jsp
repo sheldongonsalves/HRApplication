@@ -30,7 +30,7 @@
 	<form role="form" action="LoginServlet" method="post">
 	
 			<p>
-				<h2>Welcome to HR Portal</h2>
+				<h2 align="center">Welcome to HR Portal</h2>
 			</p>
 				<p class="text-danger">${message}</p>
 			<div class="form-group col-xs-4">

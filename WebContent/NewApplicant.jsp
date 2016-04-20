@@ -24,10 +24,10 @@
 
 	<%@ include file="CommonOptions.jsp"%>
 
-<h2>${username}</h2>
-<h3>${rolename}</h3>
+<h3 align="right">${username}<br>
+${rolename}</h3>
 <br>	
-<h3>Insert New Applicant Details</h3>
+<h3 align="center">Insert New Applicant Details</h3>
 <table class="table">
 <tr><td><form action="NewApplicantServlet" method="Post">
 

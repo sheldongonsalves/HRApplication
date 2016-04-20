@@ -24,10 +24,10 @@
 
 	<%@ include file="CommonOptions.jsp"%>
 	
-<h2>${username}</h2>
-<h3>${rolename}</h3>
+<h3 align="right">${username}<br>
+${rolename}</h3>
 <br>
-<h3> HR Interview </h3>
+<h3 align="center"> HR Interview Details </h3>
 	<form>
 		<h3>
 			<c:out value="${user.hrRole.rolename} " /> Interview

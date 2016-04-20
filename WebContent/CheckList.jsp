@@ -22,10 +22,11 @@
 
 	<%@ include file="CommonOptions.jsp"%>
 
-<h2>${username}</h2>
-<h3>${rolename}</h3>
+<h3 align="right">${username}<br>
+${rolename}</h3>
+
 <br>
-<h3> Applicant Check List </h3>
+<h3 align="center"> Applicant Check List </h3>
 
 <c:forEach items="${candidate}" var="candidate">
 

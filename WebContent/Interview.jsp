@@ -27,10 +27,10 @@
 
 
 
-<h2>${username}</h2>
-<h3>${rolename}</h3>
+<h3 align="right">${username}<br>
+${rolename}</h3>
 <br>
-<h3>Interview Details</h3>
+<h3 align="center"> Interview Details</h3>
 
 	<form action="Interview" method="post">
 		<h3>

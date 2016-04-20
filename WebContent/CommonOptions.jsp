@@ -6,7 +6,7 @@
 		</div>
 		<ul class="nav navbar-nav">
 		
-		<!--  <li class="active"><a href="ApplicantList.jsp">Home</a></li>-->
+
 			<li><a href="Logout">Logout</a></li>
 
 

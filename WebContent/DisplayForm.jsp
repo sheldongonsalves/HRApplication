@@ -21,10 +21,10 @@
 <body background="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQVKicit_rgbITlRlAbVK2vU2fZ2QGTkBP0vcFbnxcIO9Wwl_J2">
 
 	<%@ include file="CommonOptions.jsp"%>
-<h2>${username}</h2>
-<h3>${rolename}</h3>
+<h3 align="right">${username}<br>
+${rolename}</h3>
 <br>
-<h3>Applicant Details</h3>
+<h3 align="center">Applicant Details</h3>
 	<table class="table table-hover table-condensed">
 
 		<c:if test="${roleid.equals(1)||roleid.equals(6)||roleid.equals(7)}">
@@ -35,7 +35,7 @@
 
 		<c:forEach items="${candidate}" var="candidate">
 
-			<h2>Applicant Details</h2>
+			
 
 			<table class="table table-hover table-condensed">
 				<tr>
