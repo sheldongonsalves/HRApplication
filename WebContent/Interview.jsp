@@ -18,7 +18,6 @@
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<<<<<<< HEAD
 <title>Insert title here</title>
 </head>
 <body>
@@ -26,13 +25,13 @@
 <%@ include file="CommonOptions.jsp"%>
 
 <title>Interview</title>
-=======
+
 
 
 <title>Interview</title>
 
 </head>
-<body>
+<body background="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQVKicit_rgbITlRlAbVK2vU2fZ2QGTkBP0vcFbnxcIO9Wwl_J2">
 
 	<%@ include file="CommonOptions.jsp"%>
 
