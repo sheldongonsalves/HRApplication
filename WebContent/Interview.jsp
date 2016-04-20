@@ -22,6 +22,7 @@
 </head>
 <body>
 
+<<<<<<< HEAD
 <%@ include file="CommonOptions.jsp"%>
 
 <title>Interview</title>
@@ -33,28 +34,9 @@
 </head>
 <body background="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQVKicit_rgbITlRlAbVK2vU2fZ2QGTkBP0vcFbnxcIO9Wwl_J2">
 
+=======
+>>>>>>> ea29d7b0e1eeb6c7491259e0e807aa9732eb0805
 	<%@ include file="CommonOptions.jsp"%>
-
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet"
-	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-<script
-	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
-
-<title>Interview</title>
-</head>
-<body background="http://www.ngahr.com/sites/default/files/background/slide1.png">
-
-
-
-
-
->>>>>>> 2e8dc574cab089112c23b3114f44bef58046ffaf
 
 	<form action="Interview" method="post">
 		<h3>
