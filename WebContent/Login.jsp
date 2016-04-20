@@ -33,7 +33,7 @@
 			</p>
 				<p>${message}</p>
 			
-			User Name:<br> <input type="text" name="username" value="${param.username}"><br>
+			User Name:<br> <input type="text" name="username" value="${param.username}">First Letter of your Login-id should be Caps<br>
 			Password:<br> <input type="password" name="password" value="${param.password}"><br>
 			<br> <input type="submit" value="login">
 	</form>
