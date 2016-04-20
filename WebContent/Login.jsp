@@ -29,7 +29,7 @@
 
 	<form action="LoginServlet" method="post">
 			<p>
-				<h2>Welcome to HR Application</h2>
+				<h2>Welcome to HR Portal</h2>
 			</p>
 				<p>${message}</p>
 			
