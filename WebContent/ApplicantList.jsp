@@ -28,7 +28,11 @@
 <h3>${rolename}</h3>
 <br>
 <h3>Applicant List</h3>
+
+	<p>${messages}</p><br>
+	
 	<table class="table">
+	
 		<tr>
 			<th>Applicant ID</th>
 			<th>Applicant Name</th>
