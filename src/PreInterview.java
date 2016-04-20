@@ -41,8 +41,8 @@ public class PreInterview extends HttpServlet {
 		long applicantid = (long)session.getAttribute("applicantid");
 		long roleId = (long)session.getAttribute("roleid");
 
-System.out.println("===============applicantid is "+applicantid);
-System.out.println("===============roleid is "+roleId);
+		System.out.println("===============applicantid is "+applicantid);
+		System.out.println("===============roleid is "+roleId);
 
 		if(roleId == 1) 
 		{
@@ -71,8 +71,8 @@ System.out.println("===============roleid is "+roleId);
 						hrit.getHminterviewresult().equals("Fail"))))
 		{
 			hra = dbc.getApplicantDetails(applicantid).getSingleResult();
-			session.setAttribute("applicantname", hra.getApplicantname());
-			request.getRequestDispatcher("/TempFail.jsp").forward(request, response);
+			//session.setAttribute("applicantname", hra.getApplicantname());
+			request.getRequestDispatcher("/Reject.jsp").forward(request, response);
 
 		}
 	}

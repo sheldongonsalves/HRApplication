@@ -51,6 +51,16 @@ public class DBConnect {
 		return query ;
 
 	}
+	
+	public TypedQuery <HrInterviewtable> getApplicantInterviewDetails(long applicant_id)
+	{
+		EntityManager em1=DBUtil.getEmFactory().createEntityManager();
+		EntityTransaction trans = em1.getTransaction();
+		TypedQuery<HrInterviewtable> query =em1.createQuery("SELECT h FROM HrInterviewtable h where h.hrApplicant.applicantid=:applicant_id",HrInterviewtable.class)
+				.setParameter("applicant_id", applicant_id);
+		return query ;
+
+	}
 	protected long getNextApplicantid()
 	{
 
