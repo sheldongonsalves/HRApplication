@@ -32,6 +32,8 @@ public class InterviewServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HrInterviewtable interviewTable = new HrInterviewtable();
 		HttpSession session = request.getSession();
+		String rolename = (String) session.getAttribute("rolename");
+		String username = (String) session.getAttribute("username");
 		DBLogin dbl=new DBLogin();
 		DBConnect dbc=new DBConnect();
 		HrInterviewtable hrit= new HrInterviewtable();
@@ -72,7 +74,8 @@ System.out.println("...................................."+interviewStatus);
 			dbc.updateCodingTestTaken(applicantId, codingTest);
 			dbc.updateCodingTestResult(applicantId, codingTestStatus);
 		}
-		
+		session.setAttribute("rolename", rolename);
+		session.setAttribute("username", username);
 		request.getRequestDispatcher("/ApplicantList.jsp").forward(request, response);
 
 	}

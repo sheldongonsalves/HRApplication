@@ -35,7 +35,8 @@ public class LoginServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 
 		DBConnect dbc = new DBConnect();
-		List <HrApplicant> applicantlist  =  dbc.getApplicantList().getResultList();		
+		List <HrApplicant> applicantlist  =  dbc.getApplicantList().getResultList();	
+		String username = request.getParameter("username");
 		HrLogin record = DBLogin.getLogin(request.getParameter("username"), request.getParameter("password"));
 
 		if(record==null) {
@@ -50,6 +51,8 @@ public class LoginServlet extends HttpServlet {
 
 
 			session.setAttribute("user", record);
+			
+			session.setAttribute("username", username);
 
 			session.setAttribute("roleid", record.getHrRole().getRoleid());
 

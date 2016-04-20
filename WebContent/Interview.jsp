@@ -22,21 +22,18 @@
 </head>
 <body>
 
-<<<<<<< HEAD
+
 <%@ include file="CommonOptions.jsp"%>
 
 <title>Interview</title>
 
+<h2>${username}</h2>
+<h3>${rolename}</h3>
+<br>
+<h3>Applicant Interview Details</h3>
 
-
-<title>Interview</title>
-
-</head>
 <body background="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQVKicit_rgbITlRlAbVK2vU2fZ2QGTkBP0vcFbnxcIO9Wwl_J2">
 
-=======
->>>>>>> ea29d7b0e1eeb6c7491259e0e807aa9732eb0805
-	<%@ include file="CommonOptions.jsp"%>
 
 	<form action="Interview" method="post">
 		<h3>
