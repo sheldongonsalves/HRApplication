@@ -18,13 +18,12 @@
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<<<<<<< HEAD
+
 <title>Insert title here</title>
 </head>
 <body>
 
 	<%@ include file="CommonOptions.jsp"%>
-=======
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -39,7 +38,7 @@
 <title>Interview</title>
 </head>
 <body background="http://www.ngahr.com/sites/default/files/background/slide1.png">
->>>>>>> c7273ca0b3b1c633071797871afa6ca21da06ee9
+
 	<form action="Interview" method="post">
 		<h3>
 			<c:out value="${user.hrRole.rolename} " /> Interview
