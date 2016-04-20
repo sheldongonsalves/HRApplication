@@ -18,14 +18,15 @@
 
 <title>Insert title here</title>
 </head>
-<body>
+<body background="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQVKicit_rgbITlRlAbVK2vU2fZ2QGTkBP0vcFbnxcIO9Wwl_J2">
 
 	<%@ include file="CommonOptions.jsp"%>
 	
 	
-
-
-<h1> Application Rejected </h1>
+<h2>${username}</h2>
+<h3>${rolename}</h3>
+<br>
+<h3> Applicant Rejected Confirmation</h3>
 Candidate Name:  ${reject}
 <br>
 <br>

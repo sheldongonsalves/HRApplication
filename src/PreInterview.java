@@ -26,7 +26,7 @@ public class PreInterview extends HttpServlet {
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+
 		doPost(request, response);
 	}
 
@@ -35,46 +35,68 @@ public class PreInterview extends HttpServlet {
 		HttpSession session = request.getSession();
 		DBConnect dbc= new DBConnect();
 		DBLogin dbl =new DBLogin();
+		String reject = request.getParameter("reject");
 		HrInterviewtable hrit = new HrInterviewtable();
 		HrApplicant hra = new HrApplicant();
 		String hrinterviewschedule="Yes";
 		long applicantid = (long)session.getAttribute("applicantid");
 		long roleId = (long)session.getAttribute("roleid");
+		List<HrInterviewtable> interviewresult =dbc.getApplicantInterviewDetails(applicantid).getResultList();
+        List<HrInterviewtable> isCandidatePresent =dbc.getInterviewList(applicantid).getResultList();
+		System.out.println("===============applicantid is "+applicantid);
+		System.out.println("===============roleid is "+roleId);
 
-System.out.println("===============applicantid is "+applicantid);
-System.out.println("===============roleid is "+roleId);
 
 		if(roleId == 1) 
 		{
 			dbl.insertNewInterviewTable(applicantid, hrinterviewschedule, "");	//insert or update hrinterviewschedule
 		}
-		hrit = dbc.getInterviewList(applicantid).getSingleResult();
+		
+        
+		if(isCandidatePresent.isEmpty())
+		{
+			
+			System.out.println("Empty result");
+			List <HrApplicant> applicantlist  =  dbc.getApplicantList().getResultList();
+			request.setAttribute("applicantlist",applicantlist);
+			session.setAttribute("applicantlist",applicantlist);
+			request.setAttribute("messages","This applicant cannot be scheduled because he has not completed previous rounds");
+			request.getRequestDispatcher("/ApplicantList.jsp").forward(request, response);
+		}
+		else 
+		{
+			
+			if(roleId == 6)	//hiring manager and coding test
+			{
+				//update interview table for Hiring Manager here
+				dbc.updateScheduleHiringManagerInterview(applicantid);
+			}
+			if (roleId == 7)
+			{
+				dbc.updateScheduleGroupInterview(applicantid);
+			}
+			
 
-		if(roleId == 6)	//hiring manager and coding test
-		{
-			//update interview table for Hiring Manager here
-			dbc.updateScheduleHiringManagerInterview(applicantid);
-		}
-		if (roleId == 7)
-		{
-			dbc.updateScheduleGroupInterview(applicantid);
-		}
-		session.setAttribute("interviewtable", hrit);
+			//if HR employee's roles are HR Manager, Hiring Manager, or Group interview
+			if (roleId == 1 || (roleId == 6 && isCandidatePresent.get(0).getHrinterviewresult().equals("Pass")) || (roleId == 7 && isCandidatePresent.get(0).getHminterviewresult().equals("Pass")))
+			{
+				session.setAttribute("interviewresult",interviewresult);
+				request.getRequestDispatcher("/Interview.jsp").forward(request, response);
+			}
+			else if((roleId == 6 && isCandidatePresent.get(0).getHrinterviewresult().equals("Fail")) || 
+					(roleId == 7 && (isCandidatePresent.get(0).getHrinterviewresult().equals("Fail") || 
+							isCandidatePresent.get(0).getHminterviewresult().equals("Fail"))))
+			{
+				
+				request.getRequestDispatcher("/Reject.jsp").forward(request, response);
 
-		//if HR employee's roles are HR Manager, Hiring Manager, or Group interview
-		if (roleId == 1 || (roleId == 6 && hrit.getHrinterviewresult().equals("Pass")) || (roleId == 7 && hrit.getHminterviewresult().equals("Pass")))
-		{
-			request.getRequestDispatcher("/Interview.jsp").forward(request, response);
-		}
-		else if((roleId == 6 && hrit.getHrinterviewresult().equals("Fail")) || 
-				(roleId == 7 && (hrit.getHrinterviewresult().equals("Fail") || 
-						hrit.getHminterviewresult().equals("Fail"))))
-		{
-			hra = dbc.getApplicantDetails(applicantid).getSingleResult();
-			//session.setAttribute("applicantname", hra.getApplicantname());
-			request.getRequestDispatcher("/Reject.jsp").forward(request, response);
+			}
+		}	
+		
 
-		}
 	}
 
+
 }
+	
+

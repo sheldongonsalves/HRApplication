@@ -28,6 +28,8 @@ public class Reject extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
+		String rolename = (String) session.getAttribute("rolename");
+		String username = (String) session.getAttribute("username");
 		DBLogin dbl= new DBLogin();
 		HrInterviewtable hrit=new HrInterviewtable();
 		String reject = request.getParameter("reject");
@@ -41,6 +43,8 @@ public class Reject extends HttpServlet {
 
 		//session.setAttribute("interviewtable", hrit);
 		session.setAttribute("reject", reject);
+		session.setAttribute("rolename", rolename);
+		session.setAttribute("username", username);
 		request.getRequestDispatcher("/Reject.jsp").forward(request, response);
 
 	}

@@ -35,7 +35,8 @@ public class Citizenship extends HttpServlet {
 HttpSession session= request.getSession() ;
 
 long applicantid= (long) session.getAttribute("applicantid");
-	
+String rolename = (String) session.getAttribute("rolename");
+String username = (String) session.getAttribute("username");
 		//long applicantid=2;
 		
 		DBConnect d= new DBConnect();
@@ -53,7 +54,8 @@ long applicantid= (long) session.getAttribute("applicantid");
 
 		request.setAttribute("applicantUpdate", applicantUpdate);
 		session.setAttribute("applicantid", applicantid);
-		
+		session.setAttribute("rolename", rolename);
+		session.setAttribute("username", username);
 	
 			
 		request.getRequestDispatcher("/DisplayForm.jsp").forward(request, response);

@@ -18,11 +18,13 @@
 
 <title>Insert title here</title>
 </head>
-<body>
+<body background="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQVKicit_rgbITlRlAbVK2vU2fZ2QGTkBP0vcFbnxcIO9Wwl_J2">
 
 	<%@ include file="CommonOptions.jsp"%>
-
-	<h1>HR Application</h1>
+<h2>${username}</h2>
+<h3>${rolename}</h3>
+<br>
+<h3>Applicant Details</h3>
 	<table class="table table-hover table-condensed">
 
 		<c:if test="${roleid.equals(1)||roleid.equals(6)||roleid.equals(7)}">
@@ -129,13 +131,15 @@
 
 			<c:if test="${roleid.equals(2)}">
 				<form action="Education" method="post">
-					<input type="text" name="education"><br> <input
-						type="submit">
+					<tr>
+					<td><input type="text" name="education"><br> <input
+						type="submit"></td>
+						</tr>
 				</form>
 
 				<c:forEach items="${applicantUpdate}" var="applicantUpdate">
-	Updated Education:
-	 <tr>
+	 		<tr><td>Updated Education:</td>
+	
 						<td><c:out value="${applicantUpdate.education}" /></td>
 					</tr>
 				</c:forEach>
@@ -246,13 +250,20 @@
 					</form>
 
 					<form action="PreInterview" method="post">
+					<c:forEach items="${candidate}" var="candidate">
+					
+					<input type="hidden" name="reject" value="${candidate.applicantname}">
 						Continue with candidate: <input type="submit" value="Schedule">
+							</c:forEach>
 					</form>
 				</c:if></td>
 		</tr>
 
 	</table>
 
-
+<br>
+	<form action="ApplicantList.jsp" method="post">
+	<input type="submit" value="Back">
+    </form>
 </body>
 </html>
