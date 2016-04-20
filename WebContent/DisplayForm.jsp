@@ -262,7 +262,7 @@
 	</table>
 
 <br>
-	<form action="DisplayForm.jsp" method="post">
+	<form action="ApplicantList.jsp" method="post">
 	<input type="submit" value="Back">
     </form>
 </body>
