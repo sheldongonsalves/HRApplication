@@ -37,6 +37,8 @@ public class EditServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		long roleid=(long) session.getAttribute("roleid");
 		long applicantid = (long) session.getAttribute("applicantid");
+		String rolename = (String) session.getAttribute("rolename");
+		String username = (String) session.getAttribute("username");
 		
 		DBConnect EditApplicant = new DBConnect();
 		List<HrApplicant> editList = null;
@@ -53,6 +55,8 @@ public class EditServlet extends HttpServlet {
 		EditApplicant.UpdateApplicant(name, address, jobhistory, reference, veteranstatus, applicantid);// change this
 		editList = EditApplicant.getApplicantList().getResultList(); // change this
 		session.setAttribute("roleid", roleid);
+		session.setAttribute("rolename", rolename);
+		session.setAttribute("username", username);
 		session.setAttribute("applicantlist", editList);
 		request.getRequestDispatcher("ApplicantList.jsp").forward(request, response);
 		

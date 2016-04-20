@@ -43,7 +43,11 @@
 <body background="http://www.ngahr.com/sites/default/files/background/slide1.png">
 
 
-
+<h2>${username}</h2>
+<br>
+<h3>${rolename}</h3>
+<br>
+<h3>Applicant Interview Details</h3>
 
 
 

@@ -21,8 +21,11 @@
 <body>
 
 	<%@ include file="CommonOptions.jsp"%>
-
-	<h1>HR Application</h1>
+<h2>${username}</h2>
+<br>
+<h3>${rolename}</h3>
+<br>
+<h3>Applicant Details</h3>
 	<table class="table table-hover table-condensed">
 
 		<c:if test="${roleid.equals(1)||roleid.equals(6)||roleid.equals(7)}">
