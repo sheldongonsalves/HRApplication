@@ -24,10 +24,9 @@
 	
 	
 <h2>${username}</h2>
-<br>
 <h3>${rolename}</h3>
 <br>
-<h3> Application Rejected </h3>
+<h3> Applicant Rejected Confirmation</h3>
 Candidate Name:  ${reject}
 <br>
 <br>

@@ -23,7 +23,6 @@
 	<%@ include file="CommonOptions.jsp"%>
 
 <h2>${username}</h2>
-<br>
 <h3>${rolename}</h3>
 <br>
 <h3> Applicant Check List </h3>
