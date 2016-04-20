@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import customTools.DBConnect;
 import customTools.DBLogin;
+import model.HrApplicant;
 import model.HrInterviewtable;
 
 @WebServlet("/PreInterview")
@@ -35,11 +36,14 @@ public class PreInterview extends HttpServlet {
 		DBConnect dbc= new DBConnect();
 		DBLogin dbl =new DBLogin();
 		HrInterviewtable hrit = new HrInterviewtable();
+		HrApplicant hra = new HrApplicant();
 		String hrinterviewschedule="Yes";
 		long applicantid = (long)session.getAttribute("applicantid");
 		long roleId = (long)session.getAttribute("roleid");
 
 System.out.println("===============applicantid is "+applicantid);
+System.out.println("===============roleid is "+roleId);
+
 		if(roleId == 1) 
 		{
 			dbl.insertNewInterviewTable(applicantid, hrinterviewschedule, "");	//insert or update hrinterviewschedule
@@ -55,13 +59,22 @@ System.out.println("===============applicantid is "+applicantid);
 		{
 			dbc.updateScheduleGroupInterview(applicantid);
 		}
+		session.setAttribute("interviewtable", hrit);
+
 		//if HR employee's roles are HR Manager, Hiring Manager, or Group interview
 		if (roleId == 1 || (roleId == 6 && hrit.getHrinterviewresult().equals("Pass")) || (roleId == 7 && hrit.getHminterviewresult().equals("Pass")))
 		{
-			session.setAttribute("interviewtable", hrit);
 			request.getRequestDispatcher("/Interview.jsp").forward(request, response);
 		}
+		else if((roleId == 6 && hrit.getHrinterviewresult().equals("Fail")) || 
+				(roleId == 7 && (hrit.getHrinterviewresult().equals("Fail") || 
+						hrit.getHminterviewresult().equals("Fail"))))
+		{
+			hra = dbc.getApplicantDetails(applicantid).getSingleResult();
+			session.setAttribute("applicantname", hra.getApplicantname());
+			request.getRequestDispatcher("/TempFail.jsp").forward(request, response);
 
+		}
 	}
 
 }
