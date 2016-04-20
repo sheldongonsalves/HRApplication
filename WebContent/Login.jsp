@@ -27,15 +27,17 @@
 		</div>
 	</nav>
 
-	<form action="LoginServlet" method="post">
+	<form role="form" action="LoginServlet" method="post">
+	
 			<p>
 				<h2>Welcome to HR Application</h2>
 			</p>
 				<p>${message}</p>
-			
-			User Name:<br> <input type="text" name="username" value="${param.username}">First Letter of your Login-id should be Caps<br>
-			Password:<br> <input type="password" name="password" value="${param.password}"><br>
+			<div class="form-group col-xs-4">
+			User Name:<br> <input type="text" class="form-control" name="username" value="${param.username}" placeholder="Enter username"><br>
+			Password:<br> <input type="password" class="form-control" name="password" value="${param.password}" placeholder="Enter password"><br>
 			<br> <input type="submit" value="login">
+			</div>
 	</form>
 </body>
 </html>
