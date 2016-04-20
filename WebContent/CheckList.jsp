@@ -102,7 +102,6 @@
 </table>
 
 	<br>
-	<br>
 	<form action="DisplayForm.jsp" method="post">
 	<input type="submit" value="Back">
     </form>
