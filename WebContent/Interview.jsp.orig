@@ -28,7 +28,7 @@
 <body>
 
 	<%@ include file="CommonOptions.jsp"%>
-
+<<<<<<< HEAD
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -43,11 +43,11 @@
 <title>Interview</title>
 </head>
 <body background="http://www.ngahr.com/sites/default/files/background/slide1.png">
+=======
 
 
 
-
-
+>>>>>>> 85510539097022493086f1c9365e44868ac95a97
 
 	<form action="Interview" method="post">
 		<h3>
