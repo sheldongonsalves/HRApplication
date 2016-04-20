@@ -19,9 +19,16 @@
 <title>Login</title>
 </head>
 <body background="http://www.ngahr.com/sites/default/files/background/slide1.png">
+
+	<nav class="navbar navbar-default">
+		<div class="navbar-header">
+			<a class="navbar-brand">Harrison Dalton Zork Business Process Application</a>
+		</div>
+	</nav>
+
 	<form action="LoginServlet" method="post">
 			<p>
-				<h1>Welcome to HR Application</h1>
+				<h2>Welcome to HR Application</h2>
 			</p>
 				<p>${message}</p>
 			
