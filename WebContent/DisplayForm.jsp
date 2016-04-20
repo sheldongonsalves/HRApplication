@@ -1,6 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -21,199 +21,232 @@
 <body>
 
 	<%@ include file="CommonOptions.jsp"%>
-	
-	<h1> HR Application </h1>
 
-<c:if test="${roleid.equals(1)||roleid.equals(6)||roleid.equals(7)}" >
-<form action="CheckList" method="post">
- <input type="submit" value="CheckList">
- </form>
-</c:if>
+	<h1>HR Application</h1>
+	<table class="table table-hover table-condensed">
 
-<c:forEach items="${candidate}" var="candidate">
+		<c:if test="${roleid.equals(1)||roleid.equals(6)||roleid.equals(7)}">
+			<form action="CheckList" method="post">
+				<input type="submit" value="CheckList">
+			</form>
+		</c:if>
 
-<h2> Applicant Details </h2>
+		<c:forEach items="${candidate}" var="candidate">
 
-<table class="table">
-<tr>
-<td>Name: </td>  
-<td><c:out value="${candidate.applicantname}" /></td>
-</tr>
+			<h2>Applicant Details</h2>
 
-<tr>
-<td>Address: </td> 
-<td><c:out value="${candidate.address}"/></td>
-</tr>
+			<table class="table table-hover table-condensed">
+				<tr>
+					<td>Name:</td>
+					<td><c:out value="${candidate.applicantname}" /></td>
+				</tr>
 
-<tr>
-<td>Birthday: </td> 
-<td><c:out value="${candidate.birthdate}"/></td>
-</tr>
+				<tr>
+					<td>Address:</td>
+					<td><c:out value="${candidate.address}" /></td>
+				</tr>
 
-<tr>
-<td>Job History: </td> 
-<td><c:out value="${candidate.jobhistory}"/></td>
-</tr>
+				<tr>
+					<td>Birthday:</td>
+					<td><c:out value="${candidate.birthdate}" /></td>
+				</tr>
 
-<tr>
-<td>Reference: </td>
-<td><c:out value="${candidate.jobreference}"/></td>
-</tr>
+				<tr>
+					<td>Job History:</td>
+					<td><c:out value="${candidate.jobhistory}" /></td>
+				</tr>
 
-<tr>
-<td>Veteran Status: </td>  
-<td><c:out value="${candidate.veteranstatus}"/></td>
-</tr>
+				<tr>
+					<td>Reference:</td>
+					<td><c:out value="${candidate.jobreference}" /></td>
+				</tr>
+
+				<tr>
+					<td>Veteran Status:</td>
+					<td><c:out value="${candidate.veteranstatus}" /></td>
+				</tr>
 
 
-</table>
+			</table>
 
-</c:forEach>
+		</c:forEach>
 
-<br>
+		<br>
+		<!-- Edit option only available to roleid 3 -->
+		<table class="table table-condensed">
+			<c:forEach items="${candidate}" var="candidate">
 
-<c:forEach items="${candidate}" var="candidate">
+				<c:if test="${roleid.equals(3)}">
+					<form action="EditServlet" method="post">
+						<tr>
+							<td>Name:</td>
+							<td><input type="text" name="Name"
+								value="<c:out value="${candidate.applicantname}" />"></td>
+						</tr>
+						<br>
+						<tr>
+							<td>Address:</td>
+							<td><input type="text" name="Address"
+								value="<c:out value="${candidate.address}"/>"></td>
+						</tr>
+						<br>
+						<tr>
+							<td>Job History:</td>
+							<td><input type="text" name="Jobhistory"
+								value="<c:out value="${candidate.jobhistory}"/>"></td>
+						</tr>
+						<br>
+						<tr>
+							<td>Reference:</td>
+							<td><input type="text" name="Reference"
+								value="<c:out value="${candidate.jobreference}"/>"></td>
+						</tr>
+						<br>
+						<tr>
+							<td>Veteran Status:</td>
+							<td><input type="text" name="Veteranstatus"
+								value="<c:out value="${candidate.veteranstatus}"/>"></td>
+						</tr>
+						<tr>
+							<td><br> <input type="hidden" name="edit"
+								value="${applicantid}"><br> <input type="submit"
+								value="Update"></td>
+						</tr>
+					</form>
+				</c:if>
+			</c:forEach>
+		</table>
+		<br>
 
-<c:if test="${roleid.equals(3)}" > 
-<form action="EditServlet" method="post">   
-Name:  
-<tr><td><input type= "text" name = "Name" value="<c:out value="${candidate.applicantname}" />"></td></tr>
-<br>
-Address: 
-<tr><td><input type= "text" name = "Address" value="<c:out value="${candidate.address}"/>"></td></tr>
-<br>
-Job History: 
-<tr><td><input type= "text" name = "Jobhistory" value="<c:out value="${candidate.jobhistory}"/>"></td></tr>
-<br>
-Reference:
- <tr><td><input type= "text" name = "Reference" value="<c:out value="${candidate.jobreference}"/>"></td></tr>
-<br>
-Veteran Status:  
-<tr><td><input type= "text" name = "Veteranstatus" value="<c:out value="${candidate.veteranstatus}"/>"></td></tr>
-<br>
-	<input type="hidden" name="edit" value="${applicantid}"><br>
-	<input type="submit" value = "edit">
-	</form>
-	</c:if>
-	</c:forEach>
-<br>
-<c:forEach items="${candidate}" var="candidate">
-Education: ${candidate.education}
+		<table class="table table-condensed">
+			<c:forEach items="${candidate}" var="candidate">
+				<tr>
+					<td>Education:</td>
+					<td>${candidate.education}</td>
+				</tr>
 
-<table class="table">
-<tr>
-<td>Education: </td>
-<td> ${candidate.education} </td>
-</tr>
-</table>
+			</c:forEach>
 
-</c:forEach>
+			<c:if test="${roleid.equals(2)}">
+				<form action="Education" method="post">
+					<input type="text" name="education"><br> <input
+						type="submit">
+				</form>
 
-<c:if test="${roleid.equals(2)}" > 
-<form action="Education" method="post">   
-	<input type="text" name="education"><br>
-	<input type="submit">
-	</form>
-	
-	<c:forEach items="${applicantUpdate}" var="applicantUpdate">
+				<c:forEach items="${applicantUpdate}" var="applicantUpdate">
 	Updated Education:
-	 <tr><td><c:out value="${applicantUpdate.education}"/></td></tr>
-	</c:forEach>
-	</c:if>
-<br>
-<br>
-
-
-
-  
-
-
-<c:forEach items="${candidate}" var="candidate">
-<table class="table">
-<tr>
-<td>Drug Test: </td>
-<td> ${candidate.drugtestresult} </td>
-</tr>
-</table>
-</c:forEach>
-<br>
-
-<c:if test="${roleid.equals(4)}"> 
-
-	
-<form action="DrugUser" method="post">   
-
-Update test results: <br>
-	
-Standard Panel Test:
-  	<input type="radio" name="test1" value="Pass" > Pass
-  	<input type="radio" name="test1" value="Fail"> Fail<br> 
-
-
-Dot Test:
- 	<input type="radio" name="test2" value="Pass" > Pass
-  	<input type="radio" name="test2" value="Fail"> Fail<br> 
-
-Alcohol Test:
- 	<input type="radio" name="test3" value="Pass"> Pass 
- 	<input type="radio" name="test3" value="Fail"> Fail <br>   
- 
- 	<input type="submit" value="submit">
-	
-	</form>
-	<c:forEach items="${applicantUpdate}" var="applicantUpdate">
-	Updated Drug Test:
-	 <tr><td><c:out value="${applicantUpdate.drugtestresult}"/></td></tr>
-	</c:forEach>
-	</c:if>
-<br>
+	 <tr>
+						<td><c:out value="${applicantUpdate.education}" /></td>
+					</tr>
+				</c:forEach>
+			</c:if>
+		</table>
 
 
 
 
 
-<c:forEach items="${candidate}" var="candidate">
-<table class="table">
-<tr>
-<td> Citizen: </td>
-<td> ${candidate.citizenstatus} </td>
-</tr>
-</table>
-</c:forEach>
+		<c:forEach items="${candidate}" var="candidate">
+			<table class="table table-condensed">
+				<tr>
+					<td>Drug Test:</td>
+					<td>${candidate.drugtestresult}</td>
+				</tr>
+			</table>
+		</c:forEach>
+		<br>
+
+		<c:if test="${roleid.equals(4)}">
+
+			<table class="table table-condensed">
+				<form action="DrugUser" method="post">
+					<tr>
+						<td><h4>Update test results</h4></td>
+					</tr>
+					<tr>
+						<td>Standard Panel Test:</td>
+						<td><input type="radio" name="test1" value="Pass">
+							Pass</td>
+						<td><input type="radio" name="test1" value="Fail">
+							Fail</td>
+					</tr>
+					<tr>
+						<td>Dot Test:</td>
+						<td><input type="radio" name="test2" value="Pass">
+							Pass</td>
+						<td><input type="radio" name="test2" value="Fail">
+							Fail</td>
+					</tr>
+					<tr>
+						<td>Alcohol Test:</td>
+						<td><input type="radio" name="test3" value="Pass">
+							Pass</td>
+						<td><input type="radio" name="test3" value="Fail">
+							Fail</td>
+					</tr>
+					<tr>
+						<td><input type="submit" value="submit"></td>
+					</tr>
+
+				</form>
+				<c:forEach items="${applicantUpdate}" var="applicantUpdate">
+					<tr>
+						<td>Updated Drug Test:</td>
+
+						<td><c:out value="${applicantUpdate.drugtestresult}" /></td>
+					</tr>
+				</c:forEach>
+			</table>
+		</c:if>
+
+		<br>
 
 
-<c:if test="${roleid.equals(5)}" > 
-<form action="Citizenship" method="post">   
-<input type="radio" name="citizenship" value="Yes"> Citizen <br>
- <input type="radio" name="citizenship" value="No"> Not a citizen <br>
-  <input type="submit" value="submit"> 
-	</form>
-	
-	<c:forEach items="${applicantUpdate}" var="applicantUpdate">
+
+
+
+		<c:forEach items="${candidate}" var="candidate">
+			<table class="table table-condensed">
+				<tr>
+					<td>Citizen:</td>
+					<td>${candidate.citizenstatus}</td>
+				</tr>
+			</table>
+		</c:forEach>
+
+
+		<c:if test="${roleid.equals(5)}">
+			<form action="Citizenship" method="post">
+				<input type="radio" name="citizenship" value="Yes"> Citizen
+				<br> <input type="radio" name="citizenship" value="No">
+				Not a citizen <br> <input type="submit" value="submit">
+			</form>
+
+			<c:forEach items="${applicantUpdate}" var="applicantUpdate">
 	Updated Citizenship:
-	 <tr><td><c:out value="${applicantUpdate.citizenstatus}"/></td></tr>
-	</c:forEach>
-	</c:if>
-<br>
-<br>
+	 <tr>
+					<td><c:out value="${applicantUpdate.citizenstatus}" /></td>
+				</tr>
+			</c:forEach>
+		</c:if>
+		<br>
+		<br>
 
 
+		<tr>
+			<td><c:if
+					test="${roleid.equals(1)||roleid.equals(6)||roleid.equals(7)}">
+					<form action="Reject" method="post">
+						Candidate not the best fit: <input type="submit" value="Reject"><br>
+					</form>
 
+					<form action="PreInterview" method="post">
+						Continue with candidate: <input type="submit" value="Schedule">
+					</form>
+				</c:if></td>
+		</tr>
 
-<c:if test="${roleid.equals(1)||roleid.equals(6)||roleid.equals(7)}" >
-<form action="Reject" method="post">
- Candidate not the best fit:
- <input type="submit" value="Reject"><br>
- </form>
- 
- <form action="PreInterview" method="post">
- Continue with candidate:
- <input type="submit" value="Schedule">
- </form>
-</c:if>
-
-
-
+	</table>
 
 
 </body>

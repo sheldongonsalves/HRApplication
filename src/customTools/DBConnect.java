@@ -85,15 +85,24 @@ public class DBConnect {
 	{
 		HrDrugtest hrd = new HrDrugtest();
 		HrApplicant hra =new HrApplicant();
+		List <HrDrugtest> existingApplicant =getApplicantDrugDetails(applicantid).getResultList();
 		hra.setApplicantid(applicantid);
 		hrd.setDrugtestid(getNextDrugTestid()+1);
 		hrd.setHrApplicant(hra);
 		hrd.setAlcoholtest(alcoholtest);
 		hrd.setDottest(dottest);
 		hrd.setStandardpaneltest(standardpaneltest);
-
+		if(existingApplicant.isEmpty())
+		{
 		insert(hrd);
 		updateDrugTest(applicantid);
+		}
+		else
+		{
+			updateDrugTestForExistingUser(standardpaneltest ,dottest ,alcoholtest ,applicantid);
+			updateDrugTest(applicantid);	
+			
+		}
 	}
 
 
@@ -172,6 +181,37 @@ public class DBConnect {
 		}
 
 	}
+	public void updateDrugTestForExistingUser(String standardpanelTest ,String dotTest , String alcoholTest ,long applicantid)
+	{
+		EntityManager em1 = DBUtil.getEmFactory().createEntityManager();
+		EntityTransaction trans = em1.getTransaction();
+		TypedQuery query =em1.createQuery(
+				"Update HrDrugtest hr set hr.standardpaneltest =:standardpanelTest ,hr.dottest=:dotTest ,hr.alcoholtest=:alcoholTest where hr.hrApplicant.applicantid = :applicantid",HrDrugtest.class)
+
+				.setParameter("standardpanelTest",standardpanelTest)
+				.setParameter("dotTest", dotTest)
+				.setParameter("alcoholTest", alcoholTest)
+				.setParameter("applicantid",applicantid);
+		trans.begin();
+
+		try
+		{
+
+			query.executeUpdate();
+			trans.commit();
+
+		}
+		catch (Exception e)
+		{
+			trans.rollback();
+
+		}
+		finally
+		{
+			em1.close();
+		}
+
+	}
 
 
 	public void updateDrugTest(long applicantid )
@@ -196,7 +236,7 @@ public class DBConnect {
 			query =em1.createQuery(
 					"Update HrApplicant hr set hr.drugtestresult =:result where hr.applicantid = :applicantid",HrApplicant.class)
 
-					.setParameter("drugtestresult",result)
+					.setParameter("result",result)
 					.setParameter("applicantid",applicantid);
 		}
 		trans.begin();
@@ -369,9 +409,9 @@ public class DBConnect {
 		{
 			String groupinterview="No";
 			query =em1.createQuery(
-					"Update HrInterviewtable hr set hr.groupinterviewscheduled =:hminterviewstatus where hr.hrApplicant.applicantid = :applicantid",HrInterviewtable.class)
+					"Update HrInterviewtable hr set hr.groupinterviewscheduled =:groupinterviewschedulestatus where hr.hrApplicant.applicantid = :applicantid",HrInterviewtable.class)
 
-					.setParameter("groupinterviewstatus",groupinterview)
+					.setParameter("groupinterviewschedulestatus",groupinterview)
 					.setParameter("applicantid",applicantid);
 		}
 		trans.begin();

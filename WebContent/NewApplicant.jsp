@@ -43,5 +43,11 @@
 </form></td></tr>
 
 </table>
+
+    	<br>
+	<br>
+	<form action="ApplicantList.jsp" method="post">
+	<input type="submit" value="Back">
+    </form>
 </body>
 </html>
