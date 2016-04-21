@@ -52,13 +52,16 @@ ${rolename}</h3>
 					<h3>Taken Coding Test?</h3>
 					<input type="radio" name="test" value="Taken"> Yes 
 			    <input type="radio" name="test" value="NotTaken"> No<br>
+			    <h3>Does the Applicant Pass or Fail?</h3>
+					<input type="radio" name="teststatus" value="Pass">
+			Pass <input type="radio" name="teststatus" value="Fail"> Fail<br>
 
 				</c:if>
 
 			</c:forEach>
-			<c:forEach items="${interviewresult}" var="interview">
+			<!--<c:forEach items="${interviewresult}" var="interview">
 
-				<c:if test="${interview.codingtestresult!='Pass'}">
+				<c:if test="${interview.codingtestresult!='Pass'||interview.codingtestresult!='Fail'}">
 
 					<h3>Does the Applicant Pass or Fail?</h3>
 					<input type="radio" name="teststatus" value="Pass">
@@ -66,7 +69,7 @@ ${rolename}</h3>
 
 				</c:if>
 
-			</c:forEach>
+			</c:forEach>-->
 		</c:if>
 		<input type="submit" value="Submit">
 	</form>
