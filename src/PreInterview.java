@@ -72,12 +72,12 @@ public class PreInterview extends HttpServlet {
         {
            
        
-            if(roleId == 6)    //hiring manager and coding test
+            if(roleId == 6 && (isCandidatePresent.get(0).getHminterviewscheduled().equalsIgnoreCase("No")||isCandidatePresent.get(0).getHminterviewscheduled()==null) )//hiring manager and coding test
             {
                 //update interview table for Hiring Manager here
                 dbc.updateScheduleHiringManagerInterview(applicantid);
             }
-            if (roleId == 7)
+            if (roleId == 7 && (isCandidatePresent.get(0).getGroupinterviewscheduled().equalsIgnoreCase("No")||isCandidatePresent.get(0).getGroupinterviewscheduled()==null))
             {
                 dbc.updateScheduleGroupInterview(applicantid);
             }

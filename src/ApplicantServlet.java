@@ -50,11 +50,13 @@ public class ApplicantServlet extends HttpServlet {
 			{
 				if(rejectedrecord.get(0).getHrinterviewresult().equalsIgnoreCase("Fail")||candidate.get(0).getDrugtestresult().equalsIgnoreCase("Fail")||rejectedrecord.get(0).getHminterviewresult().equalsIgnoreCase("Fail")||rejectedrecord.get(0).getGroupinterviewresult().equalsIgnoreCase("Fail")||rejectedrecord.get(0).getCodingtestresult().equalsIgnoreCase("Fail"))
 				{
-					if(rejectedrecord.get(0).getHrinterviewresult()==null||rejectedrecord.get(0).getHminterviewresult()==null||rejectedrecord.get(0).getGroupinterviewresult()==null||rejectedrecord.get(0).getCodingtestresult()==null)
-					{
 					request.setAttribute("rejectmessage", "Applicant Rejected!!!");
-					}
 				}
+				else if(rejectedrecord.get(0).getHrinterviewresult()==null||rejectedrecord.get(0).getHminterviewresult()==null||rejectedrecord.get(0).getGroupinterviewresult()==null||rejectedrecord.get(0).getCodingtestresult()==null)
+				{
+					request.setAttribute("rejectmessage", "Interview process pending!!!");
+				}
+
 			}
 
 
