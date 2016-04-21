@@ -21,16 +21,26 @@ public class testingInsert {
 		List<HrInterviewtable>  record = null;
 			DBLogin dbl= new DBLogin();
 			DBConnect dbc= new DBConnect();
+			long id=4;
 			
 			System.out.println("Test if insert is working") ;
 			
-			dbl.insertNewInterviewTable(1, "No", "");
-			record = dbc.getInterviewList(1).getResultList();
-
-System.out.println("test after getInterviewList");
-							
-			assertTrue(record.size()>0);
+			dbl.insertNewInterviewTable(id, "No", "");
 			
+			record = dbc.getInterviewList(id).getResultList();
+			
+			for(HrInterviewtable hri:record)
+			{
+				System.out.println("This interview row is :"+ hri.getHrApplicant().getApplicantid());
+			}
+			
+			System.out.println("test after getInterviewList");
+
+			assertEquals(record.get(0).getHrApplicant().getApplicantid(), 4);
+					
+			//assertTrue(record.size()>0);
+//		      assertEquals(appList.size(), 3) ;
+
 			
 	 }
 	
