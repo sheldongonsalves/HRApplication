@@ -21,7 +21,7 @@
 <body background="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQVKicit_rgbITlRlAbVK2vU2fZ2QGTkBP0vcFbnxcIO9Wwl_J2">
 
 	<%@ include file="CommonOptions.jsp"%>
-
+<div class="col-xs-12"> 
 <h3 align="right">${username}<br>
 ${rolename}</h3>
 
@@ -106,6 +106,6 @@ ${rolename}</h3>
 	<form action="DisplayForm.jsp" method="post">
 	<input type="submit" value="Back">
     </form>
-    
+ </div>   
 </body>
 </html>

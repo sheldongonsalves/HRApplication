@@ -1,6 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -20,36 +20,63 @@
 
 <title>New Applicant Details JSP</title>
 </head>
-<body background="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQVKicit_rgbITlRlAbVK2vU2fZ2QGTkBP0vcFbnxcIO9Wwl_J2">
+<body
+	background="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQVKicit_rgbITlRlAbVK2vU2fZ2QGTkBP0vcFbnxcIO9Wwl_J2">
+	<div class="col-xs-12">
+		<%@ include file="CommonOptions.jsp"%>
 
-	<%@ include file="CommonOptions.jsp"%>
+		<h3 align="right">${username}<br> ${rolename}
+		</h3>
+		<br>
+		<h3 align="center">Insert New Applicant Details</h3>
+		<table class="table">
+			<tr>
+				<td><form action="NewApplicantServlet" method="Post">
 
-<h3 align="right">${username}<br>
-${rolename}</h3>
-<br>	
-<h3 align="center">Insert New Applicant Details</h3>
-<table class="table">
-<tr><td><form action="NewApplicantServlet" method="Post">
+						<tr>
+							<td>Name:</td>
+							<td><input type="text" id="Name" name="Name" /></td>
+						</tr>
+						<tr>
+							<td>Address:</td>
+							<td><input type="text" id="Address" name="Address" /></td>
+						</tr>
+						<tr>
+							<td>BirthDate:</td>
+							<td><input type="date" id="Birthdate" name="Birthdate" /></td>
+						</tr>
+						<tr>
+							<td>Education:</td>
+							<td><input type="text" id="Education" name="Education" /></td>
+						</tr>
+						<tr>
+							<td>Job History:</td>
+							<td><input type="text" id="Jobhistory" name="Jobhistory" /></td>
+						</tr>
+						<tr>
+							<td>Reference:</td>
+							<td><input type="text" id="Reference" name="Reference" /></td>
+						</tr>
+						<tr>
+							<td>Veteran Status:</td>
+							<td><input type="text" id="Veteranstatus"
+								name="Veteranstatus" /></td>
+						</tr>
 
-<tr><td>Name:</td><td><input type="text" id="Name" name="Name" /></td></tr>
-<tr><td>Address:</td><td><input type="text" id="Address" name="Address" /></td></tr>
-<tr><td>BirthDate:</td><td><input type="date" id="Birthdate" name="Birthdate" /></td></tr>
-<tr><td>Education:</td><td><input type="text" id="Education" name="Education" /></td></tr>
-<tr><td>Job History:</td><td><input type="text" id="Jobhistory" name="Jobhistory" /></td></tr>
-<tr><td>Reference:</td><td><input type="text" id="Reference" name="Reference" /></td></tr>
-<tr><td>Veteran Status:</td><td><input type="text" id="Veteranstatus" name="Veteranstatus" /></td></tr>
 
+						<tr>
+							<td><input type="hidden" name="Add Details" value="1">
+								<input type="submit" value="Add Details"></td>
+						</tr>
+					</form></td>
+			</tr>
 
-<tr><td><input type="hidden" name="Add Details" value="1">
-<input type="submit" value="Add Details"></td></tr>
-</form></td></tr>
+		</table>
 
-</table>
-
-    	<br>
-	<br>
-	<form action="ApplicantList.jsp" method="post">
-	<input type="submit" value="Back">
-    </form>
+		<br> <br>
+		<form action="ApplicantList.jsp" method="post">
+			<input type="submit" value="Back">
+		</form>
+	</div>
 </body>
 </html>

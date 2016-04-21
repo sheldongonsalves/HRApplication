@@ -15,11 +15,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Insert title here</title>
 </head>
 <body background="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQVKicit_rgbITlRlAbVK2vU2fZ2QGTkBP0vcFbnxcIO9Wwl_J2">    <%@ include file="CommonOptions.jsp"%>
+<div class="col-xs-12"> 
 <h3 align="right">Welcome,${username}<br>
 ${rolename}</h3>
 <br>
 <h3 align="center">Applicant List</h3>    <p class="text-danger">${messages}</p><br>
-    
+ 
     <table class="table">
     
         <tr>
@@ -49,6 +50,6 @@ ${rolename}</h3>
         <a href="NewApplicant.jsp"> Add new applicant </a>
         
     </c:if>
-        
+</div>          
 </body>
 </html>

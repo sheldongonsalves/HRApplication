@@ -23,7 +23,7 @@
 <body>
 
 	<%@ include file="CommonOptions.jsp"%>
-	
+<div class="col-xs-12"> 	
 <h3 align="right">${username}<br>
 ${rolename}</h3>
 <br>
@@ -49,5 +49,6 @@ ${rolename}</h3>
 		</c:if>
 		<input type="submit" value="Submit">
 	</form>
+</div>
 </body>
 </html>
