@@ -35,7 +35,7 @@ public class ApplicantServlet extends HttpServlet {
 		System.out.println("Check1");        //    long applicant_id = 0;      
 		List<HrApplicant> candidate= Applicant.getApplicantDetails(applicantid).getResultList();
 
-		List<HrInterviewtable> rejectedrecord =Applicant.getApplicantInterviewDetails(applicantid).getResultList();
+	//	List<HrInterviewtable> rejectedrecord =Applicant.getApplicantInterviewDetails(applicantid).getResultList();
 		System.out.println("Check2");
 		{
 			//    HrApplicant u =candidate.get((int) session.getAttribute("Applicantid"));
@@ -46,7 +46,8 @@ public class ApplicantServlet extends HttpServlet {
 			session.setAttribute("rolename", rolename);
 			session.setAttribute("username", username);
 			session.setAttribute("applicantid", applicantid);
-			if(!rejectedrecord.isEmpty())
+			
+	/*		if(!rejectedrecord.isEmpty())
 			{
 				if(rejectedrecord.get(0).getHrinterviewresult().equalsIgnoreCase("Fail")||candidate.get(0).getDrugtestresult().equalsIgnoreCase("Fail")||rejectedrecord.get(0).getHminterviewresult().equalsIgnoreCase("Fail")||rejectedrecord.get(0).getGroupinterviewresult().equalsIgnoreCase("Fail")||rejectedrecord.get(0).getCodingtestresult().equalsIgnoreCase("Fail"))
 				{
@@ -58,7 +59,7 @@ public class ApplicantServlet extends HttpServlet {
 				}
 
 			}
-
+*/
 
 			request.getRequestDispatcher("/DisplayForm.jsp").forward(request, response);      
 		}   
