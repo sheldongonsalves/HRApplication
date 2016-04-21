@@ -41,7 +41,7 @@ public class Reject extends HttpServlet {
 		//insert or update a interviewTable row with schedule and status
 		dbl.insertNewInterviewTable(applicantId,interviewschedule,status);
 
-		//session.setAttribute("interviewtable", hrit);
+		
 		session.setAttribute("reject", reject);
 		session.setAttribute("rolename", rolename);
 		session.setAttribute("username", username);

@@ -38,7 +38,7 @@ public class Education extends HttpServlet {
 		DBConnect d= new DBConnect();
 		
 		
-	//	long applicantid = (long) session.getAttribute("Applicantid");
+	
 	
 		long applicantid=(long) session.getAttribute("applicantid");
 		String rolename = (String) session.getAttribute("rolename");

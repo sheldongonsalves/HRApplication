@@ -18,7 +18,7 @@
 
 
 
-<title>New Applicant Details</title>
+<title>New Applicant Details JSP</title>
 </head>
 <body background="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQVKicit_rgbITlRlAbVK2vU2fZ2QGTkBP0vcFbnxcIO9Wwl_J2">
 

@@ -74,9 +74,7 @@ public class PreInterview extends HttpServlet {
 		{
 			
 		
-			if(roleId == 6)	//hiring manager and coding test
-			{
-				//update interview table for Hiring Manager here
+			if(roleId == 6)	
 				dbc.updateScheduleHiringManagerInterview(applicantid);
 			}
 			if (roleId == 7)

@@ -19,7 +19,7 @@
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<title>Insert title here</title>
+<title>Applicant List JSP</title>
 </head>
 <body background="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQVKicit_rgbITlRlAbVK2vU2fZ2QGTkBP0vcFbnxcIO9Wwl_J2">
 
@@ -55,18 +55,10 @@ ${rolename}</h3>
 
 	</table>
 
-	<!--  	<form action="/NewApplicant.jsp">
-		<input type="hidden" name="add" value="${Loginid}">
-		<input type="submit" name="add" value="Add New Applicant" >
-		</form>-->
 
 
-	<c:if test="${roleid.equals(3)}">
-		<!-- need to confirm loginid and role id -->
-	<!--  	<form action="NewApplicant.jsp" method="post">
-			<input type="button" value="Add Applicant">
-		</form>  -->
-		
+
+	<c:if test="${roleid.equals(3)}">	
 		<a href="NewApplicant.jsp"> Add new applicant </a>
 		
 	</c:if>

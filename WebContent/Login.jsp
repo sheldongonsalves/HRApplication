@@ -16,7 +16,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 
-<title>Login</title>
+<title>Login JSP</title>
 </head>
 <body background="http://www.ngahr.com/sites/default/files/background/slide1.png">
 

@@ -55,7 +55,7 @@ public class NewApplicantServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		//String birthdate = request.getParameter("Birthdate");
+		
 		String education = request.getParameter("Education");
 		String jobhistory = request.getParameter("Jobhistory");
 		String reference = request.getParameter("Reference");

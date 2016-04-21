@@ -39,7 +39,7 @@ public class ViewDrugTests extends HttpServlet {
 		long applicantid= (long) session.getAttribute("applicantid");
 		long roleid = (long) session.getAttribute("roleid");
 			
-		//long applicantid=2;
+		
 		
 			DBConnect d= new DBConnect();
 
@@ -50,7 +50,7 @@ public class ViewDrugTests extends HttpServlet {
 
 			List<HrDrugtest> viewTests= d.getApplicantDrugDetails(applicantid).getResultList();
 
-		//	int q=viewTests.getFirstResult();
+		
 			System.out.println("---------------------"+viewTests.get(0).getAlcoholtest());
 			
 			

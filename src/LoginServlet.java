@@ -46,7 +46,7 @@ public class LoginServlet extends HttpServlet {
 
 		}
 		else {
-			//pass on the whole user login record
+			
 
 
 
@@ -74,7 +74,7 @@ public class LoginServlet extends HttpServlet {
 					request.setAttribute("applicantlist",applicantlist);
 					session.setAttribute("applicantlist",applicantlist);
 					request.getRequestDispatcher("/ApplicantList.jsp").forward(request, response);
-					//request.getRequestDispatcher("Interview.jsp").forward(request, response);
+					
 
 			
 				}

@@ -37,7 +37,7 @@ public class DrugUser extends HttpServlet {
 	long applicantid= (long) session.getAttribute("applicantid");
 	String rolename = (String) session.getAttribute("rolename");
 	String username = (String) session.getAttribute("username");
-	//long applicantid=2;
+
 	
 		DBConnect d= new DBConnect();
 		

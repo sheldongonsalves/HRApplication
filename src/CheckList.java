@@ -41,7 +41,7 @@ public class CheckList extends HttpServlet {
 		
 		long applicantid = (long) session.getAttribute("applicantid");
 		
-		//long applicantid=1;
+		
 		
 		d.getInterviewList(applicantid);
 		
