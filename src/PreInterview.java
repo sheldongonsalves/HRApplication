@@ -40,7 +40,7 @@ public class PreInterview extends HttpServlet {
         long applicantid = (long)session.getAttribute("applicantid");
         long roleId = (long)session.getAttribute("roleid");
         List<HrInterviewtable> interviewresult =dbc.getApplicantInterviewDetails(applicantid).getResultList();
-        List<HrInterviewtable> isCandidatePresent =dbc.getInterviewList(applicantid).getResultList();
+        
         System.out.println("===============applicantid is "+applicantid);
         System.out.println("===============roleid is "+roleId);
         long roleid=(long) session.getAttribute("roleid");
@@ -52,7 +52,7 @@ public class PreInterview extends HttpServlet {
         {
             dbl.insertNewInterviewTable(applicantid, hrinterviewschedule, "");    //insert or update hrinterviewschedule
         }
-       
+        List<HrInterviewtable> isCandidatePresent =dbc.getInterviewList(applicantid).getResultList();
        
         if(isCandidatePresent.isEmpty())
         {

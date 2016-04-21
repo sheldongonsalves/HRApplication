@@ -24,6 +24,7 @@
 <h3 align="right">${username}<br>
 ${rolename}</h3>
 <br>
+<p class="text-danger">${rejectmessage}</p>
 <h3 align="center">Applicant Details</h3>
     <table class="table table-hover table-condensed">
 
