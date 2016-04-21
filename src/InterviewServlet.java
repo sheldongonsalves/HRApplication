@@ -68,21 +68,21 @@ public class InterviewServlet extends HttpServlet {
 			//update interview table for Hiring Manager here
 			//dbc.updateScheduleHiringManagerInterview(applicantId);
 			dbc.updateHMInterviewResult(applicantId, interviewStatus);
-			if(CandidateRecord.get(0).getCodingtest().equalsIgnoreCase("taken")) 
-			{
+			/*if(!CandidateRecord.get(0).getCodingtest().equalsIgnoreCase("taken")||CandidateRecord.get(0).getCodingtest()==null) 
+			{*/
 				dbc.updateCodingTestTaken(applicantId, codingTest);
 				dbc.updateCodingTestResult(applicantId, codingTestStatus);
-			}
+			//}
 		}
 		if(roleid == 7) //if(user.getHrRole().getRolename().equalsIgnoreCase("Group Interview Manager"))
 		{
 			//update interview table for group interview here
 			dbc.updateGroupInterviewResult(applicantId, interviewStatus);
-			if(CandidateRecord.get(0).getCodingtest().equalsIgnoreCase("taken")) 
-			{
+			/*if(!CandidateRecord.get(0).getCodingtest().equalsIgnoreCase("taken")||CandidateRecord.get(0).getCodingtest()==null) 
+			{*/
 				dbc.updateCodingTestTaken(applicantId, codingTest);
 				dbc.updateCodingTestResult(applicantId, codingTestStatus);
-			}
+			//}
 		}
 		session.setAttribute("rolename", rolename);
 		session.setAttribute("username", username);
