@@ -484,6 +484,7 @@ public class DBConnect {
 		TypedQuery<HrInterviewtable> query =em1.createQuery("SELECT h FROM HrInterviewtable h where h.hrApplicant.applicantid = :applicantid",HrInterviewtable.class)
 
 				.setParameter("applicantid", applicantid);
+		
 		return query;
 	}
 
